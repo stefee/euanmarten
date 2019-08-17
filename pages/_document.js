@@ -6,9 +6,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en-GB">
         <Head>
-          <meta charset="utf-8" />
-          <title>Euan Marten Portfolio</title>
-          <meta name="description" content="Euan Marten is an illustrator & designer with a BA in Illustration from Norwich University of the Arts." />
+          <meta charSet="utf-8" />
           <link rel="shortcut icon" href="/favicon.ico" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#000000" />
