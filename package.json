@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:image-renditions": "scripts/build-image-renditions.js",
+    "build:images": "scripts/optimise-images.js",
     "start": "next start"
   },
   "dependencies": {

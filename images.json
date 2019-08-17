@@ -10,17 +10,6 @@
     "peel.jpg",
     "sword.jpg"
   ],
-  "inputDir": "static/images",
-  "outputDir": "static/images/renditions",
-  "concurrency": 20,
-  "fileTypes": ["jpg", "jpeg", "png"],
-  "compressionTypes": ["jpeg", "png"],
-  "defaultCompression": "jpeg",
-  "quality": {
-    "jpeg": 90,
-    "png": 100
-  },
-  "resizeOptions": ">",
   "renditions": [
     {
       "width": 100
@@ -28,5 +17,18 @@
     {
       "width": 200
     }
-  ]
+  ],
+  "optimiseConfig": {
+    "inputDir": "static/images",
+    "outputDir": "static/images/renditions",
+    "concurrency": 20,
+    "fileTypes": ["jpg", "jpeg", "png"],
+    "compressionTypes": ["jpeg", "png"],
+    "defaultCompression": "jpeg",
+    "quality": {
+      "jpeg": 90,
+      "png": 100
+    },
+    "resizeOptions": ">"
+  }
 }

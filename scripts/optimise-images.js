@@ -12,14 +12,19 @@ const logger = {
 
 const exec = async () => {
   try {
-    const configJson = await fs.readFile('images.json');
-    const config = JSON.parse(configJson);
-    await del(config.outputDir);
-    await fs.mkdir(config.outputDir, { recursive: true });
+    const { renditions, optimiseConfig } = JSON.parse(await fs.readFile('images.json'));
+
+    await del(optimiseConfig.outputDir);
+    await fs.mkdir(optimiseConfig.outputDir, { recursive: true });
+
     await createImageRenditions({
-      args: config,
+      args: {
+        renditions,
+        ...optimiseConfig
+      },
       logger
     });
+
     logger.info('Finished!', '✅');
   } catch (err) {
     logger.error(err);
