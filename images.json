@@ -10,8 +10,8 @@
     "peel.jpg",
     "sword.jpg"
   ],
-  "inputDir": "build/images",
-  "outputDir": "build/images/renditions",
+  "inputDir": "static/images",
+  "outputDir": "static/images/renditions",
   "concurrency": 20,
   "fileTypes": ["jpg", "jpeg", "png"],
   "compressionTypes": ["jpeg", "png"],

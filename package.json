@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:image-renditions": "scripts/build-image-renditions.js",
     "start": "next start"
   },
   "dependencies": {
@@ -16,5 +17,9 @@
   },
   "engines": {
     "node": "10.x"
+  },
+  "devDependencies": {
+    "gm": "^1.23.1",
+    "promise-limit": "^2.7.0"
   }
 }
