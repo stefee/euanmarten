@@ -12,12 +12,12 @@ const splitFileExtension = filename => {
   return [fileExtension, filenameSegments.join(DELIMITER)];
 };
 
-const getImageFilenames = async ({ args }, pathToDir) => {
+const getImageFilenames = async (pathToDir, allowedFileTypes) => {
   const files = await fs.readdir(pathToDir);
 
   const imageFilenames = files.filter(filename => {
     const [extension] = splitFileExtension(filename);
-    return extension && args.fileTypes.includes(extension.toLowerCase());
+    return extension && allowedFileTypes.includes(extension.toLowerCase());
   });
 
   return imageFilenames;
@@ -91,24 +91,24 @@ const createRendition = async (context, inputPath, outputPath, filename, { width
   }
 };
 
-const createImageRenditions = async context => {
-  const { logger, args } = context;
-  const { inputDir, outputDir, renditions } = args;
+const createImageRenditions = async (context, renditions, args) => {
+  const { logger } = context;
+  const { inputDir, outputDir } = args;
 
   logger.info(`Finding images in directory ${args.inputDir}`, '🔎');
 
-  const filenames = await getImageFilenames(context, args.inputDir);
+  const filenames = await getImageFilenames(args.inputDir, args.fileTypes);
 
   logger.info(`Creating optimised renditions for ${filenames.length} images`);
 
-  const renditionPromiesLimit = promiseLimit(args.concurrency);
+  const renditionPromiseLimit = promiseLimit(args.concurrency);
 
   const renditionPromises = filenames.reduce((acc, filename) => {
     const jobs = renditions.map(rendition => () => {
-      return createRendition(context, inputDir, outputDir, filename, rendition);
+      return createRendition({ ...context, args }, inputDir, outputDir, filename, rendition);
     });
 
-    const promises = jobs.map(job => renditionPromiesLimit(() => job()));
+    const promises = jobs.map(job => renditionPromiseLimit(() => job()));
 
     acc.push(...promises);
 

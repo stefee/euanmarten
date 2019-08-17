@@ -18,7 +18,7 @@
       "width": 200
     }
   ],
-  "optimiseConfig": {
+  "buildConfig": {
     "inputDir": "static/images",
     "outputDir": "static/images/renditions",
     "concurrency": 20,

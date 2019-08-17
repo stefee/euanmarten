@@ -12,18 +12,12 @@ const logger = {
 
 const exec = async () => {
   try {
-    const { renditions, optimiseConfig } = JSON.parse(await fs.readFile('images.json'));
+    const { renditions, buildConfig } = JSON.parse(await fs.readFile('images.json'));
 
-    await del(optimiseConfig.outputDir);
-    await fs.mkdir(optimiseConfig.outputDir, { recursive: true });
+    await del(buildConfig.outputDir);
+    await fs.mkdir(buildConfig.outputDir, { recursive: true });
 
-    await createImageRenditions({
-      args: {
-        renditions,
-        ...optimiseConfig
-      },
-      logger
-    });
+    await createImageRenditions({ logger }, renditions, buildConfig);
 
     logger.info('Finished!', '✅');
   } catch (err) {
