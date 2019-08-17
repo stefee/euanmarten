@@ -17,6 +17,8 @@ const Thumbnail = ({ imageFilename, onClick }) => {
   return (
     <div className="mb1 mb2-ns">
       <button
+        title="View Image"
+        type="button"
         className="button-reset bn pa0 db w-100 pointer"
         onClick={onClick}
       >
@@ -82,6 +84,8 @@ const LightboxOverlay = ({ src, onClose }) => {
     <div className="Lightbox fixed absolute--fill bg-near-black pt5 pb5 pt4-l pb4-l pr5-l pl5-l">
       <Image image={{ src }} />
       <button
+        title="Close"
+        type="button"
         className="Lightbox-CloseButton button-reset bg-transparent bn db pointer pa3 absolute top-0 right-0 right-1-ns"
         onClick={e => {
           e.preventDefault();
