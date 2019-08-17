@@ -11,7 +11,7 @@ class MyDocument extends Document {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#000000" />
           <link rel="manifest" href="/manifest.json" />
-          <link href="https://fonts.googleapis.com/css?family=Muli:200,400&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Muli:200,400&display=swap" rel="stylesheet" media="all" />
         </Head>
         <body>
           <Main />
