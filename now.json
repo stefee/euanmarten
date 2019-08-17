@@ -1,5 +1,13 @@
 {
   "version": 2,
   "name": "euanmarten-next",
-  "regions": ["lhr1"]
+  "regions": ["lhr1"],
+  "routes": [
+    { "src": "/images/(.*)", "dest": "/static/images/$1" },
+    { "src": "/favicon.ico", "dest": "/static/favicon.ico" },
+    { "src": "/robots.txt", "dest": "/static/robots.txt" },
+    { "src": "/asset-manifest.json", "dest": "/static/asset-manifest.json" },
+    { "src": "/manifest.json", "dest": "/static/manifest.json" },
+    { "src": "/precache-manifest.(.*)", "dest": "/static/precache-manifest.$1" }
+  ]
 }

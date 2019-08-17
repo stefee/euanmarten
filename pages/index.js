@@ -16,7 +16,7 @@ const IMAGES = [
   'sword.jpg'
 ];
 
-const getImageSrc = filename => `/static/images/${filename}`;
+const getImageSrc = filename => `/images/${filename}`;
 
 const Image = ({ image: { src, altText = '' }, ...rest }) => <img src={src} alt={altText} {...rest} />;
 
