@@ -20,10 +20,14 @@
     "outputDir": "static/images/renditions",
     "concurrency": 20,
     "fileTypes": ["jpg", "jpeg", "png"],
-    "compressionTypes": ["jpeg", "png"],
-    "defaultCompression": "jpeg",
+    "compression": {
+      "jpg": "jpeg-2000",
+      "jpeg": "jpeg-2000",
+      "png": "png"
+    },
+    "defaultCompression": "jpeg-2000",
     "quality": {
-      "jpeg": 90,
+      "jpeg-2000": 90,
       "png": 100
     },
     "resizeOptions": ">"
