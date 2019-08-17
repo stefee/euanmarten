@@ -10,6 +10,7 @@ This project was migrated from a Create React App project. See source code for t
 
 ### Prerequisites
 
+* macOS
 * Homebrew
 
 ### Install
