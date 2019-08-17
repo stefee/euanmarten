@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'tachyons';
 import '../style.css';
-import { splitFileExtension, getRenditionFilename } from '../utils/images';
+import { getRenditionFilename } from '../utils/images';
 import Icon from '../components/Icon';
 import Nav from '../components/Nav';
 
@@ -12,7 +12,6 @@ const IMAGE_WIDTH = 1280;
 const getImagesConfig = env => env.IMAGES;
 
 const getImageSrc = (filename, rendition) => {
-  const [imageFileExtension, imageName] = splitFileExtension(filename);
   const renditionFilename = getRenditionFilename(filename, rendition);
   return `/static/images/renditions/${renditionFilename}`;
 };
