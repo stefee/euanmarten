@@ -10,5 +10,16 @@
     { "src": "/asset-manifest.json", "dest": "/static/asset-manifest.json" },
     { "src": "/manifest.json", "dest": "/static/manifest.json" },
     { "src": "/precache-manifest.(.*)", "dest": "/static/precache-manifest.$1" }
+  ],
+  "builds": [
+    {
+      "src": "build-images.sh",
+      "use": "@now/static-build",
+      "config": { "distDir": "." }
+    },
+    {
+      "src": "package.json",
+      "use": "@now/next"
+    }
   ]
 }
