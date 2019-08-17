@@ -4,17 +4,7 @@ import '../style.css';
 import Icon from '../components/Icon';
 import Nav from '../components/Nav';
 
-const IMAGES = [
-  'growing2.png',
-  'point.jpg',
-  'oranges.jpg',
-  'body.jpg',
-  'self.jpg',
-  'bilbo2.png',
-  'owl.jpg',
-  'peel.jpg',
-  'sword.jpg'
-];
+const getImagesConfig = () => process.env.IMAGES;
 
 const getImageSrc = filename => `/images/${filename}`;
 
@@ -117,6 +107,8 @@ const Home = () => {
 
   const isLightboxOpen = !!lightboxImage;
 
+  const images = getImagesConfig();
+
   return (
     <div className="sans-serif">
       <div className="pa4">
@@ -124,7 +116,7 @@ const Home = () => {
       </div>
       <main>
         <TwoColumnLayout
-          images={IMAGES}
+          images={images}
           setLightboxImage={setLightboxImage}
         />
       </main>
