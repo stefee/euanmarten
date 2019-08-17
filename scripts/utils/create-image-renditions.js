@@ -2,15 +2,9 @@ const path = require('path');
 const fs = require('fs').promises;
 const promiseLimit = require('promise-limit');
 const gm = require('gm');
+const { splitFileExtension, getRenditionFilename } = require('../../utils/images');
 
 const DEFAULT_COMPRESSION = 'jpeg';
-
-const splitFileExtension = filename => {
-  const DELIMITER = '.';
-  const filenameSegments = filename.split(DELIMITER);
-  const fileExtension = filenameSegments.pop();
-  return [fileExtension, filenameSegments.join(DELIMITER)];
-};
 
 const getImageFilenames = async (pathToDir, allowedFileTypes) => {
   const files = await fs.readdir(pathToDir);
@@ -51,7 +45,7 @@ const getImageFormat = ({ filename }, image) => {
   });
 };
 
-const optimiseImage = async (context, width, height, image) => {
+const optimiseImage = async (context, image, width, height) => {
   const { args } = context;
 
   const imageFormat = await getImageFormat(context, image);
@@ -66,13 +60,10 @@ const optimiseImage = async (context, width, height, image) => {
     .noProfile();
 };
 
-const createRendition = async (context, inputPath, outputPath, filename, { width, height }) => {
+const createRendition = async (context, inputPath, outputPath, filename, rendition) => {
   const { logger } = context;
 
-  const [imageFileExtension, imageName] = splitFileExtension(filename);
-
-  const renditionName = height ? `${width}x${height}` : width.toString();
-  const renditionFilename = `${imageName}_${renditionName}.${imageFileExtension}`;
+  const renditionFilename = getRenditionFilename(filename, rendition);
 
   const imagePath = path.join(inputPath, filename);
   const renditionPath = path.join(outputPath, renditionFilename);
@@ -80,7 +71,9 @@ const createRendition = async (context, inputPath, outputPath, filename, { width
   try {
     const image = gm(imagePath);
 
-    const optimisedImage = await optimiseImage({ ...context, filename }, width, height, image);
+    const { width, height } = rendition;
+
+    const optimisedImage = await optimiseImage({ ...context, filename }, image, width, height);
 
     await writeImage(optimisedImage, renditionPath);
 

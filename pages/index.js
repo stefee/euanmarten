@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import 'tachyons';
 import '../style.css';
+import { splitFileExtension, getRenditionFilename } from '../utils/images';
 import Icon from '../components/Icon';
 import Nav from '../components/Nav';
+
+// TODO: add srcset support
+const IMAGE_WIDTH = 1280;
 
 // images.json
 const getImagesConfig = env => env.IMAGES;
 
-const getImageSrc = filename => `/static/images/${filename}`;
+const getImageSrc = (filename, rendition) => {
+  const [imageFileExtension, imageName] = splitFileExtension(filename);
+  const renditionFilename = getRenditionFilename(filename, rendition);
+  return `/static/images/renditions/${renditionFilename}`;
+};
 
 const Image = ({ image: { src, altText = '' }, ...rest }) => <img src={src} alt={altText} {...rest} />;
 
 const Thumbnail = ({ imageFilename, onClick }) => {
-  const src = getImageSrc(imageFilename);
+  const src = getImageSrc(imageFilename, { width: IMAGE_WIDTH });
 
   return (
     <div className="mb1 mb2-ns">
@@ -100,7 +108,7 @@ const LightboxOverlay = ({ src, onClose }) => {
 
 const Lightbox = ({ isOpen, imageFilename, ...rest }) => {
   if(isOpen && imageFilename) {
-    const src = getImageSrc(imageFilename);
+    const src = getImageSrc(imageFilename, { width: IMAGE_WIDTH });
     return <LightboxOverlay src={src} {...rest} />;
   } else {
     return null;
