@@ -1,22 +1,13 @@
+const fs = require('fs');
 const withCSS = require('@zeit/next-css');
 
-const IMAGES = [
-  'growing2.png',
-  'point.jpg',
-  'oranges.jpg',
-  'body.jpg',
-  'self.jpg',
-  'bilbo2.png',
-  'owl.jpg',
-  'peel.jpg',
-  'sword.jpg'
-];
+const IMAGES = fs.readFileSync('./images.json', { encoding: 'utf-8' });
 
 module.exports = withCSS({
   webpack: (config, { webpack }) => {
     const definePlugin = new webpack.DefinePlugin({
       'process.env': {
-        IMAGES: JSON.stringify(IMAGES)
+        IMAGES
       }
     });
 

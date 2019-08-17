@@ -4,7 +4,7 @@
   "alias": ["euanmarten", "euanmarten.com", "www.euanmarten.com"],
   "regions": ["lhr1"],
   "routes": [
-    { "src": "/images/(.*)", "dest": "/static/images/$1" },
+    { "src": "/static/images/(.*)", "dest": "/static/images/$1" },
     { "src": "/favicon.ico", "dest": "/static/favicon.ico" },
     { "src": "/robots.txt", "dest": "/static/robots.txt" },
     { "src": "/asset-manifest.json", "dest": "/static/asset-manifest.json" },

@@ -4,9 +4,10 @@ import '../style.css';
 import Icon from '../components/Icon';
 import Nav from '../components/Nav';
 
-const getImagesConfig = () => process.env.IMAGES;
+// images.json
+const getImagesConfig = env => env.IMAGES;
 
-const getImageSrc = filename => `/images/${filename}`;
+const getImageSrc = filename => `/static/images/${filename}`;
 
 const Image = ({ image: { src, altText = '' }, ...rest }) => <img src={src} alt={altText} {...rest} />;
 
@@ -102,12 +103,12 @@ const Lightbox = ({ isOpen, imageFilename, ...rest }) => {
   }
 };
 
-const Home = () => {
+const Home = ({ env }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
 
   const isLightboxOpen = !!lightboxImage;
 
-  const images = getImagesConfig();
+  const { images } = getImagesConfig();
 
   return (
     <div className="sans-serif">
