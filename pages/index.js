@@ -4,6 +4,18 @@ import '../style.css';
 import Icon from '../components/Icon';
 import Nav from '../components/Nav';
 
+const IMAGES = [
+  'growing2.png',
+  'point.jpg',
+  'oranges.jpg',
+  'body.jpg',
+  'self.jpg',
+  'bilbo2.png',
+  'owl.jpg',
+  'peel.jpg',
+  'sword.jpg'
+];
+
 const getImageSrc = filename => `/static/images/${filename}`;
 
 const Image = ({ image: { src, altText = '' }, ...rest }) => <img src={src} alt={altText} {...rest} />;
@@ -112,7 +124,7 @@ const Home = () => {
       </div>
       <main>
         <TwoColumnLayout
-          images={['bilbo2.png']}
+          images={IMAGES}
           setLightboxImage={setLightboxImage}
         />
       </main>
