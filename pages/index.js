@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import 'tachyons';
 import '../style.css';
-import { getRenditionFilename } from '../utils/images';
+import { getImageSrc } from '../utils/images';
 import Icon from '../components/Icon';
 import Nav from '../components/Nav';
 
 // TODO: add srcset support
 const IMAGE_WIDTH = 1280;
-
-// images.json
-const getImagesConfig = env => env.IMAGES;
-
-const getImageSrc = (filename, rendition) => {
-  const renditionFilename = getRenditionFilename(filename, rendition);
-  return `/static/images/renditions/${renditionFilename}`;
-};
 
 const Image = ({ image: { src, altText = '' }, ...rest }) => <img src={src} alt={altText} {...rest} />;
 
@@ -115,7 +107,7 @@ const Lightbox = ({ isOpen, imageFilename, ...rest }) => {
 };
 
 const Home = ({ env }) => {
-  const { images } = getImagesConfig(env);
+  const { images } = env.IMAGES;
 
   const [lightboxImage, setLightboxImage] = useState(null);
 
