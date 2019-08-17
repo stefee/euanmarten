@@ -1,0 +1,32 @@
+{
+  "images": [
+    "growing2.png",
+    "point.jpg",
+    "oranges.jpg",
+    "body.jpg",
+    "self.jpg",
+    "bilbo2.png",
+    "owl.jpg",
+    "peel.jpg",
+    "sword.jpg"
+  ],
+  "inputDir": "build/images",
+  "outputDir": "build/images/renditions",
+  "concurrency": 20,
+  "fileTypes": ["jpg", "jpeg", "png"],
+  "compressionTypes": ["jpeg", "png"],
+  "defaultCompression": "jpeg",
+  "quality": {
+    "jpeg": 90,
+    "png": 100
+  },
+  "resizeOptions": ">",
+  "renditions": [
+    {
+      "width": 100
+    },
+    {
+      "width": 200
+    }
+  ]
+}

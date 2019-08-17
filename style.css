@@ -1,0 +1,48 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sans-serif {
+  font-family: 'Muli', -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif
+}
+
+a:link,
+a:visited,
+a:active,
+a:hover {
+  color: inherit;
+}
+
+.button-reset:active {
+  outline: none;
+}
+
+.ThumbnailColumn {
+  box-sizing: content-box;
+}
+
+.ThumbnailColumn img {
+  min-height: 50vw;
+  background-color: #f2f2f2;
+}
+
+.Lightbox img {
+  animation: fadeIn 0.1s 0.1s both;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.Lightbox-CloseButton:active {
+  margin-top: 2px;
+  margin-bottom: -2px;
+}
+
+svg.Icon {
+  fill: currentColor;
+}
