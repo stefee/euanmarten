@@ -4,8 +4,6 @@ const promiseLimit = require('promise-limit');
 const gm = require('gm');
 const { splitFileExtension, getRenditionFilename } = require('../../utils/images');
 
-const DEFAULT_COMPRESSION = 'jpeg-2000';
-
 const getImageFilenames = async (pathToDir, allowedFileTypes) => {
   const files = await fs.readdir(pathToDir);
 
@@ -50,7 +48,7 @@ const optimiseImage = async (context, image, width, height) => {
 
   const imageFormat = await getImageFormat(context, image);
 
-  const compression = args.compression[imageFormat] || args.defaultCompression || DEFAULT_COMPRESSION;
+  const compression = args.compression[imageFormat] || args.defaultCompression;
 
   return image
     .resize(width, height, args.resizeOptions)

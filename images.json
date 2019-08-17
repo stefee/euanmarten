@@ -21,13 +21,13 @@
     "concurrency": 20,
     "fileTypes": ["jpg", "jpeg", "png"],
     "compression": {
-      "jpg": "jpeg-2000",
-      "jpeg": "jpeg-2000",
+      "jpg": "jpeg2000",
+      "jpeg": "jpeg2000",
       "png": "png"
     },
-    "defaultCompression": "jpeg-2000",
+    "defaultCompression": "jpeg2000",
     "quality": {
-      "jpeg-2000": 90,
+      "jpeg2000": 85,
       "png": 100
     },
     "resizeOptions": ">"
