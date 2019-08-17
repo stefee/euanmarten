@@ -1,6 +1,7 @@
 {
   "version": 2,
-  "name": "euanmarten-next",
+  "name": "euanmarten",
+  "alias": ["euanmarten", "euanmarten.com", "www.euanmarten.com"],
   "regions": ["lhr1"],
   "routes": [
     { "src": "/images/(.*)", "dest": "/static/images/$1" },
