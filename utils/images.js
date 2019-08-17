@@ -15,7 +15,7 @@ const getImageSrc = (filename, rendition) => {
   if (rendition) {
     const renditionFilename = getRenditionFilename(filename, rendition);
     return `/static/images/renditions/${renditionFilename}`;
-  else {
+  } else {
     return `/static/images/${filename}`;
   }
 };
