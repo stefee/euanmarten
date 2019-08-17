@@ -104,11 +104,11 @@ const Lightbox = ({ isOpen, imageFilename, ...rest }) => {
 };
 
 const Home = ({ env }) => {
+  const { images } = getImagesConfig(env);
+
   const [lightboxImage, setLightboxImage] = useState(null);
 
   const isLightboxOpen = !!lightboxImage;
-
-  const { images } = getImagesConfig();
 
   return (
     <div className="sans-serif">
