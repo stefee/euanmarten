@@ -27,6 +27,8 @@ const exec = async () => {
     await buildImageRenditions({ logger }, renditions, buildConfig);
 
     logger.info('Finished building image renditions.', '✅');
+
+    setImmediate(process.exit.bind(process, 0));
   } catch (err) {
     logger.error(err);
     logger.error('Something went wrong, terminating process');
