@@ -33,7 +33,7 @@ const ColumnLayout = ({
   verticalPadding = 1
 }) => {
   const columnWidth = Math.floor(100 / columns);
-  const layoutClassName = getLayoutClassName(horizontalPadding);
+  const layoutClassName = getLayoutClassName(horizontalPadding, verticalPadding);
 
   return (
     <div className={layoutClassName}>
