@@ -4,18 +4,15 @@ import '../style.css';
 import { classNames } from '../utils/classNames';
 import { splitArrayAlternating } from '../utils/arrays';
 import { getImageSrc } from '../utils/images';
-import Icon from '../components/Icon';
+import Image from '../components/Image';
 import Nav from '../components/Nav';
 import ColumnLayout from '../components/ColumnLayout';
+import Lightbox from '../components/Lightbox';
 
 const COLUMNS = 2;
 
 // TODO: add srcset support
 const IMAGE_WIDTH = 1280;
-
-const Image = ({ src, image: { altText }, ...rest }) => (
-  <img src={src} alt={altText} {...rest} />
-);
 
 const Thumbnail = ({ image, onClick }) => {
   const src = getImageSrc(image, { width: IMAGE_WIDTH });
@@ -45,45 +42,6 @@ const ThumbnailColumn = ({ images, className, setLightboxImage }) => (
     ))}
   </div>
 );
-
-const LightboxOverlay = ({ image, onClose }) => {
-  useEffect(() => {
-    const escapeKeyHandler = event => {
-      if (event.keyCode === 27) { // escape
-        onClose();
-      }
-    };
-    window.addEventListener('keydown', escapeKeyHandler);
-    return () => window.removeEventListener('keydown', escapeKeyHandler);
-  })
-
-  const src = getImageSrc(image, { width: IMAGE_WIDTH });
-
-  return (
-    <div className="Lightbox fixed absolute--fill bg-near-black pt5 pb5 pt4-l pb4-l pr5-l pl5-l">
-      <Image src={src} image={image} />
-      <button
-        title="Close"
-        type="button"
-        className="Lightbox-CloseButton button-reset bg-transparent bn db pointer pa3 absolute top-0 right-0 right-1-ns"
-        onClick={e => {
-          e.preventDefault();
-          onClose();
-        }}
-      >
-        <Icon name="CLOSE" className="white" />
-      </button>
-    </div>
-  );
-};
-
-const Lightbox = ({ isOpen, image, ...rest }) => {
-  if(isOpen && image) {
-    return <LightboxOverlay image={image} {...rest} />;
-  } else {
-    return null;
-  }
-};
 
 const Home = ({ env }) => {
   const { images } = env.IMAGES;
