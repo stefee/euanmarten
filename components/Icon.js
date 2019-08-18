@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { classNames } from '../utils/classNames';
 import icons from './icons';
 
 const DEFAULT_SIZE = 24;
@@ -11,7 +12,7 @@ const Icon = ({ name, className = '', width = DEFAULT_SIZE, height = DEFAULT_SIZ
 
   return (
     <IconSvg
-      className={`Icon ${className}`}
+      className={classNames('Icon', className)}
       width={`${width}px`}
       height={`${height}px`}
       viewBox={`0 0 ${DEFAULT_SIZE} ${DEFAULT_SIZE}`}

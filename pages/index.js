@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import 'tachyons';
 import '../style.css';
+import { classNames } from '../utils/classNames';
+import { splitArrayAlternating } from '../utils/arrays';
 import { getImageSrc } from '../utils/images';
 import Icon from '../components/Icon';
 import Nav from '../components/Nav';
+import ColumnLayout from '../components/ColumnLayout';
 
 // TODO: add srcset support
 const IMAGE_WIDTH = 1280;
 
-const Image = ({ src, image: { altText }, ...rest }) => <img src={src} alt={altText} {...rest} />;
+const Image = ({ src, image: { altText }, ...rest }) => (
+  <img src={src} alt={altText} {...rest} />
+);
 
 const Thumbnail = ({ image, onClick }) => {
   const src = getImageSrc(image, { width: IMAGE_WIDTH });
 
   return (
-    <div className="mb1 mb2-ns">
+    <div className="mb2">
       <button
         title="View Image"
         type="button"
@@ -28,7 +33,7 @@ const Thumbnail = ({ image, onClick }) => {
 };
 
 const ThumbnailColumn = ({ images, className, setLightboxImage }) => (
-  <div className={`ThumbnailColumn ${className}`}>
+  <div className={className}>
     {images.map(image => (
       <Thumbnail
         key={image.filename}
@@ -38,35 +43,6 @@ const ThumbnailColumn = ({ images, className, setLightboxImage }) => (
     ))}
   </div>
 );
-
-const TwoColumnLayout = ({ images, ...rest }) => {
-  const firstColumnImages = [];
-  const secondColumnImages = [];
-
-  images.forEach((image, i) => {
-    const isEven = i % 2 === 0;
-    if (isEven) {
-      firstColumnImages.push(image);
-    } else {
-      secondColumnImages.push(image);
-    }
-  });
-
-  return (
-    <div className="flex flex-row">
-      <ThumbnailColumn
-        images={firstColumnImages}
-        className="w-50 pa1 pa2-ns"
-        {...rest}
-      />
-      <ThumbnailColumn
-        images={secondColumnImages}
-        className="w-50 pa1 pa2-ns pl0 pl0-ns"
-        {...rest}
-      />
-    </div>
-  );
-};
 
 const LightboxOverlay = ({ image, onClose }) => {
   useEffect(() => {
@@ -114,16 +90,24 @@ const Home = ({ env }) => {
 
   const isLightboxOpen = !!lightboxImage;
 
+  const [firstColumnImages, secondColumnImages] = splitArrayAlternating(images, 2);
+
   return (
     <div className="sans-serif">
       <div className="pa4">
         <Nav />
       </div>
       <main>
-        <TwoColumnLayout
-          images={images}
-          setLightboxImage={setLightboxImage}
-        />
+        <ColumnLayout columns={2}>
+          <ThumbnailColumn
+            images={firstColumnImages}
+            setLightboxImage={setLightboxImage}
+          />
+          <ThumbnailColumn
+            images={secondColumnImages}
+            setLightboxImage={setLightboxImage}
+          />
+        </ColumnLayout>
       </main>
       <Lightbox
         isOpen={isLightboxOpen}
