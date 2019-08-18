@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "public": true,
   "name": "euanmarten",
   "alias": ["euanmarten", "euanmarten.com", "www.euanmarten.com"],
   "regions": ["lhr1"],
