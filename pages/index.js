@@ -8,10 +8,10 @@ import Nav from '../components/Nav';
 // TODO: add srcset support
 const IMAGE_WIDTH = 1280;
 
-const Image = ({ image: { src, altText }, ...rest }) => <img src={src} alt={altText} {...rest} />;
+const Image = ({ src, image: { altText }, ...rest }) => <img src={src} alt={altText} {...rest} />;
 
-const Thumbnail = ({ imageFilename, onClick }) => {
-  const src = getImageSrc(imageFilename, { width: IMAGE_WIDTH });
+const Thumbnail = ({ image, onClick }) => {
+  const src = getImageSrc(image, { width: IMAGE_WIDTH });
 
   return (
     <div className="mb1 mb2-ns">
@@ -21,7 +21,7 @@ const Thumbnail = ({ imageFilename, onClick }) => {
         className="button-reset bn pa0 db w-100 pointer"
         onClick={onClick}
       >
-        <Image image={{ src }} className="w-100 db" />
+        <Image src={src} image={image} className="w-100 db" />
       </button>
     </div>
   );
@@ -29,17 +29,17 @@ const Thumbnail = ({ imageFilename, onClick }) => {
 
 const ThumbnailColumn = ({ images, className, setLightboxImage }) => (
   <div className={`ThumbnailColumn ${className}`}>
-    {images.map(filename => (
+    {images.map(image => (
       <Thumbnail
-        key={filename}
-        imageFilename={filename}
-        onClick={() => setLightboxImage(filename)}
+        key={image.filename}
+        image={image}
+        onClick={() => setLightboxImage(image)}
       />
     ))}
   </div>
 );
 
-const TwoColumnLayout = ({ images, setLightboxImage }) => {
+const TwoColumnLayout = ({ images, ...rest }) => {
   const firstColumnImages = [];
   const secondColumnImages = [];
 
@@ -57,18 +57,18 @@ const TwoColumnLayout = ({ images, setLightboxImage }) => {
       <ThumbnailColumn
         images={firstColumnImages}
         className="w-50 pa1 pa2-ns"
-        setLightboxImage={setLightboxImage}
+        {...rest}
       />
       <ThumbnailColumn
         images={secondColumnImages}
         className="w-50 pa1 pa2-ns pl0 pl0-ns"
-        setLightboxImage={setLightboxImage}
+        {...rest}
       />
     </div>
   );
 };
 
-const LightboxOverlay = ({ src, onClose }) => {
+const LightboxOverlay = ({ image, onClose }) => {
   useEffect(() => {
     const escapeKeyHandler = event => {
       if (event.keyCode === 27) { // escape
@@ -79,9 +79,11 @@ const LightboxOverlay = ({ src, onClose }) => {
     return () => window.removeEventListener('keydown', escapeKeyHandler);
   })
 
+  const src = getImageSrc(image, { width: IMAGE_WIDTH });
+
   return (
     <div className="Lightbox fixed absolute--fill bg-near-black pt5 pb5 pt4-l pb4-l pr5-l pl5-l">
-      <Image image={{ src }} />
+      <Image src={src} image={image} />
       <button
         title="Close"
         type="button"
@@ -97,10 +99,9 @@ const LightboxOverlay = ({ src, onClose }) => {
   );
 };
 
-const Lightbox = ({ isOpen, imageFilename, ...rest }) => {
-  if(isOpen && imageFilename) {
-    const src = getImageSrc(imageFilename, { width: IMAGE_WIDTH });
-    return <LightboxOverlay src={src} {...rest} />;
+const Lightbox = ({ isOpen, image, ...rest }) => {
+  if(isOpen && image) {
+    return <LightboxOverlay image={image} {...rest} />;
   } else {
     return null;
   }
@@ -126,7 +127,7 @@ const Home = ({ env }) => {
       </main>
       <Lightbox
         isOpen={isLightboxOpen}
-        imageFilename={lightboxImage}
+        image={lightboxImage}
         onClose={() => setLightboxImage(null)}
       />
     </div>

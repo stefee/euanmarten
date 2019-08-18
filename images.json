@@ -1,14 +1,41 @@
 {
   "images": [
-    "growing2.png",
-    "point.jpg",
-    "oranges.jpg",
-    "body.jpg",
-    "self.jpg",
-    "bilbo2.png",
-    "owl.jpg",
-    "peel.jpg",
-    "sword.jpg"
+    {
+      "filename": "growing2.png",
+      "altText": "Illustration: growing"
+    },
+    {
+      "filename": "point.jpg",
+      "altText": "Illustration: point"
+    },
+    {
+      "filename": "oranges.jpg",
+      "altText": "Illustration: oranges"
+    },
+    {
+      "filename": "body.jpg",
+      "altText": "Illustration: body"
+    },
+    {
+      "filename": "self.jpg",
+      "altText": "Illustration: self"
+    },
+    {
+      "filename": "bilbo2.png",
+      "altText": "Illustration: bilbo"
+    },
+    {
+      "filename": "owl.jpg",
+      "altText": "Illustration: owl"
+    },
+    {
+      "filename": "peel.jpg",
+      "altText": "Illustration: peel"
+    },
+    {
+      "filename": "sword.jpg",
+      "altText": "Illustration: sword"
+    }
   ],
   "renditions": [
     {

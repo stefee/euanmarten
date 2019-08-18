@@ -11,7 +11,7 @@ const getRenditionFilename = (filename, { width, height }) => {
   return `${imageName}_${renditionName}.${imageFileExtension}`;
 };
 
-const getImageSrc = (filename, rendition) => {
+const getImageSrc = ({ filename }, rendition) => {
   if (rendition) {
     const renditionFilename = getRenditionFilename(filename, rendition);
     return `/static/images/renditions/${renditionFilename}`;
