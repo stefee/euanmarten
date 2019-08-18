@@ -2,7 +2,7 @@
 const fs = require('fs').promises;
 const del = require('del');
 const createLoggerFn = require('./utils/logger');
-const buildImageRenditions = require('./utils/build-image-renditions');
+const createImageRenditions = require('./utils/create-image-renditions');
 
 const logger = {
   debug: createLoggerFn(console.debug, '  '),
@@ -17,19 +17,20 @@ const exec = async () => {
 
     const { renditions, buildConfig } = JSON.parse(await fs.readFile('images.json'));
 
-    const outputDirJobs = buildConfig.outputDir.map(dir => async () => {
-      await del(dir);
-      await fs.mkdir(dir, { recursive: true });
+    logger.debug('Creating output directories...');
+
+    const outputDirJobs = buildConfig.output.map(path => async () => {
+      await del(path);
+      await fs.mkdir(path, { recursive: true });
     });
+
     await Promise.all(outputDirJobs.map(job => job()));
 
-    logger.debug('Building renditions...');
+    logger.debug('Creating renditions...');
 
-    await buildImageRenditions({ logger }, renditions, buildConfig);
+    await createImageRenditions({ logger }, renditions, buildConfig);
 
-    logger.info('Finished building image renditions.', '✅');
-
-    setImmediate(process.exit.bind(process, 0));
+    logger.info('Finished building images.', '✅');
   } catch (err) {
     logger.error(err);
     logger.error('Something went wrong, terminating process');

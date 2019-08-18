@@ -43,8 +43,8 @@
     }
   ],
   "buildConfig": {
-    "inputDir": "static/images",
-    "outputDir": [
+    "input": "static/images",
+    "output": [
       "static/renditions",
       "dist/static/renditions"
     ],

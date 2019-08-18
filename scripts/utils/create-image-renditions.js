@@ -61,11 +61,8 @@ const createRendition = async (context, inputPath, outputPaths, filename, rendit
 
   const renditionFilename = getRenditionFilename(filename, rendition);
 
-  const imagePath = path.join(inputPath, filename);
-  const renditionPaths = outputPaths.map(p => path.join(p, renditionFilename));
-
   try {
-    const image = gm(imagePath);
+    const image = gm(path.join(inputPath, filename));
 
     const { width, height } = rendition;
 
@@ -73,13 +70,14 @@ const createRendition = async (context, inputPath, outputPaths, filename, rendit
 
     const optimisedImage = await optimiseImage({ ...context, filename }, image, width, height);
 
+    const renditionPaths = outputPaths.map(output => path.join(output, renditionFilename));
+
     const writeImageJobs = renditionPaths.map(path => async () => {
       await writeImage(optimisedImage, path);
-
       logger.info(`Created ${path}`, '✨');
     });
-    await Promise.all(writeImageJobs.map(job => job()));
 
+    await Promise.all(writeImageJobs.map(job => job()));
   } catch (err) {
     err.message = `Error creating rendition ${renditionFilename}:\n${err.message || ''}`;
     throw err;
@@ -88,11 +86,10 @@ const createRendition = async (context, inputPath, outputPaths, filename, rendit
 
 const createImageRenditions = async (context, renditions, args) => {
   const { logger } = context;
-  const { inputDir, outputDir } = args;
 
-  logger.info(`Finding images in directory ${args.inputDir}...`, '🔎');
+  logger.info(`Finding images in directory ${args.input}...`, '🔎');
 
-  const filenames = await getImageFilenames(args.inputDir, args.fileTypes);
+  const filenames = await getImageFilenames(args.input, args.fileTypes);
 
   logger.info(`Creating optimised renditions for ${filenames.length} images...`);
 
@@ -101,7 +98,7 @@ const createImageRenditions = async (context, renditions, args) => {
 
   const renditionPromises = filenames.reduce((acc, filename) => {
     const jobs = renditions.map(rendition => () => {
-      return createRendition(contextWithArgs, inputDir, outputDir, filename, rendition);
+      return createRendition(contextWithArgs, args.input, args.output, filename, rendition);
     });
 
     const promises = jobs.map(job => renditionPromiseLimit(() => job()));
