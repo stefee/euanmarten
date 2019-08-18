@@ -56,26 +56,30 @@ const optimiseImage = async (context, image, width, height) => {
     .noProfile();
 };
 
-const createRendition = async (context, inputPath, outputPath, filename, rendition) => {
+const createRendition = async (context, inputPath, outputPaths, filename, rendition) => {
   const { logger } = context;
 
   const renditionFilename = getRenditionFilename(filename, rendition);
 
   const imagePath = path.join(inputPath, filename);
-  const renditionPath = path.join(outputPath, renditionFilename);
+  const renditionPaths = outputPaths.map(p => path.join(p, renditionFilename));
 
   try {
     const image = gm(imagePath);
 
     const { width, height } = rendition;
 
-    logger.info(`Optimising ${renditionPath}...`, '🔧');
+    logger.info(`Optimising ${renditionFilename}...`, '🔧');
 
     const optimisedImage = await optimiseImage({ ...context, filename }, image, width, height);
 
-    await writeImage(optimisedImage, renditionPath);
+    const writeImageJobs = renditionPaths.map(path => async () => {
+      await writeImage(optimisedImage, path);
 
-    logger.info(`Created ${renditionPath}`, '✨');
+      logger.info(`Created ${path}`, '✨');
+    });
+    await Promise.all(writeImageJobs.map(job => job()));
+
   } catch (err) {
     err.message = `Error creating rendition ${renditionFilename}:\n${err.message || ''}`;
     throw err;

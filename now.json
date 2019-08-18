@@ -15,8 +15,7 @@
   "builds": [
     {
       "src": "build-images.sh",
-      "use": "@now/static-build",
-      "config": { "distDir": "dist/renditions" }
+      "use": "@now/static-build"
     },
     {
       "src": "package.json",

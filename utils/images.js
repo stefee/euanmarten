@@ -15,7 +15,7 @@ const getRenditionFilename = (filename, { width, height }) => {
 const getImageSrc = ({ filename }, rendition) => {
   if (rendition) {
     const renditionFilename = getRenditionFilename(filename, rendition);
-    return `/static/images/${renditionFilename}`;
+    return `/static/renditions/${renditionFilename}`;
   } else {
     return `/static/images/${filename}`;
   }

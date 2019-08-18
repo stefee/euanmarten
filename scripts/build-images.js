@@ -17,10 +17,11 @@ const exec = async () => {
 
     const { renditions, buildConfig } = JSON.parse(await fs.readFile('images.json'));
 
-    logger.debug('Removing output directory...');
-
-    await del(buildConfig.outputDir);
-    await fs.mkdir(buildConfig.outputDir, { recursive: true });
+    const outputDirJobs = buildConfig.outputDir.map(dir => async () => {
+      await del(dir);
+      await fs.mkdir(dir, { recursive: true });
+    });
+    await Promise.all(outputDirJobs.map(job => job()));
 
     logger.debug('Building renditions...');
 

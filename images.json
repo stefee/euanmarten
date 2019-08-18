@@ -44,7 +44,10 @@
   ],
   "buildConfig": {
     "inputDir": "static/images",
-    "outputDir": "dist/renditions/static/images",
+    "outputDir": [
+      "static/renditions",
+      "dist/static/renditions"
+    ],
     "concurrency": 20,
     "fileTypes": ["jpg", "jpeg", "png"],
     "compression": {
