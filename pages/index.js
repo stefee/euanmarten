@@ -50,8 +50,9 @@ const Home = ({ env }) => {
   return (
     <main>
       <ColumnLayout columns={THUMBNAIL_COLUMNS}>
-        {imageColumns.map(images => (
+        {imageColumns.map((images, i) => (
           <ThumbnailColumn
+            key={i}
             images={images}
             setLightboxImage={setLightboxImage}
           />

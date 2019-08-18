@@ -41,7 +41,7 @@ const ColumnLayout = ({
         // fix for thirds
         const width = (columns === 3) && (i % columns === 2) ? 34 : columnWidth;
         const className = getColumnClassName(horizontalPadding, verticalPadding, width);
-        return <div className={className}>{el}</div>;
+        return <div key={i} className={className}>{el}</div>;
       })}
     </div>
   );
