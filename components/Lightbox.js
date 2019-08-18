@@ -7,25 +7,30 @@ const IMAGE_WIDTH = 1280; // TODO: add srcset support
 
 const LightboxOverlay = ({ image, onClose }) => {
   const closeButtonRef = useRef(null);
+  const returnFocusRef = useRef(null);
+
+  const close = () => {
+    if (returnFocusRef.current) {
+      returnFocusRef.current.focus();
+    }
+    onClose();
+  };
 
   // close lightbox on escape key
   useEffect(() => {
     const escapeKeyHandler = event => {
       if (event.keyCode === 27) { // escape
-        onClose();
+        close();
       }
     };
     window.addEventListener('keydown', escapeKeyHandler);
     return () => window.removeEventListener('keydown', escapeKeyHandler);
   });
 
-  // focus close button and return focus to document after closing
+  // focus close button and return focus after closing
   useEffect(() => {
-    const activeElement = window.document.activeElement;
+    returnFocusRef.current = window.document.activeElement;
     closeButtonRef.current.focus();
-    closeButtonRef.current.addEventListener('click', () => {
-      activeElement.focus()
-    });
   });
 
   const src = getImageSrc(image, { width: IMAGE_WIDTH });
@@ -39,7 +44,7 @@ const LightboxOverlay = ({ image, onClose }) => {
         className="Lightbox-CloseButton button-reset bg-transparent bn db pointer pa3 absolute top-0 right-0 right-1-ns"
         onClick={e => {
           e.preventDefault();
-          onClose();
+          close();
         }}
         ref={closeButtonRef}
       >
