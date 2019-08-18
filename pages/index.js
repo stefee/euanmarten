@@ -8,7 +8,7 @@ import Nav from '../components/Nav';
 // TODO: add srcset support
 const IMAGE_WIDTH = 1280;
 
-const Image = ({ image: { src, altText = '' }, ...rest }) => <img src={src} alt={altText} {...rest} />;
+const Image = ({ image: { src, altText }, ...rest }) => <img src={src} alt={altText} {...rest} />;
 
 const Thumbnail = ({ imageFilename, onClick }) => {
   const src = getImageSrc(imageFilename, { width: IMAGE_WIDTH });
