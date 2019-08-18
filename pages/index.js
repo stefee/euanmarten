@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import 'tachyons';
-import '../style.css';
 import { classNames } from '../utils/classNames';
 import { splitArrayAlternating } from '../utils/arrays';
 import { getImageSrc } from '../utils/images';
 import Image from '../components/Image';
-import Nav from '../components/Nav';
 import ColumnLayout from '../components/ColumnLayout';
 import Lightbox from '../components/Lightbox';
 
-const COLUMNS = 2;
-
-// TODO: add srcset support
-const IMAGE_WIDTH = 1280;
+const THUMBNAIL_COLUMNS = 2;
+const IMAGE_WIDTH = 1280; // TODO: add srcset support
 
 const Thumbnail = ({ image, onClick }) => {
   const src = getImageSrc(image, { width: IMAGE_WIDTH });
@@ -31,8 +26,8 @@ const Thumbnail = ({ image, onClick }) => {
   );
 };
 
-const ThumbnailColumn = ({ images, className, setLightboxImage }) => (
-  <div className={className}>
+const ThumbnailColumn = ({ images, setLightboxImage }) => (
+  <div>
     {images.map(image => (
       <Thumbnail
         key={image.filename}
@@ -50,29 +45,24 @@ const Home = ({ env }) => {
 
   const isLightboxOpen = !!lightboxImage;
 
-  const imageColumns = splitArrayAlternating(images, COLUMNS);
+  const imageColumns = splitArrayAlternating(images, THUMBNAIL_COLUMNS);
 
   return (
-    <div className="sans-serif overflow-x-hidden">
-      <div className="pa4">
-        <Nav />
-      </div>
-      <main>
-        <ColumnLayout columns={COLUMNS}>
-          {imageColumns.map(images => (
-            <ThumbnailColumn
-              images={images}
-              setLightboxImage={setLightboxImage}
-            />
-          ))}
-        </ColumnLayout>
-      </main>
+    <main>
+      <ColumnLayout columns={THUMBNAIL_COLUMNS}>
+        {imageColumns.map(images => (
+          <ThumbnailColumn
+            images={images}
+            setLightboxImage={setLightboxImage}
+          />
+        ))}
+      </ColumnLayout>
       <Lightbox
         isOpen={isLightboxOpen}
         image={lightboxImage}
         onClose={() => setLightboxImage(null)}
       />
-    </div>
+    </main>
   );
 };
 

@@ -3,8 +3,7 @@ import { getImageSrc } from '../utils/images';
 import Icon from './Icon';
 import Image from './Image';
 
-// TODO: add srcset support
-const IMAGE_WIDTH = 1280;
+const IMAGE_WIDTH = 1280; // TODO: add srcset support
 
 const LightboxOverlay = ({ image, onClose }) => {
   useEffect(() => {
