@@ -93,7 +93,7 @@ const Home = ({ env }) => {
   const [firstColumnImages, secondColumnImages] = splitArrayAlternating(images, 2);
 
   return (
-    <div className="sans-serif overflow-hidden">
+    <div className="sans-serif overflow-x-hidden">
       <div className="pa4">
         <Nav />
       </div>
