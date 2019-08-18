@@ -22,6 +22,11 @@ a:hover {
   outline: none;
 }
 
+.Thumbnail img {
+  min-height: 35vw;
+  background-color: #f2f2f2;
+}
+
 .Lightbox img {
   animation: fadeIn 0.1s 0.1s both;
   width: 100%;
