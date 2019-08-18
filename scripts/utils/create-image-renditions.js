@@ -72,10 +72,12 @@ const createRendition = async (context, inputPath, outputPaths, filename, rendit
 
     const renditionPaths = outputPaths.map(output => path.join(output, renditionFilename));
 
-    for (const path of renditionPaths) {
+    const writeImageJobs = renditionPaths.map(path => async () => {
       await writeImage(optimisedImage, path);
       logger.info(`Created ${path}`, '✨');
-    }
+    });
+
+    await Promise.all(writeImageJobs.map(job => job()));
   } catch (err) {
     err.message = `Error creating rendition ${renditionFilename}:\n${err.message || ''}`;
     throw err;
