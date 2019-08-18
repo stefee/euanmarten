@@ -40,6 +40,18 @@
   "renditions": [
     {
       "width": 1280
+    },
+    {
+      "width": 1024
+    },
+    {
+      "width": 760
+    },
+    {
+      "width": 640
+    },
+    {
+      "width": 320
     }
   ],
   "buildConfig": {
