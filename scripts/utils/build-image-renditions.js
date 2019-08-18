@@ -69,6 +69,8 @@ const createRendition = async (context, inputPath, outputPath, filename, renditi
 
     const { width, height } = rendition;
 
+    logger.info(`Optimising ${renditionPath}...`, '🔧');
+
     const optimisedImage = await optimiseImage({ ...context, filename }, image, width, height);
 
     await writeImage(optimisedImage, renditionPath);
@@ -84,11 +86,11 @@ const createImageRenditions = async (context, renditions, args) => {
   const { logger } = context;
   const { inputDir, outputDir } = args;
 
-  logger.info(`Finding images in directory ${args.inputDir}`, '🔎');
+  logger.info(`Finding images in directory ${args.inputDir}...`, '🔎');
 
   const filenames = await getImageFilenames(args.inputDir, args.fileTypes);
 
-  logger.info(`Creating optimised renditions for ${filenames.length} images`);
+  logger.info(`Creating optimised renditions for ${filenames.length} images...`);
 
   const contextWithArgs = { ...context, args };
   const renditionPromiseLimit = promiseLimit(args.concurrency);
