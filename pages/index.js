@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { classNames } from '../utils/classNames';
+import React, { useState } from 'react';
 import { splitArrayAlternating } from '../utils/arrays';
 import { getImageSrc } from '../utils/images';
 import Image from '../components/Image';
