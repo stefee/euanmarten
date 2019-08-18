@@ -9,7 +9,7 @@ const THUMBNAIL_COLUMNS = 2;
 const IMAGE_WIDTH = 1280; // TODO: add srcset support
 
 const Thumbnail = ({ image, onClick }) => {
-  const src = getImageSrc(image);
+  const src = getImageSrc(image, { width: IMAGE_WIDTH });
 
   return (
     <div className="mb2">

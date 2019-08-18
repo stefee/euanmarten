@@ -14,6 +14,11 @@
   ],
   "builds": [
     {
+      "src": "build-images.sh",
+      "use": "@now/static-build",
+      "config": { "distDir": "." }
+    },
+    {
       "src": "package.json",
       "use": "@now/next"
     }
