@@ -12,7 +12,7 @@ const Thumbnail = ({ image, onClick }) => {
   const src = getImageSrc(image, { width: IMAGE_WIDTH });
 
   return (
-    <div className="mb2">
+    <div className="Thumbnail mb2">
       <button
         title="View Image"
         type="button"
