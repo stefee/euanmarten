@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "build:images": "scripts/build-images.js",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest",
+    "tdd": "jest --watch"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
@@ -21,6 +23,7 @@
   "devDependencies": {
     "del": "^5.0.0",
     "gm": "^1.23.1",
+    "jest": "^24.9.0",
     "promise-limit": "^2.7.0"
   }
 }
