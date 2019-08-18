@@ -8,6 +8,8 @@ import Icon from '../components/Icon';
 import Nav from '../components/Nav';
 import ColumnLayout from '../components/ColumnLayout';
 
+const COLUMNS = 2;
+
 // TODO: add srcset support
 const IMAGE_WIDTH = 1280;
 
@@ -90,7 +92,7 @@ const Home = ({ env }) => {
 
   const isLightboxOpen = !!lightboxImage;
 
-  const [firstColumnImages, secondColumnImages] = splitArrayAlternating(images, 2);
+  const imageColumns = splitArrayAlternating(images, COLUMNS);
 
   return (
     <div className="sans-serif overflow-x-hidden">
@@ -98,15 +100,13 @@ const Home = ({ env }) => {
         <Nav />
       </div>
       <main>
-        <ColumnLayout columns={2}>
-          <ThumbnailColumn
-            images={firstColumnImages}
-            setLightboxImage={setLightboxImage}
-          />
-          <ThumbnailColumn
-            images={secondColumnImages}
-            setLightboxImage={setLightboxImage}
-          />
+        <ColumnLayout columns={COLUMNS}>
+          {imageColumns.map(images => (
+            <ThumbnailColumn
+              images={images}
+              setLightboxImage={setLightboxImage}
+            />
+          ))}
         </ColumnLayout>
       </main>
       <Lightbox
