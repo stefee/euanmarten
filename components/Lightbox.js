@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { getImageSrc } from '../utils/images';
 import Icon from './Icon';
 import Image from './Image';
@@ -6,6 +6,9 @@ import Image from './Image';
 const IMAGE_WIDTH = 1280; // TODO: add srcset support
 
 const LightboxOverlay = ({ image, onClose }) => {
+  const closeButtonRef = useRef(null);
+
+  // close lightbox on escape key
   useEffect(() => {
     const escapeKeyHandler = event => {
       if (event.keyCode === 27) { // escape
@@ -14,7 +17,16 @@ const LightboxOverlay = ({ image, onClose }) => {
     };
     window.addEventListener('keydown', escapeKeyHandler);
     return () => window.removeEventListener('keydown', escapeKeyHandler);
-  })
+  });
+
+  // focus close button and return focus to document after closing
+  useEffect(() => {
+    const activeElement = window.document.activeElement;
+    closeButtonRef.current.focus();
+    closeButtonRef.current.addEventListener('click', () => {
+      activeElement.focus()
+    });
+  });
 
   const src = getImageSrc(image, { width: IMAGE_WIDTH });
 
@@ -29,6 +41,7 @@ const LightboxOverlay = ({ image, onClose }) => {
           e.preventDefault();
           onClose();
         }}
+        ref={closeButtonRef}
       >
         <Icon name="CLOSE" className="white" />
       </button>
