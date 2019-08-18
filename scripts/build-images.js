@@ -19,12 +19,10 @@ const exec = async () => {
 
     logger.debug('Creating output directories...');
 
-    const outputDirJobs = buildConfig.output.map(path => async () => {
+    for (const path of buildConfig.output) {
       await del(path);
       await fs.mkdir(path, { recursive: true });
-    });
-
-    await Promise.all(outputDirJobs.map(job => job()));
+    }
 
     logger.debug('Creating renditions...');
 
