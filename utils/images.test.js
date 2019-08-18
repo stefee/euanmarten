@@ -38,7 +38,7 @@ describe('get image src', () => {
   it('should return the absolute src path for the given image rendition', () => {
     const image = { filename: 'mock.ext' };
     const rendition = { width: 100, height: 200 };
-    const expected = '/static/images/renditions/mock_100x200.ext';
+    const expected = '/static/images/mock_100x200.ext';
     expect(getImageSrc(image, rendition)).toEqual(expected);
   });
 });
