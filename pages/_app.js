@@ -20,7 +20,7 @@ class MyApp extends App {
           <meta name="description" content="Euan Marten is an illustrator & designer with a BA in Illustration from Norwich University of the Arts." />
         </Head>
 
-        <div className="sans-serif overflow-x-hidden">
+        <div className="sans-serif">
           <div className="pa4">
             <Nav />
           </div>
