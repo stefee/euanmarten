@@ -15,13 +15,13 @@ const Image = ({ image, renditions, viewportWidth = 100, ...rest }) => {
   const renditionSrcset = getSrcset(sortedRenditions, renditionSrcs);
 
   const sizes = getSizes({
-    defaultWidth: `${viewportWidth}vw`,
+    defaultImageWidth: `${viewportWidth}vw`,
     breakpoints: [
       {
-        minWidth: '960px'
+        viewportMinWidth: '960px'
       },
       {
-        minWidth: '480px'
+        viewportMinWidth: '480px'
       }
     ]
   });
