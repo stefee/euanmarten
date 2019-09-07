@@ -15,7 +15,7 @@ const Thumbnail = ({ image, renditions, onClick }) => (
       className="button-reset bn pa0 db w-100 pointer"
       onClick={onClick}
     >
-      <Image image={image} renditions={renditions} className="w-100 db" />
+      <Image image={image} renditions={renditions} viewportWidth={50} className="w-100 db" />
     </button>
   </div>
 );

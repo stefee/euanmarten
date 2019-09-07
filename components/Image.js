@@ -3,17 +3,17 @@ import { getImageSrc } from '../utils/images';
 
 const BREAKPOINTS = [960, 480];
 
-const getSizes = breakpoints => {
-  const sizes = breakpoints.map(width => `(min-width: ${width}px) 100vw`);
-  sizes.push('100vw');
+const getSizes = (breakpoints, viewportWidth) => {
+  const sizes = breakpoints.map(width => `(min-width: ${width}px) ${viewportWidth}vw`);
+  sizes.push(`${viewportWidth}vw`);
   return sizes.join(',');
 };
 
 const getSrcset = (renditions, srcs) => srcs
     .map((src, i) => `${src} ${renditions[i].width}w`)
-    .join(',')
+    .join(',');
 
-const Image = ({ image, renditions, ...rest }) => {
+const Image = ({ image, renditions, viewportWidth = 100, ...rest }) => {
   const sortedRenditions = renditions.sort((a, b) => a.width > b.width);
 
   const renditionSrcs = sortedRenditions
@@ -21,7 +21,7 @@ const Image = ({ image, renditions, ...rest }) => {
 
   const renditionSrcset = getSrcset(sortedRenditions, renditionSrcs);
 
-  const sizes = getSizes(BREAKPOINTS);
+  const sizes = getSizes(BREAKPOINTS, viewportWidth);
 
   return (
     <img
