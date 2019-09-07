@@ -6,6 +6,7 @@ import ColumnLayout from '../components/ColumnLayout';
 import Lightbox from '../components/Lightbox';
 
 const THUMBNAIL_COLUMNS = 2;
+const THUMBNAIL_PADDING = 1;
 const IMAGE_WIDTH = 1280; // TODO: add srcset support
 
 const Thumbnail = ({ image, onClick }) => {
@@ -48,7 +49,11 @@ const Home = ({ env }) => {
 
   return (
     <main>
-      <ColumnLayout columns={THUMBNAIL_COLUMNS}>
+      <ColumnLayout
+        columns={THUMBNAIL_COLUMNS}
+        verticalPadding={THUMBNAIL_PADDING}
+        horizontalPadding={THUMBNAIL_PADDING}
+      >
         {imageColumns.map((images, i) => (
           <ThumbnailColumn
             key={i}
