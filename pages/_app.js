@@ -1,5 +1,5 @@
-import React from 'react';
-import App, { Container } from 'next/app';
+import React, { Fragment } from 'react';
+import App from 'next/app';
 import Head from 'next/head';
 import 'tachyons';
 import '../style.css';
@@ -14,7 +14,7 @@ class MyApp extends App {
     const env = getProcessEnv();
 
     return (
-      <Container>
+      <Fragment>
         <Head>
           <title>Euan Marten Portfolio</title>
           <meta name="description" content="Euan Marten is an illustrator & designer with a BA in Illustration from Norwich University of the Arts." />
@@ -26,7 +26,7 @@ class MyApp extends App {
           </div>
           <Component {...pageProps} env={env} />
         </div>
-      </Container>
+      </Fragment>
     );
   }
 }

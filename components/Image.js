@@ -1,13 +1,6 @@
 import React from 'react';
+import getSizes from '@renditions/get-img-sizes';
 import { getImageSrc } from '../utils/images';
-
-const BREAKPOINTS = [960, 480];
-
-const getSizes = (breakpoints, viewportWidth) => {
-  const sizes = breakpoints.map(width => `(min-width: ${width}px) ${viewportWidth}vw`);
-  sizes.push(`${viewportWidth}vw`);
-  return sizes.join(',');
-};
 
 const getSrcset = (renditions, srcs) => srcs
     .map((src, i) => `${src} ${renditions[i].width}w`)
@@ -21,7 +14,17 @@ const Image = ({ image, renditions, viewportWidth = 100, ...rest }) => {
 
   const renditionSrcset = getSrcset(sortedRenditions, renditionSrcs);
 
-  const sizes = getSizes(BREAKPOINTS, viewportWidth);
+  const sizes = getSizes({
+    defaultWidth: `${viewportWidth}vw`,
+    breakpoints: [
+      {
+        minWidth: '960px'
+      },
+      {
+        minWidth: '480px'
+      }
+    ]
+  });
 
   return (
     <img
