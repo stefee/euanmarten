@@ -6,7 +6,7 @@ const getSrcset = (renditions, srcs) => srcs
     .map((src, i) => `${src} ${renditions[i].width}w`)
     .join(',');
 
-const Image = ({ image, renditions, viewportWidth = 100, ...rest }) => {
+const Image = ({ image, renditions, width = '100vw', ...rest }) => {
   const sortedRenditions = renditions.sort((a, b) => a.width > b.width);
 
   const renditionSrcs = sortedRenditions
@@ -14,17 +14,7 @@ const Image = ({ image, renditions, viewportWidth = 100, ...rest }) => {
 
   const renditionSrcset = getSrcset(sortedRenditions, renditionSrcs);
 
-  const sizes = getSizes({
-    defaultImageWidth: `${viewportWidth}vw`,
-    breakpoints: [
-      {
-        viewportMinWidth: '960px'
-      },
-      {
-        viewportMinWidth: '480px'
-      }
-    ]
-  });
+  const sizes = getSizes({ defaultImageWidth: width });
 
   return (
     <img
