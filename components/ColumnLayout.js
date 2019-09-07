@@ -10,6 +10,7 @@ import {
 
 const getLayoutClassName = (horizontalPadding, verticalPadding) => (
   classNames(
+    'flex flex-row flex-wrap',
     horizontalMarginClass(horizontalPadding),
     verticalMarginClass(verticalPadding)
   )
@@ -34,14 +35,12 @@ const ColumnLayout = ({
 
   return (
     <div className={layoutClassName}>
-      <div className="flex flex-row flex-wrap">
-        {Children.toArray(children).map((el, i) => {
-          // fix for thirds
-          const width = (columns === 3) && (i % columns === 2) ? 34 : columnWidth;
-          const className = getColumnClassName(horizontalPadding, verticalPadding, width);
-          return <div key={i} className={className}>{el}</div>;
-        })}
-      </div>
+      {Children.toArray(children).map((el, i) => {
+        // fix for thirds
+        const width = (columns === 3) && (i % columns === 2) ? 34 : columnWidth;
+        const className = getColumnClassName(horizontalPadding, verticalPadding, width);
+        return <div key={i} className={className}>{el}</div>;
+      })}
     </div>
   );
 };
