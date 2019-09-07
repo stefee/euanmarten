@@ -1,11 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import { getImageSrc } from '../utils/images';
 import Icon from './Icon';
 import Image from './Image';
 
-const IMAGE_WIDTH = 1280; // TODO: add srcset support
-
-const LightboxOverlay = ({ image, onClose }) => {
+const LightboxOverlay = ({ image, renditions, onClose }) => {
   const closeButtonRef = useRef(null);
   const returnFocusRef = useRef(null);
 
@@ -33,11 +30,9 @@ const LightboxOverlay = ({ image, onClose }) => {
     closeButtonRef.current.focus();
   });
 
-  const src = getImageSrc(image, { width: IMAGE_WIDTH });
-
   return (
     <div className="Lightbox fixed absolute--fill bg-near-black pt5 pb5 pt4-l pb4-l pr5-l pl5-l">
-      <Image src={src} image={image} />
+      <Image image={image} renditions={renditions} />
       <button
         title="Close"
         type="button"

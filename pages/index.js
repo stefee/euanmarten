@@ -1,37 +1,32 @@
 import React, { useState } from 'react';
 import { splitArrayAlternating } from '../utils/arrays';
-import { getImageSrc } from '../utils/images';
 import Image from '../components/Image';
 import ColumnLayout from '../components/ColumnLayout';
 import Lightbox from '../components/Lightbox';
 
 const THUMBNAIL_COLUMNS = 2;
 const THUMBNAIL_PADDING = 1;
-const IMAGE_WIDTH = 1280; // TODO: add srcset support
 
-const Thumbnail = ({ image, onClick }) => {
-  const src = getImageSrc(image, { width: IMAGE_WIDTH });
+const Thumbnail = ({ image, renditions, onClick }) => (
+  <div className="Thumbnail mb2">
+    <button
+      title="View Image"
+      type="button"
+      className="button-reset bn pa0 db w-100 pointer"
+      onClick={onClick}
+    >
+      <Image image={image} renditions={renditions} className="w-100 db" />
+    </button>
+  </div>
+);
 
-  return (
-    <div className="Thumbnail mb2">
-      <button
-        title="View Image"
-        type="button"
-        className="button-reset bn pa0 db w-100 pointer"
-        onClick={onClick}
-      >
-        <Image src={src} image={image} className="w-100 db" />
-      </button>
-    </div>
-  );
-};
-
-const ThumbnailColumn = ({ images, setLightboxImage }) => (
+const ThumbnailColumn = ({ images, renditions, setLightboxImage }) => (
   <div>
     {images.map(image => (
       <Thumbnail
         key={image.filename}
         image={image}
+        renditions={renditions}
         onClick={() => setLightboxImage(image)}
       />
     ))}
@@ -39,7 +34,7 @@ const ThumbnailColumn = ({ images, setLightboxImage }) => (
 );
 
 const Home = ({ env }) => {
-  const { images } = env.IMAGES;
+  const { images, renditions } = env.IMAGES;
 
   const [lightboxImage, setLightboxImage] = useState(null);
 
@@ -58,6 +53,7 @@ const Home = ({ env }) => {
           <ThumbnailColumn
             key={i}
             images={images}
+            renditions={renditions}
             setLightboxImage={setLightboxImage}
           />
         ))}
@@ -65,6 +61,7 @@ const Home = ({ env }) => {
       <Lightbox
         isOpen={isLightboxOpen}
         image={lightboxImage}
+        renditions={renditions}
         onClose={() => setLightboxImage(null)}
       />
     </main>
