@@ -897,6 +897,13 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@renditions/get-srcset/-/get-srcset-1.0.0.tgz#bc8f3f44643326b8c5e7203bc7319ff1f51904a4"
 
+"@renditions/react-img@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@renditions/react-img/-/react-img-1.0.0.tgz#22d9dea3ffb1b4ab5516eab781b3910d4ac25846"
+  dependencies:
+    "@renditions/get-sizes" "^2.1.0"
+    "@renditions/get-srcset" "^1.0.0"
+
 "@types/babel__core@^7.1.0":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.2.tgz#608c74f55928033fce18b99b213c16be4b3d114f"
@@ -4805,7 +4812,7 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-dom@16.9.0:
+react-dom@^16.9.0:
   version "16.9.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.9.0.tgz#5e65527a5e26f22ae3701131bcccaee9fb0d3962"
   dependencies:
@@ -4826,7 +4833,7 @@ react-is@^16.8.1, react-is@^16.8.4:
   version "16.9.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.9.0.tgz#21ca9561399aad0ff1a7701c01683e8ca981edcb"
 
-react@16.9.0:
+react@^16.9.0:
   version "16.9.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.9.0.tgz#40ba2f9af13bc1a38d75dbf2f4359a5185c4f7aa"
   dependencies:
