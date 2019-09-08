@@ -889,9 +889,9 @@
     "@nodelib/fs.scandir" "2.1.1"
     fastq "^1.6.0"
 
-"@renditions/get-img-sizes@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@renditions/get-img-sizes/-/get-img-sizes-0.0.5.tgz#b0e49f85f1d1e27bb73ea24aef2050775a069e24"
+"@renditions/get-sizes@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@renditions/get-sizes/-/get-sizes-0.0.7.tgz#1340efde6f2f1e8b01d09f9e835c1350c0a80720"
 
 "@types/babel__core@^7.1.0":
   version "7.1.2"

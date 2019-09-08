@@ -1,5 +1,5 @@
 import React from 'react';
-import getSizes from '@renditions/get-img-sizes';
+import getSizes from '@renditions/get-sizes';
 import { getImageSrc } from '../utils/images';
 
 const getSrcset = (renditions, srcs) => srcs
@@ -14,7 +14,7 @@ const Image = ({ image, renditions, width = '100vw', ...rest }) => {
 
   const renditionSrcset = getSrcset(sortedRenditions, renditionSrcs);
 
-  const sizes = getSizes({ defaultImageWidth: width });
+  const sizes = getSizes({ width });
 
   return (
     <img
