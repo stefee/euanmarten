@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@renditions/get-sizes": "^0.0.7",
+    "@renditions/get-srcset": "^0.0.4",
     "@zeit/next-css": "^1.0.1",
     "next": "^9.0.5",
     "react": "16.9.0",
