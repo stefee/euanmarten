@@ -889,13 +889,13 @@
     "@nodelib/fs.scandir" "2.1.1"
     fastq "^1.6.0"
 
-"@renditions/get-sizes@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@renditions/get-sizes/-/get-sizes-0.0.7.tgz#1340efde6f2f1e8b01d09f9e835c1350c0a80720"
+"@renditions/get-sizes@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@renditions/get-sizes/-/get-sizes-1.0.0.tgz#1fbc3a1c23249144c552a2976c27ec0fec2fc9c5"
 
-"@renditions/get-srcset@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@renditions/get-srcset/-/get-srcset-0.0.4.tgz#2f3d464d2b82d45bad067e9206f856a90a699396"
+"@renditions/get-srcset@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@renditions/get-srcset/-/get-srcset-1.0.0.tgz#bc8f3f44643326b8c5e7203bc7319ff1f51904a4"
 
 "@types/babel__core@^7.1.0":
   version "7.1.2"
