@@ -897,9 +897,9 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@renditions/get-srcset/-/get-srcset-1.0.0.tgz#bc8f3f44643326b8c5e7203bc7319ff1f51904a4"
 
-"@renditions/react-img@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@renditions/react-img/-/react-img-1.0.0.tgz#22d9dea3ffb1b4ab5516eab781b3910d4ac25846"
+"@renditions/react-img@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@renditions/react-img/-/react-img-1.1.0.tgz#d6f39eaf7b972e2b0b583e4b24c5e7373b0c18b1"
   dependencies:
     "@renditions/get-sizes" "^2.1.0"
     "@renditions/get-srcset" "^1.0.0"
