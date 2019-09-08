@@ -1,19 +1,19 @@
 import React from 'react';
 import getSizes from '@renditions/get-sizes';
-import getSrcset from '@renditions/get-srcset';
+import getSrcset, { sortRenditions } from '@renditions/get-srcset';
 import { getImageSrc } from '../utils/images';
 
 const Image = ({ image, renditions, width = '100vw', ...rest }) => {
-  const sortedRenditions = getSrcset.sortRenditions([...renditions])
+  const sortedRenditions = sortRenditions([...renditions]);
 
   const renditionsWithSrc = sortedRenditions.map(rendition => ({
     ...rendition,
     src: getImageSrc(image, rendition)
-  }))
+  }));
 
   const imageProps = {
     src: getImageSrc(image, sortedRenditions[0]),
-    srcset: getSrcset(renditionsWithSrc),
+    srcSet: getSrcset(renditionsWithSrc),
     sizes: getSizes({ width })
   };
 

@@ -11,7 +11,7 @@
     "tdd": "jest --watch"
   },
   "dependencies": {
-    "@renditions/get-sizes": "^1.0.0",
+    "@renditions/get-sizes": "^2.1.0",
     "@renditions/get-srcset": "^1.0.0",
     "@zeit/next-css": "^1.0.1",
     "next": "^9.0.5",
