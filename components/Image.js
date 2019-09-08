@@ -8,6 +8,7 @@ const Image = ({ image, renditions, width = '100vw', ...rest }) => (
     getSrc={getImageSrc.bind(null, image)}
     renditions={renditions}
     width={width}
+    autoSortRenditions
     {...rest}
   />
 );
