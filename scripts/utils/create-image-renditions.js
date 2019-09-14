@@ -43,10 +43,8 @@ const getImageData = ({ filename }, image) => {
   });
 };
 
-const getImageFormat = async (context, image) => {
-  const { filename } = context;
-
-  const { format } = await getImageData(context, image);
+const getImageFormat = imageData => {
+  const { format } = imageData;
 
   if (typeof format !== 'string') {
     throw new Error(`Failed to determine image format for ${filename}`);
@@ -58,7 +56,9 @@ const getImageFormat = async (context, image) => {
 const optimiseImage = async (context, image, width, height) => {
   const { args } = context;
 
-  const imageFormat = await getImageFormat(context, image);
+  const imageData = await getImageData(context, image);
+
+  const imageFormat = getImageFormat(imageData);
 
   const compression = args.compression[imageFormat] || args.defaultCompression;
 
