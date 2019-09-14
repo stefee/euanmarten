@@ -27,20 +27,32 @@ const writeImage = (image, path) => {
   });
 };
 
-const getImageFormat = ({ filename }, image) => {
+const getImageData = ({ filename }, image) => {
   return new Promise((resolve, reject) => {
-    image.format((err, value) => {
+    image.identify((err, value) => {
       if (err) {
         return reject(err);
       }
 
-      if (typeof value !== 'string') {
-        return reject(new Error(`Failed to determine image format for ${filename}`));
+      if (typeof value !== 'object') {
+        return reject(new Error(`Failed to get image data for ${filename}`));
       }
 
-      return resolve(value.toLowerCase());
+      return resolve(value);
     });
   });
+};
+
+const getImageFormat = async (context, image) => {
+  const { filename } = context;
+
+  const { format } = await getImageData(context, image);
+
+  if (typeof format !== 'string') {
+    throw new Error(`Failed to determine image format for ${filename}`);
+  }
+
+  return format;
 };
 
 const optimiseImage = async (context, image, width, height) => {
