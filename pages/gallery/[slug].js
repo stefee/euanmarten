@@ -28,7 +28,7 @@ const Thumbnail = ({ image, renditions, onClick }) => (
 const Gallery = ({ env }) => {
   const router = useRouter();
   const { slug } = router.query;
-  const { images, galleries, renditions } = env.IMAGES;
+  const { galleries, images, renditions } = env.IMAGES;
 
   const gallery = findGalleryBySlug(galleries, slug);
 

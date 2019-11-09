@@ -1,4 +1,58 @@
 {
+  "index": [
+    {
+      "type": "image",
+      "filename": "growing2.png"
+    },
+    {
+      "type": "image",
+      "filename": "point.jpg"
+    },
+    {
+      "type": "image",
+      "filename": "oranges.jpg"
+    },
+    {
+      "type": "image",
+      "filename": "body.jpg"
+    },
+    {
+      "type": "image",
+      "filename": "self.jpg"
+    },
+    {
+      "type": "image",
+      "filename": "bilbo2.png"
+    },
+    {
+      "type": "image",
+      "filename": "owl.jpg"
+    },
+    {
+      "type": "image",
+      "filename": "peel.jpg"
+    },
+    {
+      "type": "image",
+      "filename": "sword.jpg"
+    }
+  ],
+  "galleries": [
+    {
+      "slug": "demo",
+      "slides": [
+        "oranges.jpg",
+        "self.jpg"
+      ]
+    },
+    {
+      "slug": "demo2",
+      "slides": [
+        "sword.jpg",
+        "self.jpg"
+      ]
+    }
+  ],
   "images": [
     {
       "filename": "growing2.png",
@@ -35,22 +89,6 @@
     {
       "filename": "sword.jpg",
       "altText": "Illustration: Sword"
-    }
-  ],
-  "galleries": [
-    {
-      "slug": "demo",
-      "slides": [
-        "oranges.jpg",
-        "self.jpg"
-      ]
-    },
-    {
-      "slug": "demo2",
-      "slides": [
-        "sword.jpg",
-        "self.jpg"
-      ]
     }
   ],
   "renditions": [

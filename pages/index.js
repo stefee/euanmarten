@@ -7,6 +7,8 @@ import Lightbox from '../components/Lightbox';
 const THUMBNAIL_COLUMNS = 2;
 const THUMBNAIL_PADDING = 1;
 
+const findImageByFilename = (images, filename) => images.find(i => i.filename === filename);
+
 const Thumbnail = ({ image, renditions, onClick }) => (
   <div className="Thumbnail mb2">
     <button
@@ -34,13 +36,15 @@ const ThumbnailColumn = ({ images, renditions, setLightboxImage }) => (
 );
 
 const Home = ({ env }) => {
-  const { images, renditions } = env.IMAGES;
+  const { index, images, renditions } = env.IMAGES;
 
   const [lightboxImage, setLightboxImage] = useState(null);
 
   const isLightboxOpen = !!lightboxImage;
 
-  const imageColumns = splitArrayAlternating(images, THUMBNAIL_COLUMNS);
+  const indexImages = index.map(({ filename }) => findImageByFilename(images, filename));
+
+  const imageColumns = splitArrayAlternating(indexImages, THUMBNAIL_COLUMNS);
 
   return (
     <main>
