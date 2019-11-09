@@ -37,6 +37,22 @@
       "altText": "Illustration: Sword"
     }
   ],
+  "galleries": [
+    {
+      "slug": "demo",
+      "slides": [
+        "oranges.jpg",
+        "self.jpg"
+      ]
+    },
+    {
+      "slug": "demo2",
+      "slides": [
+        "sword.jpg",
+        "self.jpg"
+      ]
+    }
+  ],
   "renditions": [
     {
       "width": 100
