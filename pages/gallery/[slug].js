@@ -28,16 +28,17 @@ const Thumbnail = ({ image, renditions, onClick }) => (
 const Gallery = ({ env }) => {
   const router = useRouter();
   const { slug } = router.query;
+
   const { galleries, images, renditions } = env.IMAGES;
 
   const gallery = findGalleryBySlug(galleries, slug);
 
+  const [lightboxImage, setLightboxImage] = useState(null);
+
+  const isLightboxOpen = !!lightboxImage;
+
   if (gallery) {
     const imageColumn = gallery.slides.map(findImageByFilename.bind(null, images));
-
-    const [lightboxImage, setLightboxImage] = useState(null);
-
-    const isLightboxOpen = !!lightboxImage;
 
     return (
       <main>
@@ -69,5 +70,7 @@ const Gallery = ({ env }) => {
     return <Error statusCode={404} />;
   }
 };
+
+Gallery.getInitialProps = async () => ({});
 
 export default Gallery;
