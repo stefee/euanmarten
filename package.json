@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:images": "scripts/build-images.js",
+    "build:images": "node scripts/build-images.js",
     "start": "next start",
     "test": "jest",
     "tdd": "jest --watch"

@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 const fs = require('fs').promises;
 const del = require('del');
 const createLoggerFn = require('./utils/logger');
