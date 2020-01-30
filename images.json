@@ -121,9 +121,9 @@
     }
   ],
   "buildConfig": {
-    "input": "static/images",
+    "input": "public/static/images",
     "output": [
-      "static/renditions",
+      "public/static/renditions",
       "dist/static/renditions"
     ],
     "concurrency": 20,
