@@ -22,7 +22,7 @@ This project was migrated from a Create React App project. See source code for t
       }
     ]
     ```
-3. Add the image to the `"index"` list in [the `images.json` file](/images.json). This is the order in which the images will appear on the home page.
+3. Add the image to the `"index"` list in [the `images.json` file](/images.json). This is the order in which the images will appear on the home page (aka. index page).
     ```json
     "index": [
       {
