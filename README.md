@@ -8,7 +8,9 @@ This project was migrated from a Create React App project. See source code for t
 
 ## How to add a new image to the home page
 
-1. Upload the full-resolution image to [the `public/static/images` folder](/public/static/images). Note: for better web performance, use the JPEG format (`.jpg`) for complex images such as photos or scanned paintings, and use PNG format (`.png`) for simple images such as black text on a white background or digital drawings with solid colours.
+1. Upload the full-resolution image to [the `public/static/images` folder](/public/static/images).
+    * Before uploading, rename the image to have a short filename like `oranges.jpg` or `bear.png`.
+    * For better web performance, use the JPEG format (`.jpg`) for complex images such as photos or scanned paintings, and use PNG format (`.png`) for simple images such as black text on a white background or digital drawings with solid colours.
 2. Add the image to the `"images"` list in [the `images.json` file](/images.json), for example:
     ```json
     "images": [
