@@ -47,16 +47,11 @@ This project was migrated from a Create React App project. See source code for t
 ### Install
 
 ```sh
-# Install node & npm
-brew install nvm
+# Install dependencies
+brew install nvm yarn graphicsmagick
+
+# Install node
 nvm install
-nvm install-latest-npm
-
-# Install yarn
-brew install yarn
-
-# Install GraphicsMagick
-brew install graphicsmagick
 
 # Install now
 npm i -g now
