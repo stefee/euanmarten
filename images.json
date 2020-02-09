@@ -4,6 +4,18 @@
       "type": "image",
       "filename": "growing2.png"
     },
+     {
+    "filename": "Nwf3.png",
+    "altText": "Illustration: Night World"
+  },
+     {
+    "filename": "grow.PNG",
+    "altText": "Illustration: Still Growing"
+  },
+     {
+    "filename": "fwoosh.PNG",
+    "altText": "Illustration: fwoooosh"
+  },
     {
       "type": "image",
       "filename": "point.jpg"
