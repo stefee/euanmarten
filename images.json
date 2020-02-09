@@ -4,6 +4,11 @@
       "type": "image",
       "filename": "grow.PNG"
     },
+     {
+      "type": "image",
+      "filename": "fwoosh.PNG"
+    },
+   
     {
       "type": "image",
       "filename": "point.jpg"
@@ -11,6 +16,10 @@
     {
       "type": "image",
       "filename": "oranges.jpg"
+    },
+     {
+      "type": "image",
+      "filename": "nwf3.png"
     },
     {
       "type": "image",
