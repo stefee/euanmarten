@@ -1,21 +1,9 @@
 {
   "index": [
-    {
+   {
       "type": "image",
-      "filename": "growing2.png"
+      "filename": "grow.PNG"
     },
-     {
-    "filename": "Nwf3.png",
-    "altText": "Illustration: Night World"
-  },
-     {
-    "filename": "grow.PNG",
-    "altText": "Illustration: Still Growing"
-  },
-     {
-    "filename": "fwoosh.PNG",
-    "altText": "Illustration: fwoooosh"
-  },
     {
       "type": "image",
       "filename": "point.jpg"
@@ -102,6 +90,18 @@
       "filename": "sword.jpg",
       "altText": "Illustration: Sword"
     }
+     {
+    "filename": "grow.PNG",
+    "altText": "Illustration: Still Growing"
+  },
+     {
+    "filename": "fwoosh.PNG",
+    "altText": "Illustration: fwoooosh"
+  },
+     {
+    "filename": "nwf3.png",
+    "altText": "Illustration: Night World"
+  },
   ],
   "renditions": [
     {
