@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs').promises;
 const promiseLimit = require('promise-limit');
-const gm = require('gm');
+const sharp = require('sharp');
 const { splitFileExtension, getRenditionFilename } = require('../../utils/images');
 
 const getImageFilenames = async (pathToDir, allowedFileTypes) => {
@@ -13,34 +13,6 @@ const getImageFilenames = async (pathToDir, allowedFileTypes) => {
   });
 
   return imageFilenames;
-};
-
-const writeImage = (image, path) => {
-  return new Promise((resolve, reject) => {
-    image.write(path, err => {
-      if (err) {
-        return reject(err);
-      }
-
-      resolve(image);
-    });
-  });
-};
-
-const getImageData = ({ filename }, image) => {
-  return new Promise((resolve, reject) => {
-    image.identify((err, value) => {
-      if (err) {
-        return reject(err);
-      }
-
-      if (typeof value !== 'object') {
-        return reject(new Error(`Failed to get image data for ${filename}`));
-      }
-
-      return resolve(value);
-    });
-  });
 };
 
 const getImageFormat = imageData => {
@@ -56,16 +28,15 @@ const getImageFormat = imageData => {
 const optimiseImage = async (context, image, width, height) => {
   const { args } = context;
 
-  const imageData = await getImageData(context, image);
+  const imageData = await image.metadata();
 
   const imageFormat = getImageFormat(imageData);
 
   const compression = args.compression[imageFormat] || args.defaultCompression;
 
-  return image
-    .resize(width, height, args.resizeOptions)
-    .quality(args.quality[compression])
-    .noProfile();
+  const resizedImage = image.resize(width, height, args.resizeOptions);
+
+  return resizedImage[compression]({ quality: args.quality[compression] });
 };
 
 const createRendition = async (context, inputPath, outputPaths, filename, rendition) => {
@@ -74,7 +45,7 @@ const createRendition = async (context, inputPath, outputPaths, filename, rendit
   const renditionFilename = getRenditionFilename(filename, rendition);
 
   try {
-    const image = gm(path.join(inputPath, filename));
+    const image = sharp(path.join(inputPath, filename));
 
     const { width, height } = rendition;
 
@@ -85,7 +56,7 @@ const createRendition = async (context, inputPath, outputPaths, filename, rendit
     const renditionPaths = outputPaths.map(output => path.join(output, renditionFilename));
 
     const writeImageJobs = renditionPaths.map(path => async () => {
-      await writeImage(optimisedImage, path);
+      await optimisedImage.toFile(path);
       logger.info(`Created ${path}`, '✨');
     });
 
