@@ -1,7 +1,6 @@
 {
   "version": 2,
   "public": true,
-  "name": "euanmarten",
   "alias": ["euanmarten", "euanmarten.com", "www.euanmarten.com"],
   "regions": ["lhr1"],
   "routes": [
@@ -11,15 +10,5 @@
     { "src": "/asset-manifest.json", "dest": "/static/asset-manifest.json" },
     { "src": "/manifest.json", "dest": "/static/manifest.json" },
     { "src": "/precache-manifest.(.*)", "dest": "/static/precache-manifest.$1" }
-  ],
-  "builds": [
-    {
-      "src": "build-images.sh",
-      "use": "@now/static-build"
-    },
-    {
-      "src": "package.json",
-      "use": "@now/next"
-    }
   ]
 }

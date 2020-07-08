@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "build:images": "node scripts/build-images.js",
+    "build": "next build && node scripts/build-images.js",
     "start": "next start",
     "test": "jest",
     "tdd": "jest --watch"
