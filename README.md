@@ -10,7 +10,7 @@ This project was migrated from a Create React App project. See source code for t
 
 1. Upload the full-resolution image to [the `public/static/images` folder](/public/static/images).
     * Before uploading, rename the image to have a short filename like `oranges.jpg` or `bear.png`.
-    * For better web performance, use the JPEG format (`.jpg`) for complex images such as photos or scanned paintings, and use PNG format (`.png`) for simple images such as text on a solid background colour or digital drawings with solid colours and simple shapes.
+    * For better web performance, use the JPEG format (`.jpg`) for complex images such as photos or scanned paintings, and use PNG format (`.png`) for very simple images such as text on a solid background colour or digital drawings with solid colours and simple shapes.
 2. Add the image to the `"images"` list in [the `images.json` file](/images.json), for example:
     ```json
     "images": [
@@ -49,8 +49,8 @@ This project was migrated from a Create React App project. See source code for t
 ### Install
 
 ```sh
-# Install dependencies
-brew install nvm yarn graphicsmagick
+# Install nvm
+brew install nvm
 
 # Install node
 nvm install
@@ -59,7 +59,7 @@ nvm install
 npm i -g now
 
 # Install package.json
-yarn
+npm install --prefer-online
 ```
 
 ### Start Server
