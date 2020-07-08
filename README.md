@@ -37,7 +37,7 @@ This project was migrated from a Create React App project. See source code for t
       }
     ]
     ```
-4. Commit these changes to the `master` branch and they will automatically show up on the live site. ✨
+4. Commit these changes to the `main` branch and they will automatically show up on the live site. ✨
 
 ## Quick Start for Developers
 
