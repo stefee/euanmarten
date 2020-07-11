@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { promises as fs } from 'fs';
-import Error from 'next/error';
 import Image from '../../components/Image';
 import ColumnLayout from '../../components/ColumnLayout';
 import Lightbox from '../../components/Lightbox';
@@ -26,40 +25,36 @@ const Project = ({ data: { project, images, renditions } }) => {
 
   const isLightboxOpen = !!lightboxImage;
 
-  if (project) {
-    // @FIXME: for now we assume that projects only contain images,
-    // but in future we might want to support other types
-    const imageColumn = project.items.map(item => images.find(data => data.filename === item.filename));
+  // @FIXME: for now we assume that projects only contain images,
+  // but in future we might want to support other types
+  const imageColumn = project.items.map(item => images.find(data => data.filename === item.filename));
 
-    return (
-      <main>
-        <ColumnLayout
-          columns={THUMBNAIL_COLUMNS}
-          verticalPadding={THUMBNAIL_PADDING}
-          horizontalPadding={THUMBNAIL_PADDING}
-        >
-          <div>
-            {imageColumn.map(image => (
-              <Thumbnail
-                key={image.filename}
-                image={image}
-                renditions={renditions}
-                onClick={() => setLightboxImage(image)}
-              />
-            ))}
-          </div>
-        </ColumnLayout>
-        <Lightbox
-          isOpen={isLightboxOpen}
-          image={lightboxImage}
-          renditions={renditions}
-          onClose={() => setLightboxImage(null)}
-        />
-      </main>
-    );
-  } else {
-    return <Error statusCode={404} />;
-  }
+  return (
+    <main>
+      <ColumnLayout
+        columns={THUMBNAIL_COLUMNS}
+        verticalPadding={THUMBNAIL_PADDING}
+        horizontalPadding={THUMBNAIL_PADDING}
+      >
+        <div>
+          {imageColumn.map(image => (
+            <Thumbnail
+              key={image.filename}
+              image={image}
+              renditions={renditions}
+              onClick={() => setLightboxImage(image)}
+            />
+          ))}
+        </div>
+      </ColumnLayout>
+      <Lightbox
+        isOpen={isLightboxOpen}
+        image={lightboxImage}
+        renditions={renditions}
+        onClose={() => setLightboxImage(null)}
+      />
+    </main>
+  );
 };
 
 export const getStaticProps = async ({ params }) => {

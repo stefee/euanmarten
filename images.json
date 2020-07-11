@@ -1,104 +1,4 @@
 {
-  "portfolios": [
-    {
-      "slug": "illustration",
-      "items": [
-        {
-          "type": "image",
-          "filename": "grow.PNG"
-        },
-        {
-          "type": "image",
-          "filename": "labrysfull.jpg"
-        },
-         {
-          "type": "image",
-          "filename": "fwoosh.PNG"
-        },
-        {
-          "type": "image",
-          "filename": "point.jpg"
-        },
-        {
-          "type": "image",
-          "filename": "oranges.jpg"
-        },
-         {
-          "type": "image",
-          "filename": "Nwf3.png"
-        },
-        {
-          "type": "image",
-          "filename": "body.jpg"
-        },
-        {
-          "type": "image",
-          "filename": "self.jpg"
-        },
-        {
-          "type": "image",
-          "filename": "bilbo2.png"
-        },
-        {
-          "type": "image",
-          "filename": "owl.jpg"
-        },
-        {
-          "type": "image",
-          "filename": "peel.jpg"
-        }
-      ]
-    },
-    {
-      "slug": "design",
-      "items": [
-        {
-          "type": "project",
-          "slug": "demo"
-        },
-        {
-          "type": "project",
-          "slug": "demo2"
-        },
-        {
-          "type": "image",
-          "filename": "labrysfull.jpg"
-        }
-      ]
-    }
-  ],
-  "projects": [
-    {
-      "slug": "demo",
-      "items": [
-        {
-          "type": "image",
-          "filename": "oranges.jpg",
-          "caption": ""
-        },
-        {
-          "type": "image",
-          "filename": "self.jpg",
-          "caption": ""
-        }
-      ]
-    },
-    {
-      "slug": "demo2",
-      "items": [
-        {
-          "type": "image",
-          "filename": "sword.jpg",
-          "caption": ""
-        },
-        {
-          "type": "image",
-          "filename": "self.jpg",
-          "caption": ""
-        }
-      ]
-    }
-  ],
   "images": [
     {
       "filename": "growing2.png",
@@ -151,6 +51,89 @@
     {
       "filename": "Nwf3.png",
       "altText": "Illustration: Night World"
+    }
+  ],
+  "projects": [
+    {
+      "slug": "demo",
+      "items": [
+        {
+          "type": "image",
+          "filename": "oranges.jpg",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "filename": "self.jpg",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "demo2",
+      "items": [
+        {
+          "type": "image",
+          "filename": "sword.jpg",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "filename": "self.jpg",
+          "caption": ""
+        }
+      ]
+    }
+  ],
+  "portfolios": [
+    {
+      "slug": "illustration",
+      "items": [
+        {
+          "type": "image",
+          "filename": "grow.PNG"
+        },
+        {
+          "type": "image",
+          "filename": "labrysfull.jpg"
+        },
+         {
+          "type": "image",
+          "filename": "fwoosh.PNG"
+        },
+        {
+          "type": "image",
+          "filename": "point.jpg"
+        },
+        {
+          "type": "image",
+          "filename": "oranges.jpg"
+        },
+         {
+          "type": "image",
+          "filename": "Nwf3.png"
+        },
+        {
+          "type": "image",
+          "filename": "body.jpg"
+        },
+        {
+          "type": "image",
+          "filename": "self.jpg"
+        },
+        {
+          "type": "image",
+          "filename": "bilbo2.png"
+        },
+        {
+          "type": "image",
+          "filename": "owl.jpg"
+        },
+        {
+          "type": "image",
+          "filename": "peel.jpg"
+        }
+      ]
     }
   ],
   "renditions": [

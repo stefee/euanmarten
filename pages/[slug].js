@@ -38,7 +38,7 @@ const ThumbnailColumn = ({ items, images, renditions, setLightboxImage }) => (
   </div>
 );
 
-const Home = ({ data: { items, images, renditions } }) => {
+const Portfolio = ({ data: { items, images, renditions } }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
 
   const isLightboxOpen = !!lightboxImage;
@@ -72,16 +72,20 @@ const Home = ({ data: { items, images, renditions } }) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps = async ({ params }) => {
   const imagesData = await fs.readFile('./images.json', { encoding: 'utf-8' });
   const parsedImagesData = JSON.parse(imagesData);
 
   const { portfolios, images, renditions } = parsedImagesData;
 
+  const portfolioData = portfolios.find(portfolio => portfolio.slug === params.slug);
+
+  const items = portfolioData.items;
+
   return {
     props: {
       data: {
-        items: portfolios[0].items,
+        items,
         images,
         renditions,
       }
@@ -89,4 +93,16 @@ export const getStaticProps = async () => {
   };
 };
 
-export default Home;
+export const getStaticPaths = async () => {
+  const imagesData = await fs.readFile('./images.json', { encoding: 'utf-8' });
+  const parsedImagesData = JSON.parse(imagesData);
+
+  const paths = parsedImagesData.portfolios.map(({ slug }) => ({ params: { slug } }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export default Portfolio;

@@ -9,6 +9,7 @@
     { "src": "/robots.txt", "dest": "/static/robots.txt" },
     { "src": "/asset-manifest.json", "dest": "/static/asset-manifest.json" },
     { "src": "/manifest.json", "dest": "/static/manifest.json" },
-    { "src": "/precache-manifest.(.*)", "dest": "/static/precache-manifest.$1" }
+    { "src": "/precache-manifest.(.*)", "dest": "/static/precache-manifest.$1" },
+    { "src": "/", "status": 308, "headers": { "Location": "/illustration" } }
   ]
 }
