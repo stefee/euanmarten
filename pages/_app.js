@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import App from 'next/app';
 import Head from 'next/head';
 import 'tachyons';
-import './style.css';
+import './styles.css';
 import Nav from '../components/Nav';
 
 class MyApp extends App {
