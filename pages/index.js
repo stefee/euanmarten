@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { promises as fs } from 'fs';
-import Link from 'next/link';
 import { splitArrayAlternating } from '../utils/arrays';
 import Image from '../components/Image';
 import ColumnLayout from '../components/ColumnLayout';
@@ -9,9 +8,7 @@ import Lightbox from '../components/Lightbox';
 const THUMBNAIL_COLUMNS = 2;
 const THUMBNAIL_PADDING = 1;
 
-const findImageByFilename = (images, filename) => images.find(i => i.filename === filename);
-
-const ThumbnailButton = ({ image, renditions, onClick }) => (
+const Thumbnail = ({ image, renditions, onClick }) => (
   <div className="Thumbnail mb2">
     <button
       title="View Image"
@@ -24,45 +21,19 @@ const ThumbnailButton = ({ image, renditions, onClick }) => (
   </div>
 );
 
-const ThumbnailLink = ({ image, renditions, href, as }) => (
-  <div className="Thumbnail mb2">
-    <Link
-      href={href}
-      as={as}
-    >
-      <a className="pa0 db w-100">
-        <Image image={image} renditions={renditions} width="50vw" className="w-100 db" />
-      </a>
-    </Link>
-  </div>
-);
-
 const ThumbnailColumn = ({ items, images, renditions, setLightboxImage }) => (
   <div>
     {items.map(item => {
-      switch (item.type) {
-        case "image":
-          const image = findImageByFilename(images, item.filename);
-          return (
-            <ThumbnailButton
-              key={image.filename}
-              image={image}
-              renditions={renditions}
-              onClick={() => setLightboxImage(image)}
-            />
-          );
-        case "project":
-          const href = `/project/${item.slug}`;
-          return (
-            <ThumbnailLink
-              key={href}
-              image={{ filename: "oranges.jpg" }} // @FIXME
-              renditions={renditions}
-              href="/project/[slug]"
-              as={href}
-            />
-          );
-      }
+      const image = images.find(data => data.filename === item.filename);
+
+      return (
+        <Thumbnail
+          key={image.filename}
+          image={image}
+          renditions={renditions}
+          onClick={() => setLightboxImage(image)}
+        />
+      );
     })}
   </div>
 );
