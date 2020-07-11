@@ -8,8 +8,6 @@ import Lightbox from '../../components/Lightbox';
 const THUMBNAIL_COLUMNS = 1;
 const THUMBNAIL_PADDING = 1;
 
-const findImageByFilename = (images, filename) => images.find(data => data.filename === filename);
-
 const Thumbnail = ({ image, renditions, onClick }) => (
   <div className="Thumbnail mb2">
     <button
@@ -23,13 +21,15 @@ const Thumbnail = ({ image, renditions, onClick }) => (
   </div>
 );
 
-const Gallery = ({ data: { gallery, images, renditions } }) => {
+const Project = ({ data: { project, images, renditions } }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
 
   const isLightboxOpen = !!lightboxImage;
 
-  if (gallery) {
-    const imageColumn = gallery.slides.map(findImageByFilename.bind(null, images));
+  if (project) {
+    // @FIXME: for now we assume that projects only contain images,
+    // but in future we might want to support other types
+    const imageColumn = project.items.map(item => images.find(data => data.filename === item.filename));
 
     return (
       <main>
@@ -66,14 +66,14 @@ export const getStaticProps = async ({ params }) => {
   const imagesData = await fs.readFile('./images.json', { encoding: 'utf-8' });
   const parsedImagesData = JSON.parse(imagesData);
 
-  const { galleries, images, renditions } = parsedImagesData;
+  const { projects, images, renditions } = parsedImagesData;
 
-  const gallery = galleries.find(data => data.slug === params.slug);
+  const project = projects.find(data => data.slug === params.slug);
 
   return {
     props: {
       data: {
-        gallery,
+        project,
         images,
         renditions,
       }
@@ -85,7 +85,7 @@ export const getStaticPaths = async () => {
   const imagesData = await fs.readFile('./images.json', { encoding: 'utf-8' });
   const parsedImagesData = JSON.parse(imagesData);
 
-  const paths = parsedImagesData.galleries.map(({ slug }) => ({ params: { slug } }));
+  const paths = parsedImagesData.projects.map(({ slug }) => ({ params: { slug } }));
 
   return {
     paths,
@@ -93,4 +93,4 @@ export const getStaticPaths = async () => {
   };
 };
 
-export default Gallery;
+export default Project;

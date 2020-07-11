@@ -51,14 +51,14 @@ const ThumbnailColumn = ({ items, images, renditions, setLightboxImage }) => (
               onClick={() => setLightboxImage(image)}
             />
           );
-        case "gallery":
-          const href = `/gallery/${item.slug}`;
+        case "project":
+          const href = `/project/${item.slug}`;
           return (
             <ThumbnailLink
               key={href}
               image={{ filename: "oranges.jpg" }} // @FIXME
               renditions={renditions}
-              href="/gallery/[slug]"
+              href="/project/[slug]"
               as={href}
             />
           );
@@ -67,12 +67,12 @@ const ThumbnailColumn = ({ items, images, renditions, setLightboxImage }) => (
   </div>
 );
 
-const Home = ({ data: { index, images, renditions } }) => {
+const Home = ({ data: { items, images, renditions } }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
 
   const isLightboxOpen = !!lightboxImage;
 
-  const indexColumns = splitArrayAlternating(index, THUMBNAIL_COLUMNS);
+  const itemColumns = splitArrayAlternating(items, THUMBNAIL_COLUMNS);
 
   return (
     <main>
@@ -81,7 +81,7 @@ const Home = ({ data: { index, images, renditions } }) => {
         verticalPadding={THUMBNAIL_PADDING}
         horizontalPadding={THUMBNAIL_PADDING}
       >
-        {indexColumns.map((items, i) => (
+        {itemColumns.map((items, i) => (
           <ThumbnailColumn
             key={i}
             items={items}
@@ -105,12 +105,12 @@ export const getStaticProps = async () => {
   const imagesData = await fs.readFile('./images.json', { encoding: 'utf-8' });
   const parsedImagesData = JSON.parse(imagesData);
 
-  const { index, images, renditions } = parsedImagesData;
+  const { portfolios, images, renditions } = parsedImagesData;
 
   return {
     props: {
       data: {
-        index,
+        items: portfolios[0].items,
         images,
         renditions,
       }
