@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { promises as fs } from 'fs';
 import Error from 'next/error';
 import Image from '../../components/Image';
 import ColumnLayout from '../../components/ColumnLayout';
@@ -8,9 +8,7 @@ import Lightbox from '../../components/Lightbox';
 const THUMBNAIL_COLUMNS = 1;
 const THUMBNAIL_PADDING = 1;
 
-const findGalleryBySlug = (galleries, slug) => galleries.find(g => g.slug === slug);
-
-const findImageByFilename = (images, filename) => images.find(i => i.filename === filename);
+const findImageByFilename = (images, filename) => images.find(data => data.filename === filename);
 
 const Thumbnail = ({ image, renditions, onClick }) => (
   <div className="Thumbnail mb2">
@@ -25,14 +23,7 @@ const Thumbnail = ({ image, renditions, onClick }) => (
   </div>
 );
 
-const Gallery = ({ env }) => {
-  const router = useRouter();
-  const { slug } = router.query;
-
-  const { galleries, images, renditions } = env.IMAGES;
-
-  const gallery = findGalleryBySlug(galleries, slug);
-
+const Gallery = ({ data: { gallery, images, renditions } }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
 
   const isLightboxOpen = !!lightboxImage;
@@ -71,6 +62,35 @@ const Gallery = ({ env }) => {
   }
 };
 
-Gallery.getInitialProps = async () => ({});
+export const getStaticProps = async ({ params }) => {
+  const imagesData = await fs.readFile('./images.json', { encoding: 'utf-8' });
+  const parsedImagesData = JSON.parse(imagesData);
+
+  const { galleries, images, renditions } = parsedImagesData;
+
+  const gallery = galleries.find(data => data.slug === params.slug);
+
+  return {
+    props: {
+      data: {
+        gallery,
+        images,
+        renditions,
+      }
+    }
+  };
+};
+
+export const getStaticPaths = async () => {
+  const imagesData = await fs.readFile('./images.json', { encoding: 'utf-8' });
+  const parsedImagesData = JSON.parse(imagesData);
+
+  const paths = parsedImagesData.galleries.map(({ slug }) => ({ params: { slug } }));
+
+  return {
+    paths,
+    fallback: false
+  };
+};
 
 export default Gallery;

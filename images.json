@@ -1,6 +1,6 @@
 {
   "index": [
-   {
+    {
       "type": "image",
       "filename": "grow.PNG"
     },
@@ -12,7 +12,6 @@
       "type": "image",
       "filename": "fwoosh.PNG"
     },
-   
     {
       "type": "image",
       "filename": "point.jpg"

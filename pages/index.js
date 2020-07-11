@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { promises as fs } from 'fs';
 import Link from 'next/link';
 import { splitArrayAlternating } from '../utils/arrays';
 import Image from '../components/Image';
@@ -66,9 +67,7 @@ const ThumbnailColumn = ({ items, images, renditions, setLightboxImage }) => (
   </div>
 );
 
-const Home = ({ env }) => {
-  const { index, images, renditions } = env.IMAGES;
-
+const Home = ({ data: { index, images, renditions } }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
 
   const isLightboxOpen = !!lightboxImage;
@@ -100,6 +99,23 @@ const Home = ({ env }) => {
       />
     </main>
   );
+};
+
+export const getStaticProps = async () => {
+  const imagesData = await fs.readFile('./images.json', { encoding: 'utf-8' });
+  const parsedImagesData = JSON.parse(imagesData);
+
+  const { index, images, renditions } = parsedImagesData;
+
+  return {
+    props: {
+      data: {
+        index,
+        images,
+        renditions,
+      }
+    }
+  };
 };
 
 export default Home;

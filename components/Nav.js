@@ -1,4 +1,3 @@
-import React from 'react';
 import Icon from './Icon';
 
 const IconLink = ({ name, href, children, label }) => (

@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react';
 import { classNames } from '../utils/classNames';
 import icons from './icons';
 

@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const names = {
   CLOSE: 'CLOSE',
   FACEBOOK: 'FACEBOOK',

@@ -1,4 +1,3 @@
-import React from 'react';
 import Img from '@renditions/react-img';
 import { getImageSrc } from '../utils/images';
 

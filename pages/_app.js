@@ -1,17 +1,13 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import App from 'next/app';
 import Head from 'next/head';
 import 'tachyons';
 import '../style.css';
 import Nav from '../components/Nav';
 
-const getProcessEnv = () => process.env;
-
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
-
-    const env = getProcessEnv();
 
     return (
       <Fragment>
@@ -24,7 +20,7 @@ class MyApp extends App {
           <div className="pa4">
             <Nav />
           </div>
-          <Component {...pageProps} env={env} />
+          <Component {...pageProps} />
         </div>
       </Fragment>
     );
