@@ -26,8 +26,8 @@ const Project = ({ data: { project, images, renditions } }) => {
   const isLightboxOpen = !!lightboxImage;
 
   return (
-    <main className="flex">
-      <div className="ph4 fl-l w-third-l">
+    <main className="flex flex-column flex-row-l">
+      <div className="ph4 fl-l w-50-l pt3-l pr3-l">
         <div className="sticky top-2">
           <h2>{project.title}</h2>
           <p>{project.introText}</p>
