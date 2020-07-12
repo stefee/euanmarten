@@ -26,38 +26,40 @@ const Project = ({ data: { project, images, renditions } }) => {
   const isLightboxOpen = !!lightboxImage;
 
   return (
-    <main className="flex flex-column flex-row-l">
-      <div className="ph4 fl-l w-50-l pt3-l pr3-l">
-        <div className="sticky top-2">
-          <h2>{project.title}</h2>
+    <main className="flex flex-wrap">
+      <div className="ph4 pt4 w-third-l">
+        <div className="sticky-l top-2">
+          <h2 className="mt0">{project.title}</h2>
           <p>{project.introText}</p>
         </div>
       </div>
-      <ColumnLayout
-        columns={THUMBNAIL_COLUMNS}
-        verticalPadding={THUMBNAIL_PADDING}
-        horizontalPadding={THUMBNAIL_PADDING}
-      >
-        <div>
-          {project.items.map((item, index) => {
-            // @FIXME: for now we assume that projects only contain images,
-            // but in future we might want to support other types
-            const image = images.find(data => data.filename === item.filename);
+      <div className="w-two-thirds-l">
+        <ColumnLayout
+          columns={THUMBNAIL_COLUMNS}
+          verticalPadding={THUMBNAIL_PADDING}
+          horizontalPadding={THUMBNAIL_PADDING}
+        >
+          <div>
+            {project.items.map((item, index) => {
+              // @FIXME: for now we assume that projects only contain images,
+              // but in future we might want to support other types
+              const image = images.find(data => data.filename === item.filename);
 
-            return (
-              <figure key={index} className="ma0 mb4">
-                <Thumbnail
-                  key={image.filename}
-                  image={image}
-                  renditions={renditions}
-                  onClick={() => setLightboxImage(image)}
-                />
-                <figcaption>{item.caption}</figcaption>
-              </figure>
-            );
-          })}
-        </div>
-      </ColumnLayout>
+              return (
+                <figure key={index} className="ma0 mb4">
+                  <Thumbnail
+                    key={image.filename}
+                    image={image}
+                    renditions={renditions}
+                    onClick={() => setLightboxImage(image)}
+                  />
+                  <figcaption>{item.caption}</figcaption>
+                </figure>
+              );
+            })}
+          </div>
+        </ColumnLayout>
+      </div>
       <Lightbox
         isOpen={isLightboxOpen}
         image={lightboxImage}
