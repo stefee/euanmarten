@@ -56,31 +56,26 @@
   "projects": [
     {
       "slug": "demo",
+      "title": "Percy the Frog Engine",
+      "introText": "This is a demonstration page.",
+      "introImage": {
+        "type": "image",
+        "filename": "body.jpg"
+      },
+      "thumbnailImage": {
+        "type": "image",
+        "filename": "lane.jpg"
+      },
       "items": [
         {
           "type": "image",
           "filename": "oranges.jpg",
-          "caption": ""
+          "caption": "This is the first picture in this demo project."
         },
         {
           "type": "image",
           "filename": "self.jpg",
-          "caption": ""
-        }
-      ]
-    },
-    {
-      "slug": "demo2",
-      "items": [
-        {
-          "type": "image",
-          "filename": "sword.jpg",
-          "caption": ""
-        },
-        {
-          "type": "image",
-          "filename": "self.jpg",
-          "caption": ""
+          "caption": "This is a self portrait and it is the last image of the project."
         }
       ]
     }

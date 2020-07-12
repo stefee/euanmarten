@@ -5,7 +5,7 @@ import ColumnLayout from '../../components/ColumnLayout';
 import Lightbox from '../../components/Lightbox';
 
 const THUMBNAIL_COLUMNS = 1;
-const THUMBNAIL_PADDING = 1;
+const THUMBNAIL_PADDING = 3;
 
 const Thumbnail = ({ image, renditions, onClick }) => (
   <div className="Thumbnail mb2">
@@ -25,26 +25,35 @@ const Project = ({ data: { project, images, renditions } }) => {
 
   const isLightboxOpen = !!lightboxImage;
 
-  // @FIXME: for now we assume that projects only contain images,
-  // but in future we might want to support other types
-  const imageColumn = project.items.map(item => images.find(data => data.filename === item.filename));
-
   return (
     <main>
+      <div className="ph4">
+        <h2>{project.title}</h2>
+        <p>{project.introText}</p>
+      </div>
       <ColumnLayout
         columns={THUMBNAIL_COLUMNS}
         verticalPadding={THUMBNAIL_PADDING}
         horizontalPadding={THUMBNAIL_PADDING}
       >
         <div>
-          {imageColumn.map(image => (
-            <Thumbnail
-              key={image.filename}
-              image={image}
-              renditions={renditions}
-              onClick={() => setLightboxImage(image)}
-            />
-          ))}
+          {project.items.map((item, index) => {
+            // @FIXME: for now we assume that projects only contain images,
+            // but in future we might want to support other types
+            const image = images.find(data => data.filename === item.filename);
+
+            return (
+              <figure key={index} className="ma0 mb4">
+                <Thumbnail
+                  key={image.filename}
+                  image={image}
+                  renditions={renditions}
+                  onClick={() => setLightboxImage(image)}
+                />
+                <figcaption>{item.caption}</figcaption>
+              </figure>
+            );
+          })}
         </div>
       </ColumnLayout>
       <Lightbox
