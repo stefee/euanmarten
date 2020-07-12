@@ -29,7 +29,7 @@ const Project = ({ data: { project, images, renditions } }) => {
     <main className="flex flex-wrap">
       <div className="ph4 pt4 w-third-l">
         <div className="sticky-l top-2">
-          <h2 className="mt0">{project.title}</h2>
+          <h2 className="mt0 fw2">{project.title}</h2>
           <p>{project.introText}</p>
         </div>
       </div>
