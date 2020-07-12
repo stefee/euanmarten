@@ -57,7 +57,7 @@
     {
       "slug": "demo",
       "title": "Percy the Frog Engine",
-      "introText": "This is a demonstration page.",
+      "introText": "This is a demonstration page. It's here to show how project pages look for the sake of development and quality assurance.",
       "introImage": {
         "type": "image",
         "filename": "body.jpg"

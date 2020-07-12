@@ -27,7 +27,7 @@ const Project = ({ data: { project, images, renditions } }) => {
 
   return (
     <main>
-      <div className="ph4">
+      <div className="ph4 fl-l w-third-l">
         <h2>{project.title}</h2>
         <p>{project.introText}</p>
       </div>
