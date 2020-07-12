@@ -26,10 +26,12 @@ const Project = ({ data: { project, images, renditions } }) => {
   const isLightboxOpen = !!lightboxImage;
 
   return (
-    <main>
+    <main className="flex">
       <div className="ph4 fl-l w-third-l">
-        <h2>{project.title}</h2>
-        <p>{project.introText}</p>
+        <div className="sticky top-2">
+          <h2>{project.title}</h2>
+          <p>{project.introText}</p>
+        </div>
       </div>
       <ColumnLayout
         columns={THUMBNAIL_COLUMNS}

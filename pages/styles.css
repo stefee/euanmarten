@@ -18,6 +18,10 @@ a:hover {
   color: inherit;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .button-reset:active {
   outline: none;
 }
