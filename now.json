@@ -1,7 +1,6 @@
 {
   "version": 2,
   "public": true,
-  "alias": ["euanmarten", "euanmarten.com", "www.euanmarten.com"],
   "regions": ["lhr1"],
   "routes": [
     { "src": "/static/(.*)", "dest": "/static/$1" },
