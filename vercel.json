@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "public": true,
+  "regions": ["lhr1"],
+  "rewrites": [
+    { "source": "/static/(.*)", "destination": "/static/$1" },
+    { "source": "/favicon.ico", "destination": "/static/favicon.ico" },
+    { "source": "/robots.txt", "destination": "/static/robots.txt" },
+    { "source": "/asset-manifest.json", "destination": "/static/asset-manifest.json" },
+    { "source": "/manifest.json", "destination": "/static/manifest.json" },
+    { "source": "/precache-manifest.(.*)", "destination": "/static/precache-manifest.$1" }
+  ],
+  "redirects": [
+    { "source": "/", "destination": "/illustration", "permanent": true }
+  ]
+}
