@@ -64,7 +64,7 @@
       },
       "thumbnailImage": {
         "type": "image",
-        "filename": "lane.jpg"
+        "filename": "oranges.jpg"
       },
       "items": [
         {
@@ -81,6 +81,19 @@
     }
   ],
   "portfolios": [
+    {
+      "slug": "demo",
+      "items": [
+        {
+          "type": "project",
+          "slug": "demo"
+        },
+        {
+          "type": "image",
+          "filename": "fwoosh.PNG"
+        }
+      ]
+    },
     {
       "slug": "illustration",
       "items": [
