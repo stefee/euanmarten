@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import Icon from './Icon';
 import Image from './Image';
 
-const LightboxOverlay = ({ image, renditions, onClose }) => {
+const LightboxOverlay = ({ image, imageRenditions, onClose }) => {
   const closeButtonRef = useRef(null);
   const returnFocusRef = useRef(null);
 
@@ -32,7 +32,7 @@ const LightboxOverlay = ({ image, renditions, onClose }) => {
 
   return (
     <div className="Lightbox fixed absolute--fill bg-near-black pt5 pb5 pt4-l pb4-l pr5-l pl5-l">
-      <Image image={image} renditions={renditions} width="100vw" />
+      <Image image={image} renditions={imageRenditions} width="100vw" />
       <button
         title="Close"
         type="button"

@@ -9,7 +9,7 @@ import Lightbox from '../components/Lightbox';
 const THUMBNAIL_COLUMNS = 2;
 const THUMBNAIL_PADDING = 1;
 
-const ThumbnailButton = ({ image, renditions, onClick }) => (
+const ThumbnailButton = ({ image, imageRenditions, onClick }) => (
   <div className="Thumbnail mb2">
     <button
       title="View Image"
@@ -17,25 +17,25 @@ const ThumbnailButton = ({ image, renditions, onClick }) => (
       className="button-reset bn pa0 db w-100 pointer"
       onClick={onClick}
     >
-      <Image image={image} renditions={renditions} width="50vw" className="w-100 db" />
+      <Image image={image} renditions={imageRenditions} width="50vw" className="w-100 db" />
     </button>
   </div>
 );
 
-const ThumbnailLink = ({ image, renditions, href, as }) => (
+const ThumbnailLink = ({ image, imageRenditions, href, as }) => (
   <div className="Thumbnail mb2">
     <Link
       href={href}
       as={as}
     >
       <a className="pa0 db w-100">
-        <Image image={image} renditions={renditions} width="50vw" className="w-100 db" />
+        <Image image={image} renditions={imageRenditions} width="50vw" className="w-100 db" />
       </a>
     </Link>
   </div>
 );
 
-const ThumbnailColumn = ({ items, images, projects, renditions, setLightboxImage }) => (
+const ThumbnailColumn = ({ items, images, projects, imageRenditions, setLightboxImage }) => (
   <div>
     {items.map((item, index) => {
       switch(item.type) {
@@ -56,7 +56,7 @@ const ThumbnailColumn = ({ items, images, projects, renditions, setLightboxImage
             <ThumbnailButton
               key={image.filename}
               image={image}
-              renditions={renditions}
+              imageRenditions={imageRenditions}
               onClick={() => setLightboxImage(image)}
             />
           );
@@ -94,7 +94,7 @@ const ThumbnailColumn = ({ items, images, projects, renditions, setLightboxImage
             <ThumbnailLink
               key={project.slug}
               image={thumbnailImage}
-              renditions={renditions}
+              imageRenditions={imageRenditions}
               href="/project/[slug]"
               as={`/project/${project.slug}`}
             />
@@ -107,7 +107,7 @@ const ThumbnailColumn = ({ items, images, projects, renditions, setLightboxImage
   </div>
 );
 
-const Portfolio = ({ data: { items, images, projects, renditions } }) => {
+const Portfolio = ({ data: { items, images, projects }, config: { imageRenditions } }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
 
   const isLightboxOpen = !!lightboxImage;
@@ -127,7 +127,7 @@ const Portfolio = ({ data: { items, images, projects, renditions } }) => {
             items={items}
             images={images}
             projects={projects}
-            renditions={renditions}
+            imageRenditions={imageRenditions}
             setLightboxImage={setLightboxImage}
           />
         ))}
@@ -135,7 +135,7 @@ const Portfolio = ({ data: { items, images, projects, renditions } }) => {
       <Lightbox
         isOpen={isLightboxOpen}
         image={lightboxImage}
-        renditions={renditions}
+        imageRenditions={imageRenditions}
         onClose={() => setLightboxImage(null)}
       />
     </main>
@@ -143,32 +143,29 @@ const Portfolio = ({ data: { items, images, projects, renditions } }) => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const imagesData = await fs.readFile('./images.json', { encoding: 'utf-8' });
-  const parsedImagesData = JSON.parse(imagesData);
+  const { imageRenditions } = JSON.parse(await fs.readFile('./config.json', { encoding: 'utf-8' }));
+  const { portfolios, projects, images } = JSON.parse(await fs.readFile('./data.json', { encoding: 'utf-8' }));
 
-  const { portfolios, images, projects, renditions } = parsedImagesData;
-
-  const portfolioData = portfolios.find(portfolio => portfolio.slug === params.slug);
-
-  const items = portfolioData.items;
+  const { items } = portfolios.find(portfolio => portfolio.slug === params.slug);
 
   return {
     props: {
+      config: {
+        imageRenditions,
+      },
       data: {
         items,
-        images,
         projects,
-        renditions,
+        images,
       }
     }
   };
 };
 
 export const getStaticPaths = async () => {
-  const imagesData = await fs.readFile('./images.json', { encoding: 'utf-8' });
-  const parsedImagesData = JSON.parse(imagesData);
+  const { portfolios } = JSON.parse(await fs.readFile('./data.json', { encoding: 'utf-8' }));
 
-  const paths = parsedImagesData.portfolios.map(({ slug }) => ({ params: { slug } }));
+  const paths = portfolios.map(({ slug }) => ({ params: { slug } }));
 
   return {
     paths,

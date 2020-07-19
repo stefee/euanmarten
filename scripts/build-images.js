@@ -14,11 +14,11 @@ const exec = async () => {
   try {
     logger.debug('Starting images build...');
 
-    const { renditions, buildConfig } = JSON.parse(await fs.readFile('images.json'));
+    const { imageRenditions, imageBuildConfig } = JSON.parse(await fs.readFile('./config.json'));
 
     logger.debug('Creating output directories...');
 
-    const outputDirJobs = buildConfig.output.map(path => async () => {
+    const outputDirJobs = imageBuildConfig.output.map(path => async () => {
       await del(path);
       await fs.mkdir(path, { recursive: true });
     });
@@ -27,7 +27,7 @@ const exec = async () => {
 
     logger.debug('Creating renditions...');
 
-    await createImageRenditions({ logger }, renditions, buildConfig);
+    await createImageRenditions({ logger }, imageRenditions, imageBuildConfig);
 
     logger.info('Finished building images.', '✅');
   } catch (err) {

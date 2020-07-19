@@ -7,7 +7,7 @@ import Lightbox from '../../components/Lightbox';
 const THUMBNAIL_COLUMNS = 1;
 const THUMBNAIL_PADDING = 3;
 
-const Thumbnail = ({ image, renditions, onClick }) => (
+const Thumbnail = ({ image, imageRenditions, onClick }) => (
   <div className="Thumbnail mb2">
     <button
       title="View Image"
@@ -15,12 +15,12 @@ const Thumbnail = ({ image, renditions, onClick }) => (
       className="button-reset bn pa0 db w-100 pointer"
       onClick={onClick}
     >
-      <Image image={image} renditions={renditions} width="100vw" className="w-100 db" />
+      <Image image={image} renditions={imageRenditions} width="100vw" className="w-100 db" />
     </button>
   </div>
 );
 
-const Project = ({ data: { project, images, renditions } }) => {
+const Project = ({ data: { project, images }, config: { imageRenditions } }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
 
   const isLightboxOpen = !!lightboxImage;
@@ -50,7 +50,7 @@ const Project = ({ data: { project, images, renditions } }) => {
                   <Thumbnail
                     key={image.filename}
                     image={image}
-                    renditions={renditions}
+                    imageRenditions={imageRenditions}
                     onClick={() => setLightboxImage(image)}
                   />
                   <figcaption>{item.caption}</figcaption>
@@ -63,7 +63,7 @@ const Project = ({ data: { project, images, renditions } }) => {
       <Lightbox
         isOpen={isLightboxOpen}
         image={lightboxImage}
-        renditions={renditions}
+        imageRenditions={imageRenditions}
         onClose={() => setLightboxImage(null)}
       />
     </main>
@@ -71,29 +71,28 @@ const Project = ({ data: { project, images, renditions } }) => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const imagesData = await fs.readFile('./images.json', { encoding: 'utf-8' });
-  const parsedImagesData = JSON.parse(imagesData);
-
-  const { projects, images, renditions } = parsedImagesData;
+  const { imageRenditions } = JSON.parse(await fs.readFile('./config.json', { encoding: 'utf-8' }));
+  const { projects, images } = JSON.parse(await fs.readFile('./data.json', { encoding: 'utf-8' }));
 
   const project = projects.find(data => data.slug === params.slug);
 
   return {
     props: {
+      config: {
+        imageRenditions,
+      },
       data: {
         project,
         images,
-        renditions,
       }
     }
   };
 };
 
 export const getStaticPaths = async () => {
-  const imagesData = await fs.readFile('./images.json', { encoding: 'utf-8' });
-  const parsedImagesData = JSON.parse(imagesData);
+  const { projects } = JSON.parse(await fs.readFile('./data.json', { encoding: 'utf-8' }));
 
-  const paths = parsedImagesData.projects.map(({ slug }) => ({ params: { slug } }));
+  const paths = projects.map(({ slug }) => ({ params: { slug } }));
 
   return {
     paths,

@@ -143,54 +143,5 @@
         }
       ]
     }
-  ],
-  "renditions": [
-    {
-      "width": 100
-    },
-    {
-      "width": 200
-    },
-    {
-      "width": 320
-    },
-    {
-      "width": 400
-    },
-    {
-      "width": 640
-    },
-    {
-      "width": 768
-    },
-    {
-      "width": 1024
-    },
-    {
-      "width": 1280
-    },
-    {
-      "width": 1920
-    }
-  ],
-  "buildConfig": {
-    "input": "public/static/images",
-    "output": [
-      "public/static/renditions",
-      "dist/static/renditions"
-    ],
-    "concurrency": 20,
-    "fileTypes": ["jpg", "jpeg", "png"],
-    "compression": {
-      "jpg": "jpeg",
-      "jpeg": "jpeg",
-      "png": "png"
-    },
-    "defaultCompression": "jpeg",
-    "quality": {
-      "jpeg": 85,
-      "png": 100
-    },
-    "resizeOptions": ">"
-  }
+  ]
 }
