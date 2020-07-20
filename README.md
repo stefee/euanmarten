@@ -22,8 +22,8 @@ brew install nvm
 # Install node
 nvm install
 
-# Install now
-npm i -g now
+# Install vercel
+npm i -g vercel
 
 # Install package.json
 npm install --prefer-online
@@ -32,5 +32,5 @@ npm install --prefer-online
 ### Start Server
 
 ```sh
-now dev
+vercel dev
 ```
