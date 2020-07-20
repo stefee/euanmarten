@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { promises as fs } from 'fs';
+import { getImageRenditions } from '../../io/config';
+import { getImages, getProjects } from '../../io/content';
 import Image from '../../components/Image';
 import ColumnLayout from '../../components/ColumnLayout';
 import Lightbox from '../../components/Lightbox';
@@ -71,8 +72,9 @@ const Project = ({ data: { project, images }, config: { imageRenditions } }) => 
 };
 
 export const getStaticProps = async ({ params }) => {
-  const { imageRenditions } = JSON.parse(await fs.readFile('./config.json', { encoding: 'utf8' }));
-  const { projects, images } = JSON.parse(await fs.readFile('./data.json', { encoding: 'utf8' }));
+  const imageRenditions = await getImageRenditions()
+  const projects = await getProjects();
+  const images = await getImages();
 
   const project = projects.find(data => data.slug === params.slug);
 
@@ -84,19 +86,19 @@ export const getStaticProps = async ({ params }) => {
       data: {
         project,
         images,
-      }
-    }
+      },
+    },
   };
 };
 
 export const getStaticPaths = async () => {
-  const { projects } = JSON.parse(await fs.readFile('./data.json', { encoding: 'utf8' }));
+  const projects = await getProjects();
 
   const paths = projects.map(({ slug }) => ({ params: { slug } }));
 
   return {
     paths,
-    fallback: false
+    fallback: false,
   };
 };
 

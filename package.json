@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build && node scripts/build-images.js",
+    "dev": "node scripts/build-images.js && next dev",
+    "build": "node scripts/build-images.js && next build",
     "start": "next start",
     "test": "jest",
     "tdd": "jest --watch"

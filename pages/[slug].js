@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { promises as fs } from 'fs';
 import Link from 'next/link';
 import { splitArrayAlternating } from '../utils/arrays';
+import { getImageRenditions } from '../io/config';
+import { getImages, getProjects, getPortfolios } from '../io/content';
 import Image from '../components/Image';
 import ColumnLayout from '../components/ColumnLayout';
 import Lightbox from '../components/Lightbox';
@@ -17,7 +18,12 @@ const ThumbnailButton = ({ image, imageRenditions, onClick }) => (
       className="button-reset bn pa0 db w-100 pointer"
       onClick={onClick}
     >
-      <Image image={image} renditions={imageRenditions} width="50vw" className="w-100 db" />
+      <Image
+        image={image}
+        renditions={imageRenditions}
+        width="50vw"
+        className="w-100 db"
+      />
     </button>
   </div>
 );
@@ -29,7 +35,12 @@ const ThumbnailLink = ({ image, imageRenditions, href, as }) => (
       as={as}
     >
       <a className="pa0 db w-100">
-        <Image image={image} renditions={imageRenditions} width="50vw" className="w-100 db" />
+        <Image
+          image={image}
+          renditions={imageRenditions}
+          width="50vw"
+          className="w-100 db"
+        />
       </a>
     </Link>
   </div>
@@ -143,10 +154,12 @@ const Portfolio = ({ data: { items, images, projects }, config: { imageRendition
 };
 
 export const getStaticProps = async ({ params }) => {
-  const { imageRenditions } = JSON.parse(await fs.readFile('./config.json', { encoding: 'utf8' }));
-  const { portfolios, projects, images } = JSON.parse(await fs.readFile('./data.json', { encoding: 'utf8' }));
+  const imageRenditions = await getImageRenditions();
+  const portfolios = await getPortfolios();
+  const projects = await getProjects();
+  const images = await getImages();
 
-  const { items } = portfolios.find(portfolio => portfolio.slug === params.slug);
+  const { items } = portfolios.find(data => data.slug === params.slug);
 
   return {
     props: {
@@ -157,13 +170,13 @@ export const getStaticProps = async ({ params }) => {
         items,
         projects,
         images,
-      }
-    }
+      },
+    },
   };
 };
 
 export const getStaticPaths = async () => {
-  const { portfolios } = JSON.parse(await fs.readFile('./data.json', { encoding: 'utf8' }));
+  const portfolios = await getPortfolios();
 
   const paths = portfolios.map(({ slug }) => ({ params: { slug } }));
 

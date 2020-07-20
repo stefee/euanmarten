@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs').promises;
 const sharp = require('sharp');
 
-const getSerializableMetadata = async (inputPath, filename) => {
+const getSerializableImageMetadata = async (inputPath, filename) => {
   try {
     const image = sharp(path.join(inputPath, filename));
 
@@ -23,14 +23,14 @@ const getSerializableMetadata = async (inputPath, filename) => {
 const exportImageMetadata = async (context, args, filenames) => {
   const { logger } = context;
 
-  const accumulatedMetadata = [];
+  const accumulatedImageMetadata = [];
 
-  for (filename of filenames) {
-    const metadata = await getSerializableMetadata(args.input, filename);
-    accumulatedMetadata.push(metadata);
+  for (imageFilename of filenames) {
+    const imageMetadata = await getSerializableImageMetadata(args.input, imageFilename);
+    accumulatedImageMetadata.push(imageMetadata);
   }
 
-  const jsonMetadata = JSON.stringify(accumulatedMetadata);
+  const jsonMetadata = JSON.stringify({ imageMetadata: accumulatedImageMetadata });
 
   const outputFilePaths = args.output.map(outputDirPath => path.join(outputDirPath, 'metadata.json'));
 
