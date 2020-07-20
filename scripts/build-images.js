@@ -1,13 +1,27 @@
+const path = require('path');
 const fs = require('fs').promises;
 const del = require('del');
+const { splitFileExtension } = require('../utils/images');
 const createLoggerFn = require('./utils/logger');
-const createImageRenditions = require('./utils/create-image-renditions');
+const createImageRenditions = require('./operations/create-image-renditions');
+const exportImageMetadata = require('./operations/export-image-metadata');
 
 const logger = {
   debug: createLoggerFn(console.debug, '  '),
   info: createLoggerFn(console.info, '  '),
   warn: createLoggerFn(console.warn, '⚠️'),
   error: createLoggerFn(console.error, '🚨')
+};
+
+const getImageFilenames = async (pathToDir, allowedFileTypes) => {
+  const files = await fs.readdir(pathToDir);
+
+  const imageFilenames = files.filter(filename => {
+    const [extension] = splitFileExtension(filename);
+    return extension && allowedFileTypes.includes(extension.toLowerCase());
+  });
+
+  return imageFilenames;
 };
 
 const exec = async () => {
@@ -18,18 +32,26 @@ const exec = async () => {
 
     logger.debug('Creating output directories...');
 
-    const outputDirJobs = imageBuildConfig.output.map(path => async () => {
-      await del(path);
-      await fs.mkdir(path, { recursive: true });
+    const outputDirJobs = imageBuildConfig.output.map(outputPath => async () => {
+      await del(outputPath);
+      await fs.mkdir(path.join(outputPath, 'renditions'), { recursive: true });
     });
 
     await Promise.all(outputDirJobs.map(job => job()));
 
-    logger.debug('Creating renditions...');
+    logger.debug(`Finding images in directory ${imageBuildConfig.input}...`, '🔎');
 
-    await createImageRenditions({ logger }, imageRenditions, imageBuildConfig);
+    const filenames = await getImageFilenames(imageBuildConfig.input, imageBuildConfig.fileTypes);
 
-    logger.info('Finished building images.', '✅');
+    logger.debug(`Exporting image metadata for ${filenames.length} images...`);
+
+    await exportImageMetadata({ logger}, imageBuildConfig, filenames);
+
+    logger.debug(`Creating optimised renditions for ${filenames.length} images...`);
+
+    await createImageRenditions({ logger }, imageBuildConfig, filenames, imageRenditions);
+
+    logger.debug('Finished building images', '✅');
   } catch (err) {
     logger.error(err);
     logger.error('Something went wrong, terminating process');

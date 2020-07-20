@@ -143,8 +143,8 @@ const Portfolio = ({ data: { items, images, projects }, config: { imageRendition
 };
 
 export const getStaticProps = async ({ params }) => {
-  const { imageRenditions } = JSON.parse(await fs.readFile('./config.json', { encoding: 'utf-8' }));
-  const { portfolios, projects, images } = JSON.parse(await fs.readFile('./data.json', { encoding: 'utf-8' }));
+  const { imageRenditions } = JSON.parse(await fs.readFile('./config.json', { encoding: 'utf8' }));
+  const { portfolios, projects, images } = JSON.parse(await fs.readFile('./data.json', { encoding: 'utf8' }));
 
   const { items } = portfolios.find(portfolio => portfolio.slug === params.slug);
 
@@ -163,7 +163,7 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths = async () => {
-  const { portfolios } = JSON.parse(await fs.readFile('./data.json', { encoding: 'utf-8' }));
+  const { portfolios } = JSON.parse(await fs.readFile('./data.json', { encoding: 'utf8' }));
 
   const paths = portfolios.map(({ slug }) => ({ params: { slug } }));
 

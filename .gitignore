@@ -24,8 +24,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# images
-renditions
+# build
+dist
+images-dist
 
 # vercel
 .vercel

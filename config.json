@@ -31,8 +31,8 @@
   "imageBuildConfig": {
     "input": "public/static/images",
     "output": [
-      "public/static/renditions",
-      "dist/static/renditions"
+      "public/static/images-dist",
+      "dist/static/images-dist"
     ],
     "concurrency": 20,
     "fileTypes": ["jpg", "jpeg", "png"],
