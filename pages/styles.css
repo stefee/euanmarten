@@ -18,6 +18,10 @@ a:hover {
   color: inherit;
 }
 
+img {
+  height: auto;
+}
+
 .sticky {
   position: sticky;
 }
@@ -33,7 +37,6 @@ a:hover {
 }
 
 .Thumbnail img {
-  min-height: 35vw;
   background-color: #f2f2f2;
 }
 

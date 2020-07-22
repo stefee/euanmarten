@@ -32,7 +32,7 @@ const LightboxOverlay = ({ image, imageRenditions, onClose }) => {
 
   return (
     <div className="Lightbox fixed absolute--fill bg-near-black pt5 pb5 pt4-l pb4-l pr5-l pl5-l">
-      <Image image={image} renditions={imageRenditions} width="100vw" />
+      <Image image={image} renditions={imageRenditions} size="100vw" />
       <button
         title="Close"
         type="button"

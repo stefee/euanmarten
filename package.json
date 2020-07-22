@@ -10,7 +10,7 @@
     "tdd": "jest --watch"
   },
   "dependencies": {
-    "@renditions/react-img": "^2.0.2",
+    "@renditions/react-img": "^3.0.0",
     "next": "^9.4.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

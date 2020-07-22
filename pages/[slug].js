@@ -21,7 +21,7 @@ const ThumbnailButton = ({ image, imageRenditions, onClick }) => (
       <Image
         image={image}
         renditions={imageRenditions}
-        width="50vw"
+        size="50vw"
         className="w-100 db"
       />
     </button>
@@ -38,7 +38,7 @@ const ThumbnailLink = ({ image, imageRenditions, href, as }) => (
         <Image
           image={image}
           renditions={imageRenditions}
-          width="50vw"
+          size="50vw"
           className="w-100 db"
         />
       </a>
