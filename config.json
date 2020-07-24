@@ -29,7 +29,7 @@
     }
   ],
   "imageBuildConfig": {
-    "input": "public/static/images",
+    "input": "images",
     "output": [
       "public/static/images-dist",
       "dist/static/images-dist"
