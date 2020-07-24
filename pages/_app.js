@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import Head from 'next/head';
 import 'tachyons';
+import './fonts.css';
 import './styles.css';
 import Nav from '../components/Nav';
 
