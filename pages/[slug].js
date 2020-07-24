@@ -10,7 +10,7 @@ import Lightbox from '../components/Lightbox';
 const THUMBNAIL_COLUMNS = 2;
 const THUMBNAIL_PADDING = 1;
 
-const ThumbnailButton = ({ image, imageRenditions, onClick }) => (
+const ThumbnailButton = ({ image, imageRenditions, imageProps, onClick }) => (
   <div className="Thumbnail mb2">
     <button
       title="View Image"
@@ -23,12 +23,13 @@ const ThumbnailButton = ({ image, imageRenditions, onClick }) => (
         renditions={imageRenditions}
         size="50vw"
         className="w-100 db"
+        {...imageProps}
       />
     </button>
   </div>
 );
 
-const ThumbnailLink = ({ image, imageRenditions, href, as }) => (
+const ThumbnailLink = ({ image, imageRenditions, imageProps, href, as }) => (
   <div className="Thumbnail mb2">
     <Link
       href={href}
@@ -40,6 +41,7 @@ const ThumbnailLink = ({ image, imageRenditions, href, as }) => (
           renditions={imageRenditions}
           size="50vw"
           className="w-100 db"
+          {...imageProps}
         />
       </a>
     </Link>
@@ -49,6 +51,9 @@ const ThumbnailLink = ({ image, imageRenditions, href, as }) => (
 const ThumbnailColumn = ({ items, images, projects, imageRenditions, setLightboxImage }) => (
   <div>
     {items.map((item, index) => {
+      // lazy-load thumbnails below the fold
+      const thumbnailImageProps = index > 0 ? { loading: 'lazy' } : {};
+
       switch(item.type) {
         case 'image':
           if (!item.filename) {
@@ -69,6 +74,7 @@ const ThumbnailColumn = ({ items, images, projects, imageRenditions, setLightbox
               image={image}
               imageRenditions={imageRenditions}
               onClick={() => setLightboxImage(image)}
+              imageProps={thumbnailImageProps}
             />
           );
         case 'project':
@@ -108,6 +114,7 @@ const ThumbnailColumn = ({ items, images, projects, imageRenditions, setLightbox
               imageRenditions={imageRenditions}
               href="/project/[slug]"
               as={`/project/${project.slug}`}
+              imageProps={thumbnailImageProps}
             />
           );
         default:
