@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getImageRenditions } from '../../io/config';
+import { getAppConfig } from '../../io/config';
 import { getImages, getProjects } from '../../io/content';
 import Image from '../../components/Image';
 import ColumnLayout from '../../components/ColumnLayout';
@@ -8,7 +8,7 @@ import Lightbox from '../../components/Lightbox';
 const THUMBNAIL_COLUMNS = 1;
 const THUMBNAIL_PADDING = 3;
 
-const Thumbnail = ({ image, imageRenditions, onClick }) => (
+const Thumbnail = ({ image, appConfig, onClick }) => (
   <div className="Thumbnail mb2">
     <button
       title="View Image"
@@ -16,12 +16,12 @@ const Thumbnail = ({ image, imageRenditions, onClick }) => (
       className="button-reset bn pa0 db w-100 pointer"
       onClick={onClick}
     >
-      <Image image={image} renditions={imageRenditions} size="100vw" className="w-100 db" />
+      <Image image={image} appConfig={appConfig} size="100vw" className="w-100 db" />
     </button>
   </div>
 );
 
-const Project = ({ data: { project, images }, config: { imageRenditions } }) => {
+const Project = ({ appConfig, data: { project, images } }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
 
   const isLightboxOpen = !!lightboxImage;
@@ -51,7 +51,7 @@ const Project = ({ data: { project, images }, config: { imageRenditions } }) => 
                   <Thumbnail
                     key={image.filename}
                     image={image}
-                    imageRenditions={imageRenditions}
+                    appConfig={appConfig}
                     onClick={() => setLightboxImage(image)}
                   />
                   <figcaption>{item.caption}</figcaption>
@@ -64,7 +64,7 @@ const Project = ({ data: { project, images }, config: { imageRenditions } }) => 
       <Lightbox
         isOpen={isLightboxOpen}
         image={lightboxImage}
-        imageRenditions={imageRenditions}
+        appConfig={appConfig}
         onClose={() => setLightboxImage(null)}
       />
     </main>
@@ -72,7 +72,7 @@ const Project = ({ data: { project, images }, config: { imageRenditions } }) => 
 };
 
 export const getStaticProps = async ({ params }) => {
-  const imageRenditions = await getImageRenditions()
+  const appConfig = await getAppConfig()
   const projects = await getProjects();
   const images = await getImages();
 
@@ -80,9 +80,7 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: {
-      config: {
-        imageRenditions,
-      },
+      appConfig,
       data: {
         project,
         images,

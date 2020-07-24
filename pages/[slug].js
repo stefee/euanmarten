@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { splitArrayAlternating } from '../utils/arrays';
-import { getImageRenditions } from '../io/config';
+import { getAppConfig } from '../io/config';
 import { getImages, getProjects, getPortfolios } from '../io/content';
 import Image from '../components/Image';
 import ColumnLayout from '../components/ColumnLayout';
@@ -10,7 +10,7 @@ import Lightbox from '../components/Lightbox';
 const THUMBNAIL_COLUMNS = 2;
 const THUMBNAIL_PADDING = 1;
 
-const ThumbnailButton = ({ image, imageRenditions, imageProps, onClick }) => (
+const ThumbnailButton = ({ image, appConfig, imageProps, onClick }) => (
   <div className="Thumbnail mb2">
     <button
       title="View Image"
@@ -20,7 +20,7 @@ const ThumbnailButton = ({ image, imageRenditions, imageProps, onClick }) => (
     >
       <Image
         image={image}
-        renditions={imageRenditions}
+        appConfig={appConfig}
         size="50vw"
         className="w-100 db"
         {...imageProps}
@@ -29,7 +29,7 @@ const ThumbnailButton = ({ image, imageRenditions, imageProps, onClick }) => (
   </div>
 );
 
-const ThumbnailLink = ({ image, imageRenditions, imageProps, href, as }) => (
+const ThumbnailLink = ({ image, appConfig, imageProps, href, as }) => (
   <div className="Thumbnail mb2">
     <Link
       href={href}
@@ -38,7 +38,7 @@ const ThumbnailLink = ({ image, imageRenditions, imageProps, href, as }) => (
       <a className="pa0 db w-100">
         <Image
           image={image}
-          renditions={imageRenditions}
+          appConfig={appConfig}
           size="50vw"
           className="w-100 db"
           {...imageProps}
@@ -48,7 +48,7 @@ const ThumbnailLink = ({ image, imageRenditions, imageProps, href, as }) => (
   </div>
 );
 
-const ThumbnailColumn = ({ items, images, projects, imageRenditions, setLightboxImage }) => (
+const ThumbnailColumn = ({ items, images, projects, appConfig, setLightboxImage }) => (
   <div>
     {items.map((item, index) => {
       // lazy-load thumbnails below the fold
@@ -72,7 +72,7 @@ const ThumbnailColumn = ({ items, images, projects, imageRenditions, setLightbox
             <ThumbnailButton
               key={image.filename}
               image={image}
-              imageRenditions={imageRenditions}
+              appConfig={appConfig}
               onClick={() => setLightboxImage(image)}
               imageProps={thumbnailImageProps}
             />
@@ -111,7 +111,7 @@ const ThumbnailColumn = ({ items, images, projects, imageRenditions, setLightbox
             <ThumbnailLink
               key={project.slug}
               image={thumbnailImage}
-              imageRenditions={imageRenditions}
+              appConfig={appConfig}
               href="/project/[slug]"
               as={`/project/${project.slug}`}
               imageProps={thumbnailImageProps}
@@ -125,7 +125,7 @@ const ThumbnailColumn = ({ items, images, projects, imageRenditions, setLightbox
   </div>
 );
 
-const Portfolio = ({ data: { items, images, projects }, config: { imageRenditions } }) => {
+const Portfolio = ({ appConfig, data: { items, images, projects } }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
 
   const isLightboxOpen = !!lightboxImage;
@@ -145,7 +145,7 @@ const Portfolio = ({ data: { items, images, projects }, config: { imageRendition
             items={items}
             images={images}
             projects={projects}
-            imageRenditions={imageRenditions}
+            appConfig={appConfig}
             setLightboxImage={setLightboxImage}
           />
         ))}
@@ -153,7 +153,7 @@ const Portfolio = ({ data: { items, images, projects }, config: { imageRendition
       <Lightbox
         isOpen={isLightboxOpen}
         image={lightboxImage}
-        imageRenditions={imageRenditions}
+        appConfig={appConfig}
         onClose={() => setLightboxImage(null)}
       />
     </main>
@@ -161,7 +161,7 @@ const Portfolio = ({ data: { items, images, projects }, config: { imageRendition
 };
 
 export const getStaticProps = async ({ params }) => {
-  const imageRenditions = await getImageRenditions();
+  const appConfig = await getAppConfig();
   const portfolios = await getPortfolios();
   const projects = await getProjects();
   const images = await getImages();
@@ -170,9 +170,7 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: {
-      config: {
-        imageRenditions,
-      },
+      appConfig,
       data: {
         items,
         projects,

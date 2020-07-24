@@ -36,12 +36,11 @@
     ],
     "concurrency": 20,
     "fileTypes": ["jpg", "jpeg", "png"],
-    "compression": {
-      "jpg": "jpeg",
-      "jpeg": "jpeg",
-      "png": "png"
+    "compressionTargets": {
+      "jpg": ["webp", "jpeg"],
+      "jpeg": ["webp", "jpeg"],
+      "png": ["webp", "png"]
     },
-    "defaultCompression": "jpeg",
     "quality": {
       "jpeg": 85,
       "png": 100
