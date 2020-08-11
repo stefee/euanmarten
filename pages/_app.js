@@ -10,6 +10,7 @@ const App = ({ Component, pageProps }) => (
     <Head>
       <title>Euan Marten Portfolio</title>
       <meta name="description" content="Euan Marten is an illustrator & designer with a BA in Illustration from Norwich University of the Arts." />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
 
     <div className="sans-serif">
