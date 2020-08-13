@@ -9,8 +9,17 @@ const App = ({ Component, pageProps }) => (
   <Fragment>
     <Head>
       <title>Euan Marten Portfolio</title>
-      <meta name="description" content="Euan Marten is an illustrator & designer with a BA in Illustration from Norwich University of the Arts." />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta
+        name="description"
+        content="Euan Marten is an illustrator & designer with a BA in Illustration from Norwich University of the Arts."
+      />
+      <link
+        rel="preload"
+        href="https://fonts.gstatic.com/s/muli/v22/7Auwp_0qiz-afTLGLQjUwkQ.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
     </Head>
 
     <div className="sans-serif">
