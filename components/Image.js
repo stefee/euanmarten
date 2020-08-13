@@ -1,6 +1,5 @@
-import Img from '@renditions/react-img';
-import Source from '@renditions/react-picture-source';
 import { getImageSrc } from '../utils/images';
+import Picture from './Picture';
 
 const Image = ({ image, appConfig, size = '100vw', ...rest }) => {
   const fileExtensions = appConfig.imageBuildConfig.compressionTargets[image.format];
@@ -11,28 +10,15 @@ const Image = ({ image, appConfig, size = '100vw', ...rest }) => {
   const modernFileExtensions = fileExtensions.filter(ext => ext !== fallbackFileExtension);
 
   return (
-    <picture>
-      {modernFileExtensions.map(fileExtension => (
-        <Source
-          key={fileExtension}
-          type={`image/${fileExtension}`}
-          getSrc={getImageSrc.bind(null, image, fileExtension)}
-          renditions={appConfig.imageRenditions}
-          size={size}
-          autoSortRenditions
-        />
-      ))}
-      <Img
-        alt={image.altText}
-        width={image.width}
-        height={image.height}
-        getSrc={getImageSrc.bind(null, image, fallbackFileExtension)}
-        renditions={appConfig.imageRenditions}
-        size={size}
-        autoSortRenditions
-        {...rest}
-      />
-    </picture>
+    <Picture
+      image={image}
+      renditions={appConfig.imageRenditions}
+      size={size}
+      fallbackFileExtension={fallbackFileExtension}
+      modernFileExtensions={modernFileExtensions}
+      getImageSrc={getImageSrc}
+      {...rest}
+    />
   );
 };
 
