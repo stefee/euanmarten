@@ -18,6 +18,7 @@ const Image = ({ image, appConfig, size = '100vw', ...rest }) => {
           type={`image/${fileExtension}`}
           getSrc={getImageSrc.bind(null, image, fileExtension)}
           renditions={appConfig.imageRenditions}
+          size={size}
           autoSortRenditions
         />
       ))}
