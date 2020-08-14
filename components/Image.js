@@ -5,7 +5,7 @@ import { getImageSrc } from '../utils/images';
 const Picture = ({
   image,
   renditions,
-  size = '100vw',
+  size = null,
   fallbackFileExtension,
   modernFileExtensions,
   getImageSrc,
@@ -35,7 +35,7 @@ const Picture = ({
   </picture>
 );
 
-const Image = ({ image, appConfig, size = '100vw', ...rest }) => {
+const Image = ({ image, appConfig, size = null, ...rest }) => {
   const fileExtensions = appConfig.imageBuildConfig.compressionTargets[image.format];
 
   // Fallback image src for legacy browsers that do not support webp:
