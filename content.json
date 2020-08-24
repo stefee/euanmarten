@@ -55,6 +55,10 @@
     {
       "filename": "Nwf3.png",
       "altText": "Illustration: Night World"
+    },
+    {
+      "filename": "fruit-lowres.jpg",
+      "altText": "Fruit vector graphics"
     }
   ],
   "projects": [
@@ -95,6 +99,15 @@
         {
           "type": "image",
           "filename": "fwoosh.PNG"
+        }
+      ]
+    },
+    {
+      "slug": "design",
+      "items": [
+        {
+          "type": "image",
+          "filename": "fruit-lowres.jpg"
         }
       ]
     },
