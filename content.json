@@ -71,6 +71,46 @@
     {
       "filename": "cat-tabby.jpg",
       "altText": "Tabby cat icon"
+    },
+    {
+      "filename": "pals-cover.jpg",
+      "altText": ""
+    },
+    {
+      "filename": "pals-01.jpg",
+      "altText": ""
+    },
+    {
+      "filename": "pals-02.jpg",
+      "altText": ""
+    },
+    {
+      "filename": "pals-03.jpg",
+      "altText": ""
+    },
+    {
+      "filename": "fruit-cover.jpg",
+      "altText": ""
+    },
+    {
+      "filename": "fruit-apple.jpg",
+      "altText": ""
+    },
+    {
+      "filename": "fruit-banana.jpg",
+      "altText": ""
+    },
+    {
+      "filename": "fruit-mango.jpg",
+      "altText": ""
+    },
+    {
+      "filename": "fruit-lemon.jpg",
+      "altText": ""
+    },
+    {
+      "filename": "fruit-pear.jpg",
+      "altText": ""
     }
   ],
   "projects": [
@@ -159,6 +199,87 @@
           "caption": ""
         }
       ]
+    },
+    {
+      "slug": "pals",
+      "title": "[insert title here]",
+      "introText": "[insert description here]",
+      "introImage": null,
+      "thumbnailImage": {
+        "type": "image",
+        "filename": "pals-cover.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "filename": "pals-01.jpg",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "filename": "pals-02.jpg",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "filename": "pals-03.jpg",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "fruit",
+      "title": "[insert title here]",
+      "introText": "[insert description here]",
+      "introImage": null,
+      "thumbnailImage": {
+        "type": "image",
+        "filename": "fruit-cover.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "filename": "fruit-apple.jpg",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "filename": "fruit-banana.jpg",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "filename": "fruit-lemon.jpg",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "filename": "fruit-mango.jpg",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "filename": "fruit-pear.jpg",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "still-growing",
+      "title": "Still Growing",
+      "introText": "[insert description here]",
+      "introImage": null,
+      "thumbnailImage": {
+        "type": "image",
+        "filename": "grow.PNG"
+      },
+      "items": [
+        {
+          "type": "image",
+          "filename": "grow.PNG",
+          "caption": ""
+        }
+      ]
     }
   ],
   "portfolios": [
@@ -180,15 +301,23 @@
       "items": [
         {
           "type": "project",
+          "slug": "pals"
+        },
+        {
+          "type": "project",
+          "slug": "fruit"
+        },
+        {
+          "type": "project",
           "slug": "cat-icons"
         },
         {
           "type": "project",
-          "slug": "bilbo"
+          "slug": "nwf3"
         },
         {
           "type": "project",
-          "slug": "nwf3"
+          "slug": "bilbo"
         }
       ]
     },
