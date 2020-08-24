@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@renditions/react-img": "^4.0.0",
-    "@renditions/react-picture-source": "0.0.1",
+    "@renditions/react-picture-source": "0.0.2",
     "next": "^9.5.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "del": "^5.1.0",
-    "jest": "^26.3.0",
+    "jest": "^26.4.2",
     "promise-limit": "^2.7.0"
   }
 }
