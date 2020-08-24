@@ -125,6 +125,40 @@
           "caption": ""
         }
       ]
+    },
+    {
+      "slug": "bilbo",
+      "title": "Bilbo The Good Cat Boy",
+      "introText": "[insert description here]",
+      "introImage": null,
+      "thumbnailImage": {
+        "type": "image",
+        "filename": "bilbo2.png"
+      },
+      "items": [
+        {
+          "type": "image",
+          "filename": "bilbo2.png",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "nwf3",
+      "title": "[insert title here]",
+      "introText": "[insert description here]",
+      "introImage": null,
+      "thumbnailImage": {
+        "type": "image",
+        "filename": "Nwf3.png"
+      },
+      "items": [
+        {
+          "type": "image",
+          "filename": "Nwf3.png",
+          "caption": ""
+        }
+      ]
     }
   ],
   "portfolios": [
@@ -147,6 +181,14 @@
         {
           "type": "project",
           "slug": "cat-icons"
+        },
+        {
+          "type": "project",
+          "slug": "bilbo"
+        },
+        {
+          "type": "project",
+          "slug": "nwf3"
         }
       ]
     },
