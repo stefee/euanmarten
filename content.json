@@ -57,6 +57,10 @@
       "altText": "Illustration: Night World"
     },
     {
+      "filename": "cat-icons.jpg",
+      "altText": "Project: Cat Icons"
+    },
+    {
       "filename": "cat-orange.jpg",
       "altText": "Orange cat icon"
     },
@@ -99,13 +103,10 @@
       "slug": "cat-icons",
       "title": "Cat Icons",
       "introText": "[insert description here]",
-      "introImage": {
-        "type": "image",
-        "filename": "cat-orange.jpg"
-      },
+      "introImage": null,
       "thumbnailImage": {
         "type": "image",
-        "filename": "cat-orange.jpg"
+        "filename": "cat-icons.jpg"
       },
       "items": [
         {
