@@ -57,8 +57,16 @@
       "altText": "Illustration: Night World"
     },
     {
-      "filename": "fruit-lowres.jpg",
-      "altText": "Fruit vector graphics"
+      "filename": "cat-orange.jpg",
+      "altText": "Orange cat icon"
+    },
+    {
+      "filename": "cat-patch.jpg",
+      "altText": "Patchy cat icon"
+    },
+    {
+      "filename": "cat-tabby.jpg",
+      "altText": "Tabby cat icon"
     }
   ],
   "projects": [
@@ -86,6 +94,36 @@
           "caption": "This is a self portrait and it is the last image of the project."
         }
       ]
+    },
+    {
+      "slug": "cat-icons",
+      "title": "Cat Icons",
+      "introText": "[insert description here]",
+      "introImage": {
+        "type": "image",
+        "filename": "cat-orange.jpg"
+      },
+      "thumbnailImage": {
+        "type": "image",
+        "filename": "cat-orange.jpg"
+      },
+      "items": [
+        {
+          "type": "image",
+          "filename": "cat-orange.jpg",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "filename": "cat-patch.jpg",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "filename": "cat-tabby.jpg",
+          "caption": ""
+        }
+      ]
     }
   ],
   "portfolios": [
@@ -106,8 +144,8 @@
       "slug": "design",
       "items": [
         {
-          "type": "image",
-          "filename": "fruit-lowres.jpg"
+          "type": "project",
+          "slug": "cat-icons"
         }
       ]
     },

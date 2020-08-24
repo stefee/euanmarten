@@ -54,7 +54,7 @@ const Project = ({ appConfig, data: { project, images } }) => {
                     appConfig={appConfig}
                     onClick={() => setLightboxImage(image)}
                   />
-                  <figcaption>{item.caption}</figcaption>
+                  {item.caption ? <figcaption>{item.caption}</figcaption> : null}
                 </figure>
               );
             })}

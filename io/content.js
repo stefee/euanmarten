@@ -16,6 +16,11 @@ export const getImages = async () => {
 
   const imagesWithMetadata = images.reduce((acc, data) => {
     const metadata = imageMetadata.find(metadata => metadata.filename === data.filename);
+
+    if (!metadata) {
+      throw new Error(`Missing metadata for image ${data.filename}. Check that the image exists in the image build output directory.`);
+    }
+
     acc.push({ ...data, ...metadata });
     return acc;
   }, []);
