@@ -110,7 +110,7 @@ const ThumbnailColumn = ({ items, images, projects, appConfig, setLightboxImage 
           }
 
           return (
-            <div className="mb4">
+            <div className="mb4 pb3 bb b--moon-gray">
               <ThumbnailLink
                 key={project.slug}
                 image={thumbnailImage}
