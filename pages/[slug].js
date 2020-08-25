@@ -11,7 +11,7 @@ const THUMBNAIL_COLUMNS = 2;
 const THUMBNAIL_PADDING = 1;
 
 const ThumbnailButton = ({ image, appConfig, imageProps, onClick }) => (
-  <div className="Thumbnail mb2">
+  <div className="Thumbnail">
     <button
       title="View Image"
       type="button"
@@ -30,7 +30,7 @@ const ThumbnailButton = ({ image, appConfig, imageProps, onClick }) => (
 );
 
 const ThumbnailLink = ({ image, appConfig, imageProps, href, as }) => (
-  <div className="Thumbnail mb2">
+  <div className="Thumbnail">
     <Link
       href={href}
       as={as}
@@ -69,13 +69,15 @@ const ThumbnailColumn = ({ items, images, projects, appConfig, setLightboxImage 
           }
 
           return (
-            <ThumbnailButton
-              key={image.filename}
-              image={image}
-              appConfig={appConfig}
-              onClick={() => setLightboxImage(image)}
-              imageProps={thumbnailImageProps}
-            />
+            <div className="mb2">
+              <ThumbnailButton
+                key={image.filename}
+                image={image}
+                appConfig={appConfig}
+                onClick={() => setLightboxImage(image)}
+                imageProps={thumbnailImageProps}
+              />
+            </div>
           );
         case 'project':
           if (!item.slug) {
@@ -108,14 +110,22 @@ const ThumbnailColumn = ({ items, images, projects, appConfig, setLightboxImage 
           }
 
           return (
-            <ThumbnailLink
-              key={project.slug}
-              image={thumbnailImage}
-              appConfig={appConfig}
-              href="/project/[slug]"
-              as={`/project/${project.slug}`}
-              imageProps={thumbnailImageProps}
-            />
+            <div className="mb4">
+              <ThumbnailLink
+                key={project.slug}
+                image={thumbnailImage}
+                appConfig={appConfig}
+                href="/project/[slug]"
+                as={`/project/${project.slug}`}
+                imageProps={thumbnailImageProps}
+              />
+              <div className="flex flex-column flex-row-ns items-center justify-center lh-title fw2 f4 f3-m f2-l">
+                <h2 className="mb2 tc fw2 mt0 mb0 f4 f3-m f2-l">{project.title}</h2>
+                <Link href="/project/[slug]" as={`/project/${project.slug}`}>
+                  <a className="ml3-ns f5 flex items-center">View Project</a>
+                </Link>
+              </div>
+            </div>
           );
         default:
           console.error(`Invalid images data: item ${index} in column did not have a recognised type`);
