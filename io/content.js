@@ -1,7 +1,8 @@
 import { promises as fs } from 'fs';
+import JSON5 from 'json5';
 
 export const getContent = async () => {
-  const content = JSON.parse(await fs.readFile('./content.json', { encoding: 'utf8' }));;
+  const content = JSON5.parse(await fs.readFile('./content.json5', { encoding: 'utf8' }));
   return content;
 };
 
