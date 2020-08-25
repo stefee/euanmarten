@@ -123,10 +123,10 @@
       slug: 'design',
       items: [
         { type: 'project', slug: 'pals' },
-        { type: 'project', slug: 'bilbo' },
         { type: 'project', slug: 'birdbell' },
         { type: 'project', slug: 'fruit' },
         { type: 'project', slug: 'cat-icons' },
+        { type: 'project', slug: 'bilbo' },
         { type: 'project', slug: 'nwf3' }
       ]
     },
