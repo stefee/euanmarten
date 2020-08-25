@@ -32,10 +32,6 @@ img {
   }
 }
 
-.underline-hover:focus {
-  text-decoration: none;
-}
-
 .button-reset:active {
   outline: none;
 }
