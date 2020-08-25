@@ -29,22 +29,15 @@ const ThumbnailButton = ({ image, appConfig, imageProps, onClick }) => (
   </div>
 );
 
-const ThumbnailLink = ({ image, appConfig, imageProps, href, as }) => (
+const Thumbnail = ({ image, appConfig, imageProps }) => (
   <div className="Thumbnail">
-    <Link
-      href={href}
-      as={as}
-    >
-      <a className="pa0 db w-100">
-        <Image
-          image={image}
-          appConfig={appConfig}
-          size="50vw"
-          className="w-100 db"
-          {...imageProps}
-        />
-      </a>
-    </Link>
+    <Image
+      image={image}
+      appConfig={appConfig}
+      size="50vw"
+      className="w-100 db"
+      {...imageProps}
+    />
   </div>
 );
 
@@ -109,23 +102,23 @@ const ThumbnailColumn = ({ slug, items, images, projects, appConfig, setLightbox
           }
 
           return (
-            <div className="mb4" key={project.slug}>
-              <ThumbnailLink
-                image={thumbnailImage}
-                appConfig={appConfig}
-                href="/projects/[portfolioSlug]/[slug]"
-                as={`/projects/${slug}/${project.slug}`}
-                imageProps={thumbnailImageProps}
-              />
-              <div className="flex flex-column pa3 pb4-l bb bw1 b--moon-gray lh-title">
-                <Link href="/projects/[portfolioSlug]/[slug]" as={`/projects/${slug}/${project.slug}`}>
-                  <a className="no-underline">
-                    <h2 className="fw2 mt0 mb3 f4 f3-ns">{project.title}</h2>
-                    <div className="underline ttl f5">View Project</div>
-                  </a>
-                </Link>
-              </div>
-            </div>
+            <Link
+              key={project.slug}
+              href="/projects/[portfolioSlug]/[slug]"
+              as={`/projects/${slug}/${project.slug}`}
+            >
+              <a className="mb4 pa0 db w-100 no-underline">
+                <Thumbnail
+                  image={thumbnailImage}
+                  appConfig={appConfig}
+                  imageProps={thumbnailImageProps}
+                />
+                <div className="flex flex-column pa3 pb4-l bb bw1 b--moon-gray lh-title">
+                  <h2 className="fw2 mt0 mb3 f4 f3-ns">{project.title}</h2>
+                  <div className="underline ttl f5">View Project</div>
+                </div>
+              </a>
+            </Link>
           );
         default:
           console.error(`Invalid images data: item ${index} in column did not have a recognised type`);
