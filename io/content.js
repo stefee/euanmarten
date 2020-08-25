@@ -18,7 +18,8 @@ export const getImages = async () => {
     const metadata = imageMetadata.find(metadata => metadata.filename === data.filename);
 
     if (!metadata) {
-      throw new Error(`Missing metadata for image ${data.filename}. Check that the image exists in the image build output directory.`);
+      console.error(`Missing metadata for image ${data.filename}. Check that the image exists in the image build output directory.`);
+      return acc;
     }
 
     acc.push({ ...data, ...metadata });
