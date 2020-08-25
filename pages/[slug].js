@@ -145,11 +145,11 @@ const Portfolio = ({ appConfig, data: { slug, items, images, projects } }) => {
       <nav className="ph4 pt2 w-100 w-20-l">
         <div className="sticky-l top-2">
           <ul className="flex flex-row flex-column-l justify-center justify-start-l list pa0 ma0 mr2 mr0-ns f4 fw2 ttl">
-            <li className="mb3 mr3 mr0-l">
-              <Link href="/[slug]" as="/illustration"><a>illustration</a></Link>
+            <li className="mb3 mr4 mr0-l">
+              <Link href="/[slug]" as="/illustration"><a className="no-underline underline-hover">illustration</a></Link>
             </li>
             <li className="mb3">
-              <Link href="/[slug]" as="/design"><a>design</a></Link>
+              <Link href="/[slug]" as="/design"><a className="no-underline underline-hover">design</a></Link>
             </li>
           </ul>
         </div>
