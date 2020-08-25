@@ -69,9 +69,8 @@ const ThumbnailColumn = ({ slug, items, images, projects, appConfig, setLightbox
           }
 
           return (
-            <div className="mb2">
+            <div key={image.filename} className="mb2">
               <ThumbnailButton
-                key={image.filename}
                 image={image}
                 appConfig={appConfig}
                 onClick={() => setLightboxImage(image)}
