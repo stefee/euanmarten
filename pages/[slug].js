@@ -142,31 +142,45 @@ const Portfolio = ({ appConfig, data: { slug, items, images, projects } }) => {
   const itemColumns = splitArrayAlternating(items, THUMBNAIL_COLUMNS);
 
   return (
-    <main>
-      <ColumnLayout
-        columns={THUMBNAIL_COLUMNS}
-        verticalPadding={THUMBNAIL_PADDING}
-        horizontalPadding={THUMBNAIL_PADDING}
-      >
-        {itemColumns.map((items, i) => (
-          <ThumbnailColumn
-            key={i}
-            slug={slug}
-            items={items}
-            images={images}
-            projects={projects}
-            appConfig={appConfig}
-            setLightboxImage={setLightboxImage}
-          />
-        ))}
-      </ColumnLayout>
-      <Lightbox
-        isOpen={isLightboxOpen}
-        image={lightboxImage}
-        appConfig={appConfig}
-        onClose={() => setLightboxImage(null)}
-      />
-    </main>
+    <div className="flex flex-wrap">
+      <nav className="ph4 pt2 w-100 w-20-l">
+        <div className="sticky-l top-2">
+          <ul className="flex flex-row flex-column-l justify-center justify-start-l list pa0 ma0 mr2 mr0-ns f4 fw2 ttl">
+            <li className="mb3 mr3 mr0-l">
+              <Link href="/[slug]" as="/illustration"><a>illustration</a></Link>
+            </li>
+            <li className="mb3">
+              <Link href="/[slug]" as="/design"><a>design</a></Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <main className="w-80-l">
+        <ColumnLayout
+          columns={THUMBNAIL_COLUMNS}
+          verticalPadding={THUMBNAIL_PADDING}
+          horizontalPadding={THUMBNAIL_PADDING}
+        >
+          {itemColumns.map((items, i) => (
+            <ThumbnailColumn
+              key={i}
+              slug={slug}
+              items={items}
+              images={images}
+              projects={projects}
+              appConfig={appConfig}
+              setLightboxImage={setLightboxImage}
+            />
+          ))}
+        </ColumnLayout>
+        <Lightbox
+          isOpen={isLightboxOpen}
+          image={lightboxImage}
+          appConfig={appConfig}
+          onClose={() => setLightboxImage(null)}
+        />
+      </main>
+    </div>
   );
 };
 
