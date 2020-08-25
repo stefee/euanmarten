@@ -10,25 +10,6 @@ import Lightbox from '../components/Lightbox';
 const THUMBNAIL_COLUMNS = 2;
 const THUMBNAIL_PADDING = 1;
 
-const ThumbnailButton = ({ image, appConfig, imageProps, onClick }) => (
-  <div className="Thumbnail">
-    <button
-      title="View Image"
-      type="button"
-      className="button-reset bn pa0 db w-100 pointer"
-      onClick={onClick}
-    >
-      <Image
-        image={image}
-        appConfig={appConfig}
-        size="50vw"
-        className="w-100 db"
-        {...imageProps}
-      />
-    </button>
-  </div>
-);
-
 const Thumbnail = ({ image, appConfig, imageProps }) => (
   <div className="Thumbnail">
     <Image
@@ -39,6 +20,17 @@ const Thumbnail = ({ image, appConfig, imageProps }) => (
       {...imageProps}
     />
   </div>
+);
+
+const ThumbnailButton = ({ onClick, ...rest }) => (
+  <button
+    title="View Image"
+    type="button"
+    className="button-reset bn pa0 db w-100 pointer"
+    onClick={onClick}
+  >
+    <Thumbnail {...rest} />
+  </button>
 );
 
 const ThumbnailColumn = ({ slug, items, images, projects, appConfig, setLightboxImage }) => (
