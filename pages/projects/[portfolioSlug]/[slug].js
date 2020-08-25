@@ -50,6 +50,11 @@ const Project = ({ appConfig, data: { portfolioSlug, project, images } }) => {
               // but in future we might want to support other types
               const image = images.find(data => data.filename === item.filename);
 
+              if (!image) {
+                console.error(`Could not find image ${item.filename}.`);
+                return null;
+              }
+
               return (
                 <figure key={index} className="ma0 mb4">
                   <Thumbnail

@@ -111,34 +111,33 @@
     {
       "filename": "fruit-pear.jpg",
       "altText": ""
+    },
+    {
+      "filename": "birdbell-cover.jpg",
+      "altText": ""
+    },
+    {
+      "filename": "birdbell-01.jpg",
+      "altText": ""
+    },
+    {
+      "filename": "birdbell-02.jpg",
+      "altText": ""
+    },
+    {
+      "filename": "birdbell-03.jpg",
+      "altText": ""
+    },
+    {
+      "filename": "birdbell-04.png",
+      "altText": ""
+    },
+    {
+      "filename": "birdbell-05.png",
+      "altText": ""
     }
   ],
   "projects": [
-    {
-      "slug": "demo",
-      "title": "Percy the Frog Engine",
-      "introText": "This is a demonstration page. It's here to show how project pages look for the sake of development and quality assurance.",
-      "introImage": {
-        "type": "image",
-        "filename": "body.jpg"
-      },
-      "thumbnailImage": {
-        "type": "image",
-        "filename": "oranges.jpg"
-      },
-      "items": [
-        {
-          "type": "image",
-          "filename": "oranges.jpg",
-          "caption": "This is the first picture in this demo project."
-        },
-        {
-          "type": "image",
-          "filename": "self.jpg",
-          "caption": "This is a self portrait and it is the last image of the project."
-        }
-      ]
-    },
     {
       "slug": "cat-icons",
       "title": "Cat Icons",
@@ -280,22 +279,41 @@
           "caption": ""
         }
       ]
-    }
-  ],
-  "portfolios": [
+    },
     {
-      "slug": "demo",
+      "slug": "birdbell",
+      "title": "Bird & Bell",
+      "introText": "",
+      "introImage": null,
+      "thumbnailImage": {
+        "type": "image",
+        "filename": "birdbell-cover.jpg"
+      },
       "items": [
         {
-          "type": "project",
-          "slug": "demo"
+          "type": "image",
+          "filename": "birdbell-02.jpg",
+          "caption": ""
         },
         {
           "type": "image",
-          "filename": "fwoosh.PNG"
+          "filename": "birdbell-03.jpg",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "filename": "birdbell-04.png",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "filename": "birdbell-05.png",
+          "caption": ""
         }
       ]
-    },
+    }
+  ],
+  "portfolios": [
     {
       "slug": "design",
       "items": [
@@ -305,15 +323,19 @@
         },
         {
           "type": "project",
+          "slug": "bilbo"
+        },
+        {
+          "type": "project",
+          "slug": "birdbell"
+        },
+        {
+          "type": "project",
           "slug": "fruit"
         },
         {
           "type": "project",
           "slug": "cat-icons"
-        },
-        {
-          "type": "project",
-          "slug": "bilbo"
         },
         {
           "type": "project",
@@ -359,10 +381,6 @@
         {
           "type": "image",
           "filename": "self.jpg"
-        },
-        {
-          "type": "image",
-          "filename": "bilbo2.png"
         },
         {
           "type": "image",
