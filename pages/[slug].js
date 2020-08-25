@@ -48,7 +48,7 @@ const ThumbnailLink = ({ image, appConfig, imageProps, href, as }) => (
   </div>
 );
 
-const ThumbnailColumn = ({ items, images, projects, appConfig, setLightboxImage }) => (
+const ThumbnailColumn = ({ slug, items, images, projects, appConfig, setLightboxImage }) => (
   <div>
     {items.map((item, index) => {
       // lazy-load thumbnails below the fold
@@ -114,13 +114,13 @@ const ThumbnailColumn = ({ items, images, projects, appConfig, setLightboxImage 
               <ThumbnailLink
                 image={thumbnailImage}
                 appConfig={appConfig}
-                href="/project/[slug]"
-                as={`/project/${project.slug}`}
+                href="/projects/[portfolioSlug]/[slug]"
+                as={`/projects/${slug}/${project.slug}`}
                 imageProps={thumbnailImageProps}
               />
               <div className="flex flex-column items-center justify-center pa2 pb3 bb bw1 b--light-gray lh-title">
                 <h2 className="tc fw2 mt0 mb3 f4 f3-ns">{project.title}</h2>
-                <Link href="/project/[slug]" as={`/project/${project.slug}`}>
+                <Link href="/projects/[portfolioSlug]/[slug]" as={`/projects/${slug}/${project.slug}`}>
                   <a className="tc ttl f5 flex items-center">View Project</a>
                 </Link>
               </div>
@@ -134,7 +134,7 @@ const ThumbnailColumn = ({ items, images, projects, appConfig, setLightboxImage 
   </div>
 );
 
-const Portfolio = ({ appConfig, data: { items, images, projects } }) => {
+const Portfolio = ({ appConfig, data: { slug, items, images, projects } }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
 
   const isLightboxOpen = !!lightboxImage;
@@ -151,6 +151,7 @@ const Portfolio = ({ appConfig, data: { items, images, projects } }) => {
         {itemColumns.map((items, i) => (
           <ThumbnailColumn
             key={i}
+            slug={slug}
             items={items}
             images={images}
             projects={projects}
@@ -175,12 +176,13 @@ export const getStaticProps = async ({ params }) => {
   const projects = await getProjects();
   const images = await getImages();
 
-  const { items } = portfolios.find(data => data.slug === params.slug);
+  const { slug, items } = portfolios.find(data => data.slug === params.slug);
 
   return {
     props: {
       appConfig,
       data: {
+        slug,
         items,
         projects,
         images,

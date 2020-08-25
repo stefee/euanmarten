@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { getAppConfig } from '../../io/config';
-import { getImages, getProjects } from '../../io/content';
-import Image from '../../components/Image';
-import ColumnLayout from '../../components/ColumnLayout';
-import Lightbox from '../../components/Lightbox';
+import Link from 'next/link';
+import { getAppConfig } from '../../../io/config';
+import { getImages, getProjects, getPortfolios } from '../../../io/content';
+import Image from '../../../components/Image';
+import ColumnLayout from '../../../components/ColumnLayout';
+import Lightbox from '../../../components/Lightbox';
 
 const THUMBNAIL_COLUMNS = 1;
 const THUMBNAIL_PADDING = 3;
@@ -21,7 +22,7 @@ const Thumbnail = ({ image, appConfig, onClick }) => (
   </div>
 );
 
-const Project = ({ appConfig, data: { project, images } }) => {
+const Project = ({ appConfig, data: { portfolioSlug, project, images } }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
 
   const isLightboxOpen = !!lightboxImage;
@@ -30,6 +31,9 @@ const Project = ({ appConfig, data: { project, images } }) => {
     <main className="flex flex-wrap">
       <div className="ph4 pt4 w-third-l">
         <div className="sticky-l top-2">
+          <Link href="/[slug]" as={`/${portfolioSlug}`}>
+            <a className="ttl mb4 db">Back To Portfolio</a>
+          </Link>
           <h2 className="mt0 fw2 f3 f2-l">{project.title}</h2>
           <p>{project.introText}</p>
         </div>
@@ -82,6 +86,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       appConfig,
       data: {
+        portfolioSlug: params.portfolioSlug,
         project,
         images,
       },
@@ -90,9 +95,15 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths = async () => {
+  const portfolios = await getPortfolios();
   const projects = await getProjects();
 
-  const paths = projects.map(({ slug }) => ({ params: { slug } }));
+  const paths = portfolios.reduce((acc, { slug: portfolioSlug }) => {
+    projects.forEach(({ slug }) => {
+      acc.push({ params: { portfolioSlug, slug } });
+    });
+    return acc;
+  }, []);
 
   return {
     paths,
