@@ -142,7 +142,7 @@
     {
       "slug": "cat-icons",
       "title": "Cat Icons",
-      "introText": "[insert description here]",
+      "introText": "",
       "introImage": null,
       "thumbnailImage": {
         "type": "image",
@@ -169,7 +169,7 @@
     {
       "slug": "bilbo",
       "title": "Bilbo The Good Cat Boy",
-      "introText": "[insert description here]",
+      "introText": "",
       "introImage": null,
       "thumbnailImage": {
         "type": "image",
@@ -186,7 +186,7 @@
     {
       "slug": "nwf3",
       "title": "Night World",
-      "introText": "[insert description here]",
+      "introText": "",
       "introImage": null,
       "thumbnailImage": {
         "type": "image",
@@ -203,7 +203,7 @@
     {
       "slug": "pals",
       "title": "Character Illustrations",
-      "introText": "[insert description here]",
+      "introText": "",
       "introImage": null,
       "thumbnailImage": {
         "type": "image",
@@ -230,7 +230,7 @@
     {
       "slug": "fruit",
       "title": "Fruit Icons",
-      "introText": "[insert description here]",
+      "introText": "",
       "introImage": null,
       "thumbnailImage": {
         "type": "image",
@@ -267,7 +267,7 @@
     {
       "slug": "still-growing",
       "title": "Still Growing",
-      "introText": "[insert description here]",
+      "introText": "",
       "introImage": null,
       "thumbnailImage": {
         "type": "image",
