@@ -119,7 +119,7 @@ const ThumbnailColumn = ({ items, images, projects, appConfig, setLightboxImage 
                 as={`/project/${project.slug}`}
                 imageProps={thumbnailImageProps}
               />
-              <div className="flex flex-column flex-row-ns items-center justify-center pa2 pb3 pt0 bb b--moon-gray lh-title fw2 f4 f3-m f2-l">
+              <div className="flex flex-column flex-row-ns items-center justify-center pa2 pb3 bb b--moon-gray lh-title fw2 f4 f3-m f2-l">
                 <h2 className="tc fw2 mt0 mb2 mb0-ns f4 f3-m f2-l">{project.title}</h2>
                 <Link href="/project/[slug]" as={`/project/${project.slug}`}>
                   <a className="ml3-ns f5 flex items-center">View Project</a>
