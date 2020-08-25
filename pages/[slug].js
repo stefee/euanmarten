@@ -156,7 +156,7 @@ const Portfolio = ({ appConfig, data: { slug, items, images, projects } }) => {
           </ul>
         </div>
       </nav>
-      <main className="w-80-l">
+      <main className="w-100 w-80-l">
         <ColumnLayout
           columns={THUMBNAIL_COLUMNS}
           verticalPadding={THUMBNAIL_PADDING}
