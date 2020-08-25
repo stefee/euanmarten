@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node scripts/build-images.js && next dev",
     "build": "node scripts/build-images.js && next build",
+    "build-images": "node scripts/build-images.js",
     "start": "next start",
+    "dev": "next dev",
     "test": "jest",
     "tdd": "jest --watch"
   },
