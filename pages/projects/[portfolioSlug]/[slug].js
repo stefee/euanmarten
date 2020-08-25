@@ -29,7 +29,7 @@ const Project = ({ appConfig, data: { portfolioSlug, project, images } }) => {
 
   return (
     <main className="flex flex-wrap">
-      <div className="ph4 pt4 w-third-l">
+      <div className="ph4 pt2 w-third-l">
         <div className="sticky-l top-2">
           <Link href="/[slug]" as={`/${portfolioSlug}`}>
             <a className="ttl mb4 db">Back To Portfolio</a>
