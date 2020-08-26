@@ -22,12 +22,13 @@ const Thumbnail = ({ image, appConfig, imageProps }) => (
   </div>
 );
 
-const ThumbnailButton = ({ onClick, ...rest }) => (
+const ThumbnailButton = ({ onClick, tabIndex = null, ...rest }) => (
   <button
     title="View Image"
     type="button"
     className="button-reset bn pa0 db w-100 pointer"
     onClick={onClick}
+    tabIndex={tabIndex}
   >
     <Thumbnail {...rest} />
   </button>
@@ -60,6 +61,7 @@ const ThumbnailColumn = ({ slug, items, images, projects, appConfig, setLightbox
                 appConfig={appConfig}
                 onClick={() => setLightboxImage(image)}
                 imageProps={thumbnailImageProps}
+                tabIndex={index + 1}
               />
             </div>
           );
@@ -99,7 +101,11 @@ const ThumbnailColumn = ({ slug, items, images, projects, appConfig, setLightbox
               href="/projects/[portfolioSlug]/[slug]"
               as={`/projects/${slug}/${project.slug}`}
             >
-              <a className="mb4 pa0 db w-100 no-underline" title="View Project">
+              <a
+                className="mb4 pa0 db w-100 no-underline"
+                title="View Project"
+                tabIndex={index + 1}
+              >
                 <Thumbnail
                   image={thumbnailImage}
                   appConfig={appConfig}
