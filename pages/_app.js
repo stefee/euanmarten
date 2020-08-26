@@ -23,7 +23,11 @@ const App = ({ Component, pageProps }) => (
     </Head>
 
     <div className="sans-serif">
-      <a tabIndex={1} href="#start-of-content" className="show-on-focus">Skip to content</a>
+      <span className="white">
+        <a href="#start-of-content" className="show-on-focus pa3 bg-dark-blue no-underline">
+          Skip to content
+        </a>
+      </span>
       <div className="pa4">
         <Nav />
       </div>
