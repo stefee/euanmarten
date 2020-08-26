@@ -49,12 +49,17 @@ img {
   clip: auto;
 }
 
+.Navitem:not(.Navitem--current) a,
+.Navitem:not(.Navitem--current) a .Navitem__bullet {
+  transition: opacity 0.1s;
+}
+
 .Navitem:not(.Navitem--current) a:hover {
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 .Navitem:not(.Navitem--current) a:hover .Navitem__bullet {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .Navitem:not(.Navitem--current) .Navitem__bullet {
