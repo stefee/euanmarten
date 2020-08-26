@@ -24,7 +24,7 @@ const App = ({ Component, pageProps }) => (
 
     <div className="sans-serif">
       <span className="white">
-        <a href="#start-of-content" className="show-on-focus pa3 bg-dark-blue no-underline">
+        <a href="#start-of-content" className="SkipToContent bg-dark-blue no-underline pa3 ma0 overflow-hidden absolute">
           Skip to content
         </a>
       </span>
