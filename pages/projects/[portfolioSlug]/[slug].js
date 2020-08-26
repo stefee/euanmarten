@@ -63,7 +63,7 @@ const Project = ({ appConfig, data: { portfolioSlug, project, images } }) => {
                     appConfig={appConfig}
                     onClick={() => setLightboxImage(image)}
                   />
-                  {item.caption ? <figcaption>{item.caption}</figcaption> : null}
+                  {item.caption ? <figcaption className="pa3">{item.caption}</figcaption> : null}
                 </figure>
               );
             })}
