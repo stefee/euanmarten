@@ -28,7 +28,7 @@ const Project = ({ appConfig, data: { portfolioSlug, project, images } }) => {
   const isLightboxOpen = !!lightboxImage;
 
   return (
-    <main className="flex flex-wrap">
+    <main id="start-of-content" className="flex flex-wrap">
       <div className="ph4 pt2 w-third-l">
         <div className="sticky-l top-2">
           <Link href="/[slug]" as={`/${portfolioSlug}`}>

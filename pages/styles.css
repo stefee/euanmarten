@@ -55,3 +55,20 @@ img {
 svg.Icon {
   fill: currentColor;
 }
+
+.show-on-focus {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+
+  margin: 0;
+  clip: rect(1px,1px,1px,1px);
+}
+
+.show-on-focus:focus {
+  z-index: 20;
+  width: auto;
+  height: auto;
+  clip: auto;
+}

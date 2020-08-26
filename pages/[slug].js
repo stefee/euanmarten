@@ -22,13 +22,12 @@ const Thumbnail = ({ image, appConfig, imageProps }) => (
   </div>
 );
 
-const ThumbnailButton = ({ onClick, tabIndex = null, ...rest }) => (
+const ThumbnailButton = ({ onClick, ...rest }) => (
   <button
     title="View Image"
     type="button"
     className="button-reset bn pa0 db w-100 pointer"
     onClick={onClick}
-    tabIndex={tabIndex}
   >
     <Thumbnail {...rest} />
   </button>
@@ -61,7 +60,6 @@ const ThumbnailColumn = ({ slug, items, images, projects, appConfig, setLightbox
                 appConfig={appConfig}
                 onClick={() => setLightboxImage(image)}
                 imageProps={thumbnailImageProps}
-                tabIndex={index + 1}
               />
             </div>
           );
@@ -104,7 +102,6 @@ const ThumbnailColumn = ({ slug, items, images, projects, appConfig, setLightbox
               <a
                 className="mb4 pa0 db w-100 no-underline"
                 title="View Project"
-                tabIndex={index + 1}
               >
                 <Thumbnail
                   image={thumbnailImage}
@@ -148,7 +145,7 @@ const Portfolio = ({ appConfig, data: { slug, items, images, projects } }) => {
           </ul>
         </div>
       </nav>
-      <main className="w-100 w-80-l">
+      <main id="start-of-content" className="w-100 w-80-l">
         <ColumnLayout
           columns={THUMBNAIL_COLUMNS}
           verticalPadding={THUMBNAIL_PADDING}
