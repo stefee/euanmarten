@@ -24,7 +24,7 @@ const getImageFilenames = async (pathToDir, allowedFileTypes) => {
   return imageFilenames;
 };
 
-const exec = async () => {
+const buildAllImages = async () => {
   try {
     logger.debug('Starting images build...');
 
@@ -52,10 +52,38 @@ const exec = async () => {
     await createImageRenditions({ logger }, imageBuildConfig, filenames, imageRenditions);
 
     logger.debug('Finished building images', '✅');
-  } catch (err) {
-    logger.error(err);
+  } catch (error) {
+    logger.error(error);
     logger.error('Something went wrong, terminating process');
     setImmediate(process.exit.bind(process, 1));
+  }
+};
+
+const buildSingleImage = async (filename) => {
+  try {
+    logger.debug('Starting single image build...');
+
+    const { imageRenditions, imageBuildConfig } = JSON.parse(await fs.readFile('./config.json'));
+
+    logger.debug(`Creating optimised renditions for ${filename}...`);
+
+    await createImageRenditions({ logger }, imageBuildConfig, [filename], imageRenditions);
+
+    logger.debug('Finished building image', '✅');
+  } catch (error) {
+    logger.error(error);
+    logger.error('Something went wrong, terminating process');
+    setImmediate(process.exit.bind(process, 1));
+  }
+};
+
+const exec = async () => {
+  const args = process.argv.slice(2);
+
+  if (args.length > 0) {
+    await buildSingleImage(args[0]);
+  } else {
+    await buildAllImages();
   }
 };
 
