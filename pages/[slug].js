@@ -94,7 +94,11 @@ const ThumbnailColumn = ({ slug, items, images, projects, appConfig, setLightbox
           }
 
           return (
-            <Link key={project.slug} href={`/projects/${slug}/${project.slug}`}>
+            <Link
+              key={project.slug}
+              href="/projects/[portfolioSlug]/[slug]"
+              as={`/projects/${slug}/${project.slug}`}
+            >
               <a
                 className="mb4 pa0 db w-100 no-underline"
                 title="View Project"
@@ -131,7 +135,7 @@ const Portfolio = ({ appConfig, data: { slug, items, images, projects } }) => {
         <div className="sticky-l top-2">
           <ul className="flex flex-row flex-column-l justify-center justify-start-l list pa0 ma0 mr2 mr0-ns f4 fw2 ttl">
             <li className={`Navitem mb3 mr4 mr0-l${slug === 'illustration' ? ' Navitem--current' : ''}`}>
-              <Link href="/illustration">
+              <Link href="/[slug]" as="/illustration">
                 <a className="no-underline flex flex-row items-center">
                   <span className="Navitem__bullet f6 mr2">•</span>
                   illustration
@@ -139,7 +143,7 @@ const Portfolio = ({ appConfig, data: { slug, items, images, projects } }) => {
               </Link>
             </li>
             <li className={`Navitem mb3${slug === 'design' ? ' Navitem--current' : ''}`}>
-              <Link href="/design">
+              <Link href="/[slug]" as="/design">
                 <a className="no-underline flex flew-row items-center">
                   <span className="Navitem__bullet f6 mr2">•</span>
                   design

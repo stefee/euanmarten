@@ -31,7 +31,7 @@ const Project = ({ appConfig, data: { portfolioSlug, project, images } }) => {
     <main id="start-of-content" className="flex flex-wrap">
       <div className="ph4 pt2 w-third-l">
         <div className="sticky-l top-2">
-          <Link href={`/${portfolioSlug}`}>
+          <Link href="/[slug]" as={`/${portfolioSlug}`}>
             <a className="ttl mb4 db">Back To Portfolio</a>
           </Link>
           <h2 className="mt0 fw2 f3 f2-l">{project.title}</h2>
