@@ -107,7 +107,7 @@
     {
       slug: 'birdbell',
       title: 'Bird & Bell',
-      introText: '',
+      introText: 'kjhhgfkuggkhgfkhgfhjkgvjklhvghjkjgkjfhkhgjhhkgjhjjhgdffygsadghlkgjfhdgsfsgkhgjfhdgs',
       introImage: null,
       thumbnailImage: { type: 'image', filename: 'birdbell-cover.jpg' },
       items: [
