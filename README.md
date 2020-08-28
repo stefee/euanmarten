@@ -1,10 +1,8 @@
 # euanmarten
 
-This is the Next.js app serving [euanmarten.com].
+This is the Next.js app serving [euanmarten.com](https://euanmarten.com).
 
 This project was migrated from a Create React App project. See source code for that project [here](https://github.com/srilq/euanmarten-cra).
-
-[euanmarten.com]: https://euanmarten.com
 
 ## Quick Start for Developers
 
@@ -22,15 +20,18 @@ brew install nvm
 # Install node
 nvm install
 
-# Install vercel
-npm i -g vercel
-
 # Install package.json
 npm install --prefer-online
+```
+
+### Build Images
+
+```sh
+npm run build-images
 ```
 
 ### Start Server
 
 ```sh
-vercel dev
+npm run dev
 ```
