@@ -33,7 +33,7 @@
     { filename: 'birdbell-02.jpg', altText: '' },
     { filename: 'birdbell-03.jpg', altText: '' },
     { filename: 'birdbell-04.png', altText: '' },
-    { filename: 'birdbell-05.png', altText: '' }
+    { filename: 'birdbell-05.png', altText: '' },
   ],
   projects: [
     {
@@ -45,8 +45,8 @@
       items: [
         { type: 'image', filename: 'cat-orange.jpg', caption: '' },
         { type: 'image', filename: 'cat-patch.jpg', caption: '' },
-        { type: 'image', filename: 'cat-tabby.jpg', caption: '' }
-      ]
+        { type: 'image', filename: 'cat-tabby.jpg', caption: '' },
+      ],
     },
     {
       slug: 'bilbo',
@@ -55,8 +55,8 @@
       introImage: null,
       thumbnailImage: { type: 'image', filename: 'bilbo2.png' },
       items: [
-        { type: 'image', filename: 'bilbo2.png', caption: '' }
-      ]
+        { type: 'image', filename: 'bilbo2.png', caption: '' },
+      ],
     },
     {
       slug: 'nwf3',
@@ -65,8 +65,8 @@
       introImage: null,
       thumbnailImage: { type: 'image', filename: 'Nwf3.png' },
       items: [
-        { type: 'image', filename: 'Nwf3.png', caption: '' }
-      ]
+        { type: 'image', filename: 'Nwf3.png', caption: '' },
+      ],
     },
     {
       slug: 'pals',
@@ -77,8 +77,8 @@
       items: [
         { type: 'image', filename: 'pals-01.jpg', caption: '' },
         { type: 'image', filename: 'pals-02.jpg', caption: '' },
-        { type: 'image', filename: 'pals-03.jpg', caption: '' }
-      ]
+        { type: 'image', filename: 'pals-03.jpg', caption: '' },
+      ],
     },
     {
       slug: 'fruit',
@@ -91,8 +91,8 @@
         { type: 'image', filename: 'fruit-banana.jpg', caption: '' },
         { type: 'image', filename: 'fruit-lemon.jpg', caption: '' },
         { type: 'image', filename: 'fruit-mango.jpg', caption: '' },
-        { type: 'image', filename: 'fruit-pear.jpg', caption: '' }
-      ]
+        { type: 'image', filename: 'fruit-pear.jpg', caption: '' },
+      ],
     },
     {
       slug: 'still-growing',
@@ -101,8 +101,8 @@
       introImage: null,
       thumbnailImage: { type: 'image', filename: 'grow.PNG' },
       items: [
-        { type: 'image', filename: 'grow.PNG', caption: '' }
-      ]
+        { type: 'image', filename: 'grow.PNG', caption: '' },
+      ],
     },
     {
       slug: 'birdbell',
@@ -114,9 +114,9 @@
         { type: 'image', filename: 'birdbell-02.jpg', caption: '' },
         { type: 'image', filename: 'birdbell-03.jpg', caption: '' },
         { type: 'image', filename: 'birdbell-04.png', caption: '' },
-        { type: 'image', filename: 'birdbell-05.png', caption: '' }
-      ]
-    }
+        { type: 'image', filename: 'birdbell-05.png', caption: '' },
+      ],
+    },
   ],
   portfolios: [
     {
@@ -127,8 +127,8 @@
         { type: 'project', slug: 'fruit' },
         { type: 'project', slug: 'cat-icons' },
         { type: 'project', slug: 'bilbo' },
-        { type: 'project', slug: 'nwf3' }
-      ]
+        { type: 'project', slug: 'nwf3' },
+      ],
     },
     {
       slug: 'illustration',
@@ -143,8 +143,8 @@
         { type: 'image', filename: 'body.jpg' },
         { type: 'image', filename: 'self.jpg' },
         { type: 'image', filename: 'owl.jpg' },
-        { type: 'image', filename: 'peel.jpg' }
-      ]
-    }
-  ]
+        { type: 'image', filename: 'peel.jpg' },
+      ],
+    },
+  ],
 }
