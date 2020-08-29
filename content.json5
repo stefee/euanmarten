@@ -87,11 +87,12 @@
       introImage: null,
       thumbnailImage: { type: 'image', filename: 'fruit-cover.jpg' },
       items: [
-        { type: 'image', filename: 'fruit-apple.jpg', caption: '' },
-        { type: 'image', filename: 'fruit-banana.jpg', caption: '' },
-        { type: 'image', filename: 'fruit-lemon.jpg', caption: '' },
-        { type: 'image', filename: 'fruit-mango.jpg', caption: '' },
-        { type: 'image', filename: 'fruit-pear.jpg', caption: '' }
+        { type: 'image', filename: 'fruit-mango.jpg', caption: 'A vector illustration of a mango.' },
+        { type: 'image', filename: 'fruit-pear.jpg', caption: 'A vector illustration of a pear.' }
+        { type: 'image', filename: 'fruit-apple.jpg', caption: 'A vector illustration of an apple.' },
+        { type: 'image', filename: 'fruit-banana.jpg', caption: 'A vector illustration of a banana.' },
+        { type: 'image', filename: 'fruit-lemon.jpg', caption: 'A vector illustration of a lemon.' }
+        
       ]
     },
     {
