@@ -88,7 +88,7 @@
       thumbnailImage: { type: 'image', filename: 'fruit-cover.jpg' },
       items: [
         { type: 'image', filename: 'fruit-mango.jpg', caption: '' },
-        { type: 'image', filename: 'fruit-pear.jpg', caption: '' }
+        { type: 'image', filename: 'fruit-pear.jpg', caption: '' },
         { type: 'image', filename: 'fruit-apple.jpg', caption: '' },
         { type: 'image', filename: 'fruit-banana.jpg', caption: '' },
         { type: 'image', filename: 'fruit-lemon.jpg', caption: '' }
