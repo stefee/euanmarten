@@ -1,9 +1,16 @@
 import { Fragment } from 'react';
+import Router from 'next/router';
 import Head from 'next/head';
 import 'tachyons';
+import './nprogress.css';
 import './fonts.css';
 import './styles.css';
+import NProgress from 'nprogress';
 import Nav from '../components/Nav';
+
+Router.events.on('routeChangeStart', () => NProgress.start());
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
 
 const App = ({ Component, pageProps }) => (
   <Fragment>
