@@ -14,7 +14,7 @@
     "@renditions/react-img": "^4.0.0",
     "@renditions/react-picture-source": "0.0.2",
     "json5": "^2.1.3",
-    "next": "^9.5.2",
+    "next": "^9.5.4",
     "nprogress": "^0.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
