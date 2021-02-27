@@ -132,26 +132,29 @@ const Portfolio = ({ appConfig, data: { slug, items, images, projects } }) => {
   return (
     <div className="flex flex-wrap">
       <nav className="ph4 pt2 w-100 w-20-l">
-        <div className="sticky-l top-2">
-          <ul className="flex flex-row flex-column-l justify-center justify-start-l list pa0 ma0 mr2 mr0-ns f4 fw2 ttl">
-            <li className={`Navitem mb3 mr4 mr0-l${slug === 'illustration' ? ' Navitem--current' : ''}`}>
-              <Link href="/[slug]" as="/illustration">
-                <a className="no-underline flex flex-row items-center">
-                  <span className="Navitem__bullet f6 mr2">•</span>
-                  illustration
-                </a>
-              </Link>
-            </li>
-            <li className={`Navitem mb3${slug === 'design' ? ' Navitem--current' : ''}`}>
-              <Link href="/[slug]" as="/design">
-                <a className="no-underline flex flew-row items-center">
-                  <span className="Navitem__bullet f6 mr2">•</span>
-                  design
-                </a>
-              </Link>
-            </li>
-          </ul>
-        </div>
+        {/*
+          @TODO: add navigation back when design page is ready
+          <div className="sticky-l top-2">
+            <ul className="flex flex-row flex-column-l justify-center justify-start-l list pa0 ma0 mr2 mr0-ns f4 fw2 ttl">
+              <li className={`Navitem mb3 mr4 mr0-l${slug === 'illustration' ? ' Navitem--current' : ''}`}>
+                <Link href="/[slug]" as="/illustration">
+                  <a className="no-underline flex flex-row items-center">
+                    <span className="Navitem__bullet f6 mr2">•</span>
+                    illustration
+                  </a>
+                </Link>
+              </li>
+              <li className={`Navitem mb3${slug === 'design' ? ' Navitem--current' : ''}`}>
+                <Link href="/[slug]" as="/design">
+                  <a className="no-underline flex flew-row items-center">
+                    <span className="Navitem__bullet f6 mr2">•</span>
+                    design
+                  </a>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        */}
       </nav>
       <main id="start-of-content" className="w-100 w-80-l">
         <ColumnLayout
