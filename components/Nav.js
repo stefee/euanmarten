@@ -19,6 +19,7 @@ const Nav = () => (
       <li><IconLink href="https://www.instagram.com/e.seilide/" name="INSTAGRAM" /></li>
       <li><IconLink href="https://e-seilide.tumblr.com" name="TUMBLR" /></li>
       <li><IconLink href="http://twitter.com/e_seilide" name="TWITTER" /></li>
+      <li><IconLink href="https://www.etsy.com/uk/shop/ESeilide" name="ETSY" /></li>
       <li><IconLink href="mailto:euansmarten@gmail.com" name="EMAIL" label="Email">euansmarten@gmail.com</IconLink></li>
     </ul>
   </header>
