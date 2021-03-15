@@ -2,6 +2,7 @@
   images: [
     { filename: 'artist.jpg', altText: 'Illustration: Artist' },
     { filename: 'gio.jpg', altText: 'Illustration: Gio' },
+    { filename: 'conch.jpg', altText: 'Illustration: Conch' },
     { filename: 'growing2.png', altText: 'Illustration: Still Growing' },
     { filename: 'labrysfull.jpg', altText: 'Illustration: Labrys' },
     { filename: 'point.jpg', altText: 'Illustration: Point' },
