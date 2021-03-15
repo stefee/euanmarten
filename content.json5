@@ -137,6 +137,7 @@
       items: [
         { type: 'image', filename: 'gio.jpg' },
         { type: 'image', filename: 'labrysfull.jpg' },
+        { type: 'image', filename: 'conch.jpg' },
         { type: 'image', filename: 'artist.jpg' },
         { type: 'image', filename: 'grow.PNG' },
         { type: 'image', filename: 'fwoosh.PNG' },
