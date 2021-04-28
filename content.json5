@@ -1,6 +1,7 @@
 {
   images: [
     { filename: 'artist.jpg', altText: 'Illustration: Artist' },
+    { filename: 'conch.jpg', altText: 'Illustration: Risograph Print' },
     { filename: 'gio.jpg', altText: 'Illustration: Gio' },
     { filename: 'conch.jpg', altText: 'Illustration: Conch' },
     { filename: 'growing2.png', altText: 'Illustration: Still Growing' },
