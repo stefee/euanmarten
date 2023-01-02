@@ -13,7 +13,7 @@
   "dependencies": {
     "@renditions/react-img": "5.1.5",
     "@renditions/react-picture-source": "0.2.3",
-    "json5": "2.2.0",
+    "json5": "2.2.2",
     "next": "11.1.4",
     "nprogress": "0.2.0",
     "react": "17.0.2",
