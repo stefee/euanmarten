@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "del": "6.0.0",
-    "jest": "27.5.1",
+    "jest": "29.7.0",
     "promise-limit": "2.7.0"
   }
 }
