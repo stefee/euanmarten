@@ -13,16 +13,16 @@
   "dependencies": {
     "@renditions/react-img": "5.1.5",
     "@renditions/react-picture-source": "0.2.3",
-    "json5": "2.2.0",
+    "json5": "2.2.3",
     "next": "11.1.4",
     "nprogress": "0.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "sharp": "0.30.5",
+    "sharp": "0.33.5",
     "tachyons": "4.12.0"
   },
   "devDependencies": {
-    "del": "6.0.0",
+    "del": "6.1.1",
     "jest": "27.5.1",
     "promise-limit": "2.7.0"
   }
